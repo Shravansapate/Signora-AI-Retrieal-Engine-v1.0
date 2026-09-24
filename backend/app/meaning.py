@@ -15,6 +15,7 @@ from app.announcement_schema import (
     StationDefinition,
     StructuredMeaning,
 )
+from app.lexical import normalize_domain
 
 SLOT_TYPES = {
     "train_identifier": "TRAIN_IDENTIFIER",
@@ -87,12 +88,17 @@ DOMAIN_INTENTS = {
     "ARRIVAL_UNSPECIFIED": "TRAIN_ARRIVAL",
     "DEPARTURE_UNSPECIFIED": "TRAIN_DEPARTURE",
 }
-DOMAIN_TRAIN = r"(?:the )?train(?: (?:number |no\.? )?(?P<train_identifier>[0-9]{1,12}[a-z]{0,2}))?"
+DOMAIN_TRAIN = (
+    r"(?:(?:the )?train(?: (?:number |no\.? )?"
+    r"(?P<train_identifier>[0-9]{1,12}[a-z]{0,2}))?"
+    r"|(?P<implicit_train_identifier>[0-9]{1,12}[a-z]{0,2}))"
+)
 DOMAIN_MOTION = re.compile(
     DOMAIN_TRAIN + ROLES + r" (?P<state>(?:is |has |has already |will |does )?(?:not )?"
     r"(?:arrives?|arriving|arrived|departs?|departing|departed))"
     + r"(?: (?P<time_modifier>shortly|soon|today|tomorrow|yesterday))?"
-    + r"(?: (?P<preposition>at|on|from|to) (?:platform (?:number )?"
+    + r"(?: (?:(?P<preposition>at|on|from|to) )?(?(preposition)|(?=platform ))"
+    r"(?:platform (?:number )?"
     r"(?P<platform_identifier>[0-9]{1,6}[a-z]{0,2})|(?P<place>[a-z][a-z .'-]{0,150}?)))?"
     + r"(?: (?P<trailing_time>shortly|soon|today|tomorrow|yesterday))?\.?"
 )
@@ -243,6 +249,8 @@ def parse_meaning(
     development=False,
 ):
     normalized, offsets = normalize(text)
+    if development:
+        normalized, offsets, _ = normalize_domain(normalized, offsets)
     raw_slots, spans, issues = {}, {}, []
     relations, event_form, time_modifier = {}, None, None
     if structured is not None:
@@ -278,6 +286,8 @@ def parse_meaning(
                 ],
             )
         values = match.groupdict()
+        if values.get("implicit_train_identifier"):
+            values["train_identifier"] = values["implicit_train_identifier"]
         state = values.get("state", "")
         polarity = "NEGATIVE" if "not " in state or values.get("neg") else "POSITIVE"
         temporal = temporal or STATES[state.replace("not ", "")]
@@ -313,7 +323,11 @@ def parse_meaning(
             )
         for name in SLOT_TYPES:
             if values.get(name) is not None:
-                a, b = match.span(name)
+                a, b = match.span(
+                    "implicit_train_identifier"
+                    if name == "train_identifier" and values.get("implicit_train_identifier")
+                    else name
+                )
                 start, end = offsets[a], offsets[b - 1] + 1
                 raw_slots[name], spans[name] = text[start:end], (start, end)
         if development and values.get("place"):

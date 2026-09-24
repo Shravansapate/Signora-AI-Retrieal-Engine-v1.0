@@ -64,12 +64,21 @@ try {
   await page.getByRole('button', { name: 'Connect', exact: true }).click();
   await page.getByRole('button', { name: 'Disconnect', exact: true }).waitFor();
   assert.equal(await page.getByRole('checkbox', { name: /development|demo/i }).count(), 0);
-  for (const [name, text] of [['mandatory', 'Train 1201 arrives at platform 2'], ['last-resort', '🦄']]) {
+  for (const [name, text] of [['mandatory', 'Train 1201 arrives at platform 2'], ['typo', 'Train 1201 Arrives at platfrm 2'], ['lexical', 'Train ACCIDENT']]) {
     await page.locator('#announcement-text').fill(text);
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/v1/translate') && response.request().method() === 'POST', { timeout: 180000 });
     await page.getByRole('button', { name: 'Play announcement', exact: true }).click();
     const body = await verifyPlayback(name, await responsePromise);
-    if (name === 'last-resort') assert.equal(body.retrieval.last_resort, true);
+    assert.equal(body.retrieval.last_resort, false);
+    if (name === 'typo') {
+      assert.equal(body.manifest.items.length, 8);
+      assert.equal(body.retrieval.normalized_input, 'train 1201 arrives at platform 2');
+    }
+    if (name === 'lexical') {
+      assert.equal(body.manifest.items.length, 2);
+      assert.deepEqual(body.manifest.items.map(item => item.semantic_key), ['ISL_TRAIN_01', 'ISL_ACCIDENT_01']);
+      assert.equal(body.retrieval.translation_status, 'LEXICAL_RECOVERY');
+    }
   }
   if (process.env.SIGNORA_BROWSER_AUDIO) {
     await page.getByRole('button', { name: 'Record voice', exact: true }).click();

@@ -10,6 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import defer
 
 from app.gloss import GlossUnit
+from app.lexical import fuzzy_word
 from app.models import AvatarProfile, MotionVersion, SignAlias, SignConcept
 from app.playback import PlaybackUnavailable, _check_bytes, _check_content, _persist
 from app.storage import StorageError
@@ -96,11 +97,21 @@ def _select(candidates, units, trace=None):
         item = _pick(candidates, token)
         if item:
             return item, "PHRASE" if " " in token else "WORD"
-        if unit.kind == "LEXEME":
+        if unit.kind in {"LEXEME", "LEXICAL"}:
             for variant in _variants(token)[1:]:
                 if item := _pick(candidates, variant):
                     return item, "WORD_FORM"
-        return _pick(candidates, token, aliases=True), "ALIAS"
+        item = _pick(candidates, token, aliases=True)
+        if item:
+            return item, "ALIAS"
+        if unit.kind == "LEXICAL":
+            vocabulary = {term for c in candidates for term in c.terms | c.aliases}
+            corrected = fuzzy_word(token, vocabulary)
+            if corrected:
+                return _pick(candidates, corrected) or _pick(
+                    candidates, corrected, aliases=True
+                ), "FUZZY_WORD"
+        return None, "ALIAS"
 
     def unavailable(token, unit, method="MISSING_GLOSS"):
         missing.append(f"Unavailable {unit.kind.lower()} {token} ({unit.role})")
@@ -127,12 +138,18 @@ def _select(candidates, units, trace=None):
         unit = units[index]
         token, group = _normalized(unit.token), f"gloss-{unit.role}"
         # Longest sign phrase, never merge across an identifier or name role.
-        if unit.kind == "LEXEME":
+        if unit.kind in {"LEXEME", "LEXICAL", "FUNCTION"}:
             end = index + 1
-            while end < len(units) and units[end].kind == "LEXEME" and units[end].role == unit.role:
+            while (
+                end < len(units)
+                and units[end].kind in {"LEXEME", "LEXICAL", "FUNCTION"}
+                and units[end].role == unit.role
+            ):
                 end += 1
             matched_end = None
             for stop in range(end, index + 1, -1):
+                if unit.kind == "FUNCTION" and stop == index + 1:
+                    continue
                 phrase = " ".join(_normalized(u.token) for u in units[index:stop])
                 item, method = lookup(phrase, unit)
                 if item:
@@ -142,6 +159,17 @@ def _select(candidates, units, trace=None):
             if matched_end:
                 index = matched_end
                 continue
+        if unit.kind == "FUNCTION":
+            trace.append(
+                {
+                    "input": token,
+                    "method": "SKIPPED_GRAMMAR",
+                    "gloss_token": unit.token,
+                    "role": unit.role,
+                }
+            )
+            index += 1
+            continue
         if unit.kind == "IDENTIFIER":
             spell(token, unit, group)  # Preserve every digit, including repeats and zeros.
         elif unit.kind == "NAME":
@@ -165,20 +193,13 @@ def _select(candidates, units, trace=None):
                 unit.kind == "PLATFORM_IDENTIFIER" and token.replace(" ", "").isalnum()
             ):
                 spell(token, unit, group)
+            elif unit.kind in {"LEXEME", "LEXICAL"}:
+                spell(token, unit, group)
             else:
-                unavailable(unit.token, unit)  # No alphabet fallback for grammar/event/tense.
+                unavailable(unit.token, unit)
         index += 1
     if index < len(units):
         missing.append("Demo sequence reached the 64-clip playback limit")
-    if not motions:
-        for item in candidates[:3]:
-            append(
-                item,
-                "demo-last-resort",
-                "sample",
-                "LAST_RESORT",
-                GlossUnit("SAMPLE", role="sample"),
-            )
     boundaries = [
         i for i in range(len(motions)) if i == len(motions) - 1 or groups[i] != groups[i + 1]
     ]
@@ -210,6 +231,7 @@ def prepare_demo(session, store, caption, owner, valid_until, *, units, translat
     for row in rows:
         profiles[row[0].avatar_profile_id].append(row)
     unavailable = []
+    trace, missing = [], []
     verified = set()
     for profile_id, available in sorted(profiles.items(), key=lambda p: (-len(p[1]), str(p[0]))):
         while available:
@@ -250,7 +272,7 @@ def prepare_demo(session, store, caption, owner, valid_until, *, units, translat
                     unavailable.append(str(mid))
             if failed:
                 available = [row for row in available if row[0].id not in failed]
-                continue  # Retry smaller matches / another version / last-resort content.
+                continue  # Retry smaller matches, another version, or another compatible rig.
             result = _persist(
                 session,
                 selected,
@@ -263,29 +285,38 @@ def prepare_demo(session, store, caption, owner, valid_until, *, units, translat
                 boundaries=boundaries,
                 valid_until=valid_until,
             )
-            return result.manifest, {
-                **translation,
-                "matches": trace,
-                "fingerspelled": list(
-                    dict.fromkeys(
-                        step["gloss_token"] for step in trace if step["method"] == "ALPHABET"
-                    )
-                ),
-                "missing_gloss": list(
-                    dict.fromkeys(
-                        step["gloss_token"]
-                        for step in trace
-                        if step["method"].startswith("MISSING_")
-                    )
-                ),
-                "semantic_coverage": "SAMPLE_ONLY"
-                if any(step["method"] == "LAST_RESORT" for step in trace)
-                else "PARTIAL"
-                if missing
-                else "COMPLETE_DRAFT",
-                "skipped": missing,
-                "unavailable_motion_ids": unavailable,
-                "last_resort": any(step["method"] == "LAST_RESORT" for step in trace),
-                "clip_count": len(motions),
-            }
-    raise PlaybackUnavailable("No readable, compatible GLB animations exist in the database")
+            return result.manifest, retrieval_trace(
+                translation, trace, missing, unavailable, len(motions)
+            )
+    return None, retrieval_trace(translation, trace, missing, unavailable, 0)
+
+
+def retrieval_trace(translation, trace, missing, unavailable, count):
+    return {
+        **translation,
+        "matches": trace,
+        "fingerspelled": list(
+            dict.fromkeys(step["gloss_token"] for step in trace if step["method"] == "ALPHABET")
+        ),
+        "missing_gloss": list(
+            dict.fromkeys(
+                step["gloss_token"] for step in trace if step["method"].startswith("MISSING_")
+            )
+        ),
+        "semantic_coverage": "LEXICAL_ONLY"
+        if translation.get("translation_status") == "LEXICAL_RECOVERY"
+        else "PARTIAL"
+        if missing
+        else "COMPLETE_DRAFT",
+        "skipped": missing,
+        "unavailable_motion_ids": unavailable,
+        "last_resort": False,
+        "retrieval_status": "EMPTY"
+        if not count
+        else "PARTIAL"
+        if missing
+        else "FINGERSPELLED"
+        if any(step["method"] == "ALPHABET" for step in trace)
+        else "COMPLETE",
+        "clip_count": count,
+    }

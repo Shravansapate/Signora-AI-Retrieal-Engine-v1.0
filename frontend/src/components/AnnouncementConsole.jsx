@@ -197,7 +197,7 @@ export default function AnnouncementConsole() {
           <AvatarViewer key={session} ref={player} token={token} onState={onState} />
           <div className="caption-area"><p>{result?.original_text || text || 'Your complete announcement will appear here.'}</p></div>
           {result?.retrieval?.translation_status === 'DOMAIN_DRAFT' && <p className="field-hint">Railway gloss uses configurable draft rules; ISL linguistic correctness has not been validated.</p>}
-          {result?.retrieval?.last_resort && <p className="field-hint">Playing sample motions only. This sequence does not translate the announcement.</p>}
+          {result?.retrieval?.translation_status === 'LEXICAL_RECOVERY' && <p className="field-hint">Playing matching words and available letters. This sequence has not been validated as an ISL sentence.</p>}
           {!!result?.retrieval?.missing_gloss?.length && <p className="field-hint">Incomplete signing — missing signs: {result.retrieval.missing_gloss.join(', ')}. Read the complete caption for the intended meaning.</p>}
           {!!result?.retrieval?.skipped?.length && <p className="field-hint">Some motions were unavailable. Playing the available sequence.</p>}
           {result?.retrieval && <details><summary>Motion lookup details</summary><pre style={{ whiteSpace: 'pre-wrap' }}>{JSON.stringify(result.retrieval, null, 2)}</pre></details>}

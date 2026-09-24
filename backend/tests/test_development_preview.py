@@ -24,7 +24,7 @@ def preview_environment(registry_database):
     settings, engine, sessions = registry_database
     library = Path(__file__).resolve().parents[2] / "metadata_json and glb"
     store = LocalAssetStore(settings.storage_root)
-    for name in ("Train", "1_One", "2_Two", "Zero", "Arrive", "Platform"):
+    for name in ("Train", "1_One", "2_Two", "Zero", "Arrive", "Platform", "Accident", "A", "T"):
         with sessions() as session:
             stage_motion(
                 library / f"metadata/{name}.metadata.json",
@@ -66,6 +66,43 @@ def payload(**values):
     }
 
 
+@pytest.mark.parametrize(
+    "source,count",
+    [
+        ("Train ACCIDENT", 2),
+        ("train accident", 2),
+        ("TRAIN ACCIDENT", 2),
+        ("Train Accident", 2),
+        ("Train 1201 Arrives at platfrm 2", 8),
+        ("Train 1201 arrives at platfrom 2", 8),
+        ("trian 1201 arives at platform 2", 8),
+        ("Train accident xyzabc", 3),
+        ("Train 1201 platform 2", 7),
+        ("Train accident at the platform", 3),
+    ],
+)
+def test_recovery_with_real_database_and_glbs(preview_environment, source, count):
+    client, headers, _, _, _ = preview_environment
+    response = client.post(
+        "/api/v1/translate", json=payload(text=source), headers=headers["operator"]
+    )
+    assert response.status_code == 200, response.text
+    body = response.json()
+    assert body["status"] == "READY", body
+    assert len(body["manifest"]["items"]) == count
+    assert body["retrieval"]["last_resort"] is False
+    assert body["manifest"]["items"][0]["semantic_key"] == "ISL_TRAIN_01"
+    if "accident" in source.lower():
+        assert body["manifest"]["items"][1]["semantic_key"] == "ISL_ACCIDENT_01"
+        assert body["retrieval"]["translation_status"] == "LEXICAL_RECOVERY"
+    assert (
+        client.get(
+            body["manifest"]["items"][0]["asset_url"], headers=headers["operator"]
+        ).status_code
+        == 200
+    )
+
+
 def test_operator_receives_plan_glb_and_can_revalidate_without_approval(preview_environment):
     client, headers, _, _, engine = preview_environment
     request = payload()
@@ -105,15 +142,18 @@ def test_operator_receives_plan_glb_and_can_revalidate_without_approval(preview_
         assert connection.scalar(text("SELECT count(*) FROM eligible_motion_versions")) == 0
 
 
-def test_unrecognized_text_and_unconfirmed_voice_use_fallback(preview_environment):
+def test_unrecognized_text_and_unconfirmed_voice_use_meaningful_fallback(preview_environment):
     client, headers, _, sessions, _ = preview_environment
     for source in ("🙏", "anything whatever", "Train 1201 arrives at platform 999"):
         result = client.post(
             "/api/v1/translate", json=payload(text=source), headers=headers["operator"]
         ).json()
-        assert result["status"] == "READY" and result["manifest"]["items"]
         if source == "🙏":
-            assert result["retrieval"]["last_resort"]
+            assert result["manifest"] is None
+            assert result["retrieval"]["retrieval_status"] == "EMPTY"
+        else:
+            assert result["status"] == "READY" and result["manifest"]["items"]
+        assert not result["retrieval"]["last_resort"]
     with sessions() as session, session.begin():
         transcript = VoiceTranscript(
             owner_subject="operator",

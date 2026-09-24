@@ -17,7 +17,7 @@ from app.announcement_schema import (
 )
 from app.catalog import catalog_lock
 from app.demo import prepare_demo
-from app.gloss import construct_gloss, translation_trace
+from app.gloss import construct_gloss, recover_lexical, translation_trace
 from app.lifecycle import LifecycleError, _event, require
 from app.meaning import meaning_hash, parse_meaning, structured_caption, validate_signature
 from app.models import (
@@ -335,6 +335,8 @@ def translate(session, store, request, identity, *, demo_mode_enabled=False):
             try:
                 if demo_mode_enabled:
                     units = construct_gloss(meaning, definition.development_gloss)
+                    if meaning is None:
+                        units, _ = recover_lexical(normalized)
                     retrieval = translation_trace(
                         caption, normalized, meaning, issues, units, definition.development_gloss
                     )
@@ -435,6 +437,7 @@ def translate(session, store, request, identity, *, demo_mode_enabled=False):
                                 "last_resort": False,
                                 "unavailable_motion_ids": [],
                                 "clip_count": len(manifest.items),
+                                "retrieval_status": "COMPLETE",
                             }
                         )
                     else:
@@ -458,7 +461,14 @@ def translate(session, store, request, identity, *, demo_mode_enabled=False):
                         identity.subject,
                         valid_until,
                     )
-                status = "READY"
+                status = "READY" if manifest is not None else "ASSET_UNAVAILABLE"
+                if manifest is None:
+                    issues.append(
+                        Issue(
+                            code="NO_MEANINGFUL_MOTIONS",
+                            detail="No playable motions or letters matching this input were found.",
+                        )
+                    )
             except LifecycleError as exc:
                 issues.append(Issue(code=exc.code, detail=str(exc)))
             except PlaybackUnavailable as exc:

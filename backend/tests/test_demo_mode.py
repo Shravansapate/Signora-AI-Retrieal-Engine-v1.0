@@ -30,13 +30,13 @@ def test_gloss_phrase_priority_aliases_and_digit_occurrences():
     assert [step["method"] for step in trace] == ["PHRASE", "DIGIT", "DIGIT", "DIGIT", "ALIAS"]
 
 
-def test_missing_event_and_time_are_not_fingerspelled():
+def test_missing_meaningful_gloss_uses_available_letters():
     train, a, t = [candidate(value, value) for value in ("train", "a", "t")]
     trace = []
     motions, _, _, missing = _select([train, a, t], [G("TRAIN"), G("FUTURE"), G("DEPART")], trace)
-    assert motions == [train.motion_id]
-    assert len(missing) == 2
-    assert all(step["method"] != "ALPHABET" for step in trace)
+    assert motions[0] == train.motion_id and len(motions) == 4
+    assert missing
+    assert any(step["method"] == "ALPHABET" for step in trace)
     with pytest.raises(TypeError, match="typed gloss"):
         _select([a, t], "at")
 
@@ -56,13 +56,13 @@ def test_name_phrase_word_then_alphabet_without_inflecting_proper_names():
     assert len(missing) == 1
 
 
-def test_partial_limit_and_explicit_sample_fallback():
+def test_partial_limit_and_no_unrelated_sample_fallback():
     train = candidate("TRAIN", "train")
     motions, _, _, missing = _select([train], [G("TRAIN")] * 80)
     assert len(motions) == 64 and any("64-clip" in item for item in missing)
     trace = []
     motions, _, _, _ = _select([train], [], trace)
-    assert motions == [train.motion_id] and trace[0]["method"] == "LAST_RESORT"
+    assert motions == [] and trace == []
 
 
 def test_ids_and_phrase_fragments_never_become_digit_or_word_matches():

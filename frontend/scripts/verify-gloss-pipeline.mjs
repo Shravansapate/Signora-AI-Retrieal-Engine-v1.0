@@ -37,7 +37,7 @@ for (const [text, expected] of cases) {
   if (text.includes('Chhatrapati')) {
     assert(spelled.length > 0);
     assert(spelled.every(match => match.gloss_token === 'CHHATRAPATI SHIVAJI MAHARAJ TERMINUS'));
-  } else assert.equal(spelled.length, 0);
+  } else assert(spelled.every(match => !['AT', 'THE', 'IS'].includes(match.gloss_token)));
   if (trace.missing_gloss.length) assert.equal(trace.semantic_coverage, 'PARTIAL');
   results.push({ http_status: response.status, response: body });
   console.log(JSON.stringify({ input: text, normalized: trace.normalized_input,

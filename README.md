@@ -1,5 +1,151 @@
 # Signora
 
+## Project Overview
+
+Signora is a retrieval-based Indian Sign Language (ISL) announcement system for railway stations. It converts railway announcements into reviewed sequences of 3D sign-language motions and plays them through a persistent avatar on an operator preview screen and connected passenger displays.
+
+The project addresses a practical accessibility problem: important railway information is usually communicated through audio and written text, which can exclude passengers who rely on visual communication. Signora provides a controlled visual signing workflow for announcements such as train arrivals, departures, delays, cancellations, and platform changes.
+
+## How the System Solves the Problem
+
+Signora does not generate arbitrary animations from English words. It uses a controlled and reviewable pipeline:
+
+1. An operator enters text, structured fields, or a voice recording.
+2. The backend extracts the announcement meaning, including event, time, polarity, train number, and platform values.
+3. The meaning is converted into typed ISL gloss units rather than blindly splitting English words.
+4. The retrieval layer finds reviewed sign concepts, phrases, or words from the motion library.
+5. A reviewed construction template determines the complete signing order and safe interruption boundaries.
+6. Every GLB asset, avatar, checksum, review, and version is validated before playback.
+7. The 3D avatar performs the complete motion sequence.
+8. In live operation, the approved announcement is published to connected station displays.
+9. Displays acknowledge receipt, preparation, playback, completion, or failure.
+
+If the system cannot produce a complete reviewed construction, it reports the missing coverage instead of silently presenting an unreliable translation.
+
+## Main Screens
+
+### Content Preview - `/`
+
+The private reviewer workspace. It provides:
+
+- Searchable motion library
+- Exact motion-version selection
+- Avatar selection
+- Ordered sequence building and reordering
+- Exact registered-text lookup
+- Prepared template-review playback
+- 3D avatar preview
+- Clip progress and playback controls
+
+This screen is used to inspect and verify content. It does not automatically publish an announcement.
+
+### Announcements - `/announcements`
+
+The railway operator workspace. It provides:
+
+- Station selection
+- Typed announcement input
+- Structured announcement fields
+- Voice recording and transcript review
+- Train, platform, time, delay, cancellation, and polarity fields
+- Meaning and retrieval diagnostics
+- Avatar playback
+- Preview and live-delivery status
+
+In the local development configuration, a ready announcement can be played automatically and sent to the connected live display. Production mode keeps preview and publication as separate confirmed actions.
+
+### Library and Operations - `/admin`
+
+The administrator and content-management workspace contains these sections:
+
+- **Library:** concepts, motion versions, approvals, aliases, retrieval profiles, uploads, activation, rollback, revocation, and protected deletion.
+- **Templates & coverage:** reviewed announcement constructions, dependencies, examples, rendered review, and activation.
+- **Imports:** durable bulk import jobs, item results, retries, pause, and resume.
+- **Stations:** station identity, platforms, train rules, and advanced configuration.
+- **Displays:** display registration, connection health, delivery backlog, and playback history.
+- **Audit:** recorded lifecycle, review, configuration, and publication actions.
+
+### Live Display - `/display`
+
+The passenger-facing display connects using a registered display identity and credential. It shows:
+
+- Connection state
+- Current announcement caption
+- Signing state
+- Persistent 3D avatar
+- Automatic incoming announcement playback
+- Waiting and error states
+
+The display downloads and verifies all required motion assets before starting playback.
+
+## Technical Architecture
+
+```text
+Next.js frontend
+	|
+	v
+FastAPI API  ---- PostgreSQL registry and audit history
+	|                    |
+	|                    +-- reviewed signs, versions, templates, stations
+	|                    +-- playback manifests and publication revisions
+	|
+	+-- GLB motion storage
+	+-- local speech recognition
+	+-- optional semantic retrieval encoder
+	+-- WebSocket live-display delivery
+```
+
+The backend owns meaning parsing, retrieval, review rules, template compilation, asset authorization, publication, and recovery. The frontend owns operator workflows, review tools, avatar rendering, recording, and display playback.
+
+## Current Capabilities
+
+- 149 supplied GLB motion assets registered and validated
+- FastAPI and PostgreSQL registry
+- Durable import worker
+- Exact motion-version lifecycle management
+- Meaning, motion, avatar, alias, and template review
+- Typed, structured, and voice announcement input
+- Local speech-to-text support
+- Gloss-based and reviewed retrieval
+- 3D avatar playback using GLB assets
+- Immutable playback manifests
+- Station-scoped access control
+- Live display delivery and reconnect recovery
+- Announcement revisions and withdrawal
+- Audit history
+
+## Important Limitations
+
+The current project is an engineering prototype and local demonstration platform. The following still require real-world validation:
+
+- ISL linguistic and composition correctness
+- Accuracy with noisy railway field audio
+- Performance on target passenger-display hardware
+- Complete vocabulary coverage
+- Production deployment and backup recovery
+- Nationwide station configuration
+- Operational pilot acceptance
+
+Development gloss rules are explicitly marked as draft rules. They are useful for demonstrating the complete technical pipeline, but they do not by themselves establish linguistic correctness.
+
+## Quick Start
+
+The local PC installation uses PostgreSQL, the FastAPI backend, a durable import worker, and the Next.js frontend. From the repository root in PowerShell:
+
+```powershell
+& "$PSHOME\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File backend/tools/local-pc.ps1 start
+```
+
+Open:
+
+- Admin: http://127.0.0.1:3000/admin
+- Content preview: http://127.0.0.1:3000
+- Announcements: http://127.0.0.1:3000/announcements
+- Live display: http://127.0.0.1:3000/display
+- API documentation: http://127.0.0.1:8000/docs
+
+For complete setup, credentials, testing, deployment notes, and recovery procedures, continue reading this README and [SETUP.md](SETUP.md).
+
 Implementation follows `isl-retrieval-production/SKILL.md` and the supplied Signora implementation plan. Backend and frontend remain separate. The converter and supplied asset metadata are unchanged.
 
 Current implementation through Phase 7: asset inspection, the FastAPI/PostgreSQL registry, durable bulk import, exact-version review and lifecycle APIs, exact whole-expression retrieval, reviewed template/phrase/word construction compilation, scoped alias and calibrated fuzzy/semantic candidate search, common typed/structured/voice announcement input, immutable playback manifests, authenticated asset delivery, durable publication and display recovery, and Next.js operator, content-management and live-display workspaces with one persistent Three.js avatar. Actual station configuration and reviewed construction/realization policies determine the available announcement coverage; test recipes do not authorize production content.
@@ -27,17 +173,19 @@ From the repository root in PowerShell:
 
 The local credential file records expiry (initially 22 October 2026). It and the migration-owner credentials in `D:\SignoraData\local-admin.json` are private local files, excluded from the application source. Keep raw tokens out of screenshots and shared logs. Each additional station uses the same administrator setup flow; separately scope operator/display credentials and register its displays. Adding a station does not establish nationwide content coverage or language comprehension.
 
-This PC has `SIGNORA_DEMO_MODE_ENABLED=true` in `backend/.env`. Text and finalized voice transcripts now pass through the railway semantic parser before motion retrieval. Existing reviewed recipes retain priority when they cover the meaning. Otherwise, `StationDefinition.development_gloss` supplies configurable draft group ordering and lexical mappings; these rules have **not** been linguistically validated as correct ISL. Retrieval consumes typed gloss units, uses database phrases/words/aliases, preserves identifier digits, and permits alphabet fallback for names/identifiers. Missing event, time or negation signs are reported as missing vocabulary, never automatically spelled. Partial sequences remain playable; unsupported input with no usable gloss plays explicitly labelled sample motions, not a translation. **Motion lookup details** exposes the original/normalized text, semantic parse, gloss, retrieval tokens, matches, spelling, missing signs and clip count.
+This PC has `SIGNORA_DEMO_MODE_ENABLED=true` in `backend/.env`. Text and finalized voice transcripts share conservative domain spelling normalization and the railway semantic parser. Existing reviewed recipes retain priority when they cover the complete meaning; otherwise configurable draft gloss rules apply. If grammar parsing fails, independent lexical recovery preserves available phrases, words, aliases, identifiers and relationship words in input order, with partial slot diagnostics. Missing meaningful words try conservative catalog spelling recovery and available letters; grammatical function words are skipped unless part of a matched phrase. Identifiers preserve repeated digits. No unrelated sample motions are substituted: zero relevant matches returns an explicit empty result. Semantic status and retrieval status are separate; lexical recovery and draft rules are **not** linguistically validated ISL. **Motion lookup details** exposes corrections, semantic/partial interpretation, typed gloss, matches, spelling, missing signs and clip count.
 
 **Play announcement** (or a final voice transcript) starts the preview and sends the same sequence to the station's connected live displays through `/api/v1/development/announcements`. Connect `/display` in another tab before entering an announcement; it loads and plays automatically. Publication retries reuse the same input identity. Displays report completion and avoid replaying completed sequences after reload. A failed handoff shows **Retry live delivery**. There is no frontend mode switch. Set the backend option to `false` and restart to disable development delivery and restore the strict reviewed input flow. The separate production publication endpoint retains its reviewed behavior.
 
 ## Validation
 
-The corrected semantic/gloss pipeline passed 12 real API cases in [acceptance responses](artifacts/gloss-verification/acceptance-responses.json), including names, leading zeros, negation and temporal distinctions. `Train 1201 arrives at platform 2` generates `TRAIN | 1201 | PLATFORM | 2 | ARRIVE`, retrieves eight clips, and does not spell `at`. The local library lacks matches for `DEPART`, `FUTURE`, `SHORTLY`, `ALREADY` and `NOT` in the tested cases; these outputs are explicitly partial. The proper station name test retains 33 alphabet occurrences in a 40-clip sequence. Reproduce with `frontend/scripts/verify-gloss-pipeline.mjs` using operator credentials supplied only through environment variables.
+The earlier semantic/gloss revision passed 12 real API cases in [acceptance responses](artifacts/gloss-verification/acceptance-responses.json), including names, leading zeros, negation and temporal distinctions. `Train 1201 arrives at platform 2` generates `TRAIN | 1201 | PLATFORM | 2 | ARRIVE`, retrieves eight clips, and does not spell `at`. That revision reported missing signs for `DEPART`, `FUTURE`, `SHORTLY`, `ALREADY` and `NOT`; the current development retriever also attempts available letters for missing meaningful gloss. The proper station name test retains 33 alphabet occurrences in a 40-clip sequence. Reproduce with `frontend/scripts/verify-gloss-pipeline.mjs` using operator credentials supplied only through environment variables.
 
 The corrected sequence also passed a real two-page Chromium test: the operator received the manifest and automatically published it; the live display downloaded seven GLB objects, showed changing bone poses and advancing mixer time, completed **8/8 clips**, and persisted a `COMPLETED` acknowledgement. Reload did not replay the completed announcement. See [live verification](artifacts/gloss-verification/live/verification.json), [API response and GLB URLs](artifacts/gloss-verification/live/mandatory-response.json), and [rendered playback](artifacts/gloss-verification/live/live-playing.png). The browser verifier captures the terminal snapshot before normal display reconciliation returns to idle.
 
-The [private preview verification](artifacts/gloss-verification/private/verification.json) separately completed the same eight-clip announcement and three explicitly labelled sample clips on one persistent avatar, with changing bone transforms and advancing mixer time. Verification for this correction passed 50 parser/gloss/retrieval tests, 24 database-backed preview/announcement tests, all 65 frontend tests, Ruff checks and the frontend build. Reviewed-recipe reuse and finalized voice-transcript routing are covered by the backend checks; this correction did not repeat microphone/ASR accuracy testing.
+Historical evidence from the previous revision: the [private preview verification](artifacts/gloss-verification/private/verification.json) separately completed the same eight-clip announcement and three explicitly labelled sample clips on one persistent avatar, with changing bone transforms and advancing mixer time. Verification for this correction passed 50 parser/gloss/retrieval tests, 24 database-backed preview/announcement tests, all 65 frontend tests, Ruff checks and the frontend build. Reviewed-recipe reuse and finalized voice-transcript routing are covered by the backend checks; this correction did not repeat microphone/ASR accuracy testing.
+
+The current lexical-recovery correction passed 81 parser/gloss/retrieval tests, 34 database-backed tests, 65 frontend tests, Ruff and the frontend build. All 33 real API acceptance cases passed; see [responses](artifacts/lexical-recovery/acceptance-responses.json). Real Chromium playback completed the exact arrival (8/8), typo arrival (8/8), and `Train ACCIDENT` (2/2) on one persistent avatar with changing bone transforms, advancing mixer time, successful GLB downloads and no browser errors: [verification](artifacts/lexical-recovery/private/verification.json). Reproduce using `frontend/scripts/verify-lexical-recovery.mjs` and `frontend/scripts/verify-private-preview.mjs`. The current catalog labels the danger asset as `danger hazard peril` with no separate `danger` alias; an isolated `danger` therefore uses letters, without inventing catalog aliases. Finalized voice routing is covered by database tests; microphone/ASR accuracy was not retested for this correction.
 
 Historical raw-English retrieval evidence remains under `artifacts/private-preview` and `artifacts/development-display`. Its ten-clip `at` spelling and fourteen-clip ASR result proved animation mechanics only; they are not evidence of correct translation and have been superseded by the semantic/gloss pipeline. The reusable browser verifiers are `frontend/scripts/verify-private-preview.mjs` and `frontend/scripts/verify-development-display.mjs`; credentials are supplied through the environment, never saved in the evidence.
 
