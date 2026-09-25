@@ -26,7 +26,7 @@ from sqlalchemy.engine import make_url
 from app.config import Settings
 from app.storage import MAX_OBJECT_BYTES
 
-SCHEMA = "0006_live_delivery"
+SCHEMA = "0007_library_workflow"
 CATALOG_LOCK = "1397311310, 1"
 INVENTORY = """SELECT DISTINCT storage_key,sha256,size_bytes FROM motion_versions
 WHERE deleted_at IS NULL ORDER BY storage_key"""
@@ -72,7 +72,7 @@ class Asset(Digest):
 class Backup(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     format_version: Literal[1] = 1
-    schema_revision: Literal["0006_live_delivery"] = SCHEMA
+    schema_revision: Literal["0006_live_delivery", "0007_library_workflow"] = SCHEMA
     backup_id: UUID
     created_at: AwareDatetime
     postgres_major: int = Field(ge=14, le=99, strict=True)
@@ -325,7 +325,7 @@ INSERT INTO admin_audit_logs(id,actor,action,entity_id,details) VALUES
      'live_messages_withdrawn',true,'display_registrations_disabled',true));
 """)
         .format(
-            schema=psycopg.sql.Literal(SCHEMA),
+            schema=psycopg.sql.Literal(backup.schema_revision),
             inventory=psycopg.sql.SQL(INVENTORY),
             expected=psycopg.sql.Literal(expected),
             extensions=psycopg.sql.Literal(json.dumps(backup.extensions)),
@@ -401,7 +401,7 @@ def restore_backup(directory: Path, database_url, storage_root: Path, pg_bin: Pa
         receipt = {
             "backup_id": str(backup.backup_id),
             "restored_at": datetime.now(UTC).isoformat(),
-            "schema_revision": SCHEMA,
+            "schema_revision": backup.schema_revision,
             "assets_verified": len(backup.assets),
             "live_messages_withdrawn": True,
             "display_registrations_disabled": True,

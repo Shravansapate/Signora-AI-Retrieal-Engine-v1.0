@@ -47,6 +47,7 @@ class MotionReview(RevisionRequest):
 
 class DeleteRequest(RevisionRequest):
     confirm_sha256: Digest
+    purge_metadata: bool = False
 
 
 class CleanupRetryRequest(WireModel):

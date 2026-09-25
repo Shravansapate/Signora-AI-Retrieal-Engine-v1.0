@@ -7,7 +7,8 @@ from app.audio import MAX_AUDIO_BYTES
 
 def asset_upload(path):
     return path == "/api/v1/admin/motions/stage" or (
-        path.startswith("/api/v1/admin/signs/") and path.endswith("/motions")
+        path.startswith("/api/v1/admin/signs/")
+        and (path.endswith("/motions") or path.endswith("/metadata"))
     )
 
 

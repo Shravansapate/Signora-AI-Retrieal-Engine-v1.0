@@ -149,3 +149,32 @@ def test_voice_requires_server_receipt_and_cannot_claim_partial_metadata():
         AnnouncementInput(**base)
     with pytest.raises(ValidationError):
         AnnouncementInput(**base, transcript_id=uuid4(), asr_metadata={"final": True})
+
+
+def test_context_signs_do_not_double_count_template_meaning():
+    from app.announcement_schema import TemplateDefinition
+
+    definition = {
+        "intent": "TRAIN_ARRIVAL",
+        "temporal_state": "ARRIVING_NOW",
+        "polarity": "POSITIVE",
+        "avatar_profile_id": uuid4(),
+        "slot_types": {},
+        "recipe": [
+            {"kind": "CONCEPT", "concept_id": uuid4(), "covers": [], "group": "event"},
+            {
+                "kind": "CONCEPT",
+                "concept_id": uuid4(),
+                "group": "event",
+                "covers": ["intent", "temporal_state", "polarity"],
+            },
+        ],
+    }
+    TemplateDefinition.model_validate(definition)
+    definition["recipe"][0]["covers"] = ["intent"]
+    with pytest.raises(ValidationError, match="exactly once"):
+        TemplateDefinition.model_validate(definition)
+    definition["recipe"][0]["covers"] = []
+    definition["recipe"][1]["covers"] = ["intent", "temporal_state"]
+    with pytest.raises(ValidationError, match="exactly once"):
+        TemplateDefinition.model_validate(definition)

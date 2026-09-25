@@ -44,6 +44,7 @@ def workspace_router(sessions, principal):
             rows = session.execute(
                 text("""SELECT c.id,c.gloss,c.canonical_text,c.semantic_key,
               c.meaning_status,c.enabled,c.revision,c.active_motion_version_id,c.level,
+              (SELECT enabled FROM library_selections l WHERE l.concept_id=c.id) AS library_enabled,
               EXISTS(SELECT 1 FROM eligible_motion_versions e WHERE e.concept_id=c.id) AS eligible
               FROM sign_concepts c WHERE :q='' OR strpos(lower(c.gloss || ' ' || c.canonical_text
               || ' ' || c.semantic_key),lower(:q))>0

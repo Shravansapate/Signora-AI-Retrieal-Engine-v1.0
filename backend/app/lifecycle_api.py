@@ -3,7 +3,7 @@
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from pydantic import Field
 from sqlalchemy import select
 
@@ -11,6 +11,13 @@ from app.assets.khronos import KhronosValidationError
 from app.assets.metadata import MAX_METADATA_BYTES
 from app.config import Principal
 from app.imports import control_import, create_import, import_status
+from app.library import (
+    archive_version,
+    current_metadata,
+    development_enabled,
+    development_switch,
+    update_metadata,
+)
 from app.lifecycle import (
     delete_version,
     protected_references,
@@ -36,6 +43,8 @@ from app.models import (
     AvatarProfile,
     CleanupJob,
     ContentReview,
+    LibrarySelection,
+    MotionMetadataRevision,
     MotionVersion,
     RetrievalProfile,
     SignAlias,
@@ -143,6 +152,14 @@ def lifecycle_router(sessions, store, settings, principal):
             aliases = session.scalars(select(SignAlias).where(SignAlias.concept_id == concept_id))
             profile = session.get(RetrievalProfile, concept_id)
             return {
+                "development_mode": settings.demo_mode_enabled,
+                "deletion_retention_days": settings.deletion_retention_days,
+                "library_selection": {
+                    "motion_version_id": selection.motion_version_id,
+                    "enabled": selection.enabled,
+                }
+                if (selection := session.get(LibrarySelection, concept_id))
+                else None,
                 "retrieval_profile": {
                     field: getattr(profile, field)
                     for field in (
@@ -277,6 +294,7 @@ def lifecycle_router(sessions, store, settings, principal):
                             session,
                             store,
                             expected_concept_id=concept_id,
+                            manage_library=True,
                         )
         except RegistryConflict as exc:
             raise HTTPException(409, str(exc)) from exc
@@ -288,24 +306,87 @@ def lifecycle_router(sessions, store, settings, principal):
     @router.post("/admin/signs/{concept_id}/activate")
     def activate(concept_id: UUID, request: SwitchRequest, identity: Admin):
         with sessions() as session:
-            return switch_version(session, store, concept_id, request, identity.subject)
+            action = development_switch if settings.demo_mode_enabled else switch_version
+            return action(session, store, concept_id, request, identity.subject)
 
     @router.post("/admin/signs/{concept_id}/rollback")
     def rollback(concept_id: UUID, request: SwitchRequest, identity: Admin):
         with sessions() as session:
-            return switch_version(
-                session, store, concept_id, request, identity.subject, rollback=True
-            )
+            action = development_switch if settings.demo_mode_enabled else switch_version
+            return action(session, store, concept_id, request, identity.subject, rollback=True)
 
     @router.post("/admin/signs/{concept_id}/deactivate")
     def deactivate(concept_id: UUID, request: RevisionRequest, identity: Admin):
         with sessions() as session:
-            return set_enabled(session, store, concept_id, request, identity.subject, False)
+            action = development_enabled if settings.demo_mode_enabled else set_enabled
+            return action(session, store, concept_id, request, identity.subject, False)
 
     @router.post("/admin/signs/{concept_id}/reactivate")
     def reactivate(concept_id: UUID, request: RevisionRequest, identity: Admin):
         with sessions() as session:
-            return set_enabled(session, store, concept_id, request, identity.subject, True)
+            action = development_enabled if settings.demo_mode_enabled else set_enabled
+            return action(session, store, concept_id, request, identity.subject, True)
+
+    @router.post("/admin/signs/{concept_id}/motions/{version_id}/archive")
+    def archive(concept_id: UUID, version_id: UUID, request: RevisionRequest, identity: Admin):
+        with sessions() as session:
+            return archive_version(session, concept_id, version_id, request, identity.subject)
+
+    @router.post("/admin/signs/{concept_id}/motions/{version_id}/restore")
+    def restore(concept_id: UUID, version_id: UUID, request: RevisionRequest, identity: Admin):
+        with sessions() as session:
+            return archive_version(
+                session, concept_id, version_id, request, identity.subject, restore=True
+            )
+
+    @router.get("/review/signs/{concept_id}/motions/{version_id}/metadata")
+    def metadata_content(concept_id: UUID, version_id: UUID, identity: Reviewer):
+        with sessions() as session:
+            motion = session.get(MotionVersion, version_id)
+            if motion is None or motion.concept_id != concept_id or motion.deleted_at:
+                raise HTTPException(404, "Motion metadata unavailable")
+            return {
+                "metadata": current_metadata(session, motion),
+                "history": [
+                    {
+                        "id": row.id,
+                        "sha256": row.metadata_sha256,
+                        "actor": row.actor,
+                        "reason": row.reason,
+                        "created_at": row.created_at,
+                    }
+                    for row in session.scalars(
+                        select(MotionMetadataRevision)
+                        .where(MotionMetadataRevision.motion_version_id == version_id)
+                        .order_by(MotionMetadataRevision.created_at.desc())
+                    )
+                ],
+            }
+
+    @router.post("/admin/signs/{concept_id}/motions/{version_id}/metadata")
+    def metadata_update(
+        concept_id: UUID,
+        version_id: UUID,
+        identity: Admin,
+        metadata: Annotated[UploadFile, File()],
+        expected_revision: Annotated[int, Form(ge=1)],
+        reason: Annotated[str, Form(min_length=1, max_length=4000)],
+    ):
+        try:
+            request = RevisionRequest(expected_revision=expected_revision, reason=reason)
+            with store.stage(metadata.file, MAX_METADATA_BYTES) as path:
+                with sessions() as session:
+                    return update_metadata(
+                        session, store, concept_id, version_id, path, request, identity.subject
+                    )
+        except (RegistryConflict, ValueError, StorageError) as exc:
+            from app.lifecycle import LifecycleError
+
+            if isinstance(exc, LifecycleError):
+                raise
+            raise HTTPException(
+                422, "Metadata is invalid or does not match the selected GLB"
+            ) from exc
 
     @router.post("/admin/signs/{concept_id}/motions/{version_id}/revoke")
     def revoke(concept_id: UUID, version_id: UUID, request: RevisionRequest, identity: Admin):

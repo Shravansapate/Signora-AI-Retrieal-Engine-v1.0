@@ -15,9 +15,12 @@ export default function LibraryManager({ token, admin }) {
   const [meaningDecision, setMeaningDecision] = useState('APPROVED'), [deleteHash, setDeleteHash] = useState('');
   const [metadata, setMetadata] = useState(null), [motion, setMotion] = useState(null), [uploadNew, setUploadNew] = useState(true);
   const [cleanup, setCleanup] = useState(null);
+  const [metadataEdit, setMetadataEdit] = useState(null), [metadataHistory, setMetadataHistory] = useState(null), [purgeMetadata, setPurgeMetadata] = useState(false);
   const [alias, setAlias] = useState(''), [aliasDecision, setAliasDecision] = useState('APPROVED');
   const [description, setDescription] = useState(''), [sense, setSense] = useState('');
   const concept = detail?.concept, candidate = detail?.versions.find(row => row.id === candidateId);
+  const selectedId = detail?.development_mode && detail?.library_selection ? detail.library_selection.motion_version_id : concept?.active_motion_version_id;
+  const libraryEnabled = detail?.development_mode && detail?.library_selection ? detail.library_selection.enabled : concept?.enabled;
   const avatar = avatars.find(row => row.id === candidate?.avatar_profile_id);
   const busy = !!work.busy || ['PLAYING', 'PRELOADING'].includes(snapshot.state);
   const hasReason = reason.trim() && confirmed;
@@ -36,7 +39,7 @@ export default function LibraryManager({ token, admin }) {
     setCandidateId(chosen && data.versions.some(row => row.id === chosen) ? chosen : data.versions[0]?.id ?? '');
     setMeaning(data.concept.meaning || ''); setContext(data.concept.context || ''); setDomain(data.concept.domain || '');
     setDescription(data.retrieval_profile?.description || ''); setSense(data.retrieval_profile ? JSON.stringify(data.retrieval_profile.sense, null, 2) : '');
-    setDeleteHash('');
+    setDeleteHash(''); setMetadataHistory(null); setMetadataEdit(null); setPurgeMetadata(false);
   }
   function select(id) {
     clearPreview(); setPlayerSession(value => value+1); setReason(''); setEvidence(''); setCleanup(null);
@@ -57,12 +60,13 @@ export default function LibraryManager({ token, admin }) {
     const prefix = `/api/v1/admin/signs/${captured.id}`;
     const body = { expected_revision: captured.revision, reason };
     if (['activate', 'rollback'].includes(action)) Object.assign(body, { motion_version_id: version.id, expected_active_motion_version_id: captured.active_motion_version_id });
-    const path = ['revoke', 'delete'].includes(action) ? `${prefix}/motions/${version.id}${action === 'revoke' ? '/revoke' : ''}` : `${prefix}/${action}`;
-    if (action === 'delete') body.confirm_sha256 = deleteHash;
+    const path = ['revoke', 'delete', 'archive', 'restore'].includes(action) ? `${prefix}/motions/${version.id}${action === 'delete' ? '' : `/${action}`}` : `${prefix}/${action}`;
+    if (action === 'delete') Object.assign(body, { confirm_sha256: deleteHash, purge_metadata: purgeMetadata });
     work.run('Applying version change', async api => {
       const result = await api(path, { body, ...(action === 'delete' ? { method: 'DELETE' } : {}) });
       if (result.cleanup_job_id) setCleanup({ id: result.cleanup_job_id });
       await load(api, captured.id, version.id);
+      setItems((await api(`/api/v1/review/signs?q=${encodeURIComponent(query)}&offset=${offset}`)).items);
     }, 'Version change recorded. History and affected templates refreshed.');
   }
   function reviewMotion() {
@@ -90,33 +94,55 @@ export default function LibraryManager({ token, admin }) {
   }
   function upload() {
     work.run('Validating uploaded metadata and GLB', async api => {
-      if (motion.size > 134217728 || metadata.size > 1048576) throw new Error('Upload exceeds the supported GLB or metadata size.');
+      if (motion.size > 134217728 || metadata.size > 33554432) throw new Error('Maximum upload: GLB 128 MiB; metadata 32 MiB.');
       const form = new FormData(); form.append('metadata', metadata); form.append('motion', motion);
+      if (uploadNew) form.append('new_concept_only', 'true');
       const result = await api(uploadNew ? '/api/v1/admin/motions/stage' : `/api/v1/admin/signs/${concept.id}/motions`, { body: form, timeoutMs: 180000 });
       setPlayerSession(value => value+1); await load(api, result.concept_id, result.motion_version_id);
+      setItems((await api(`/api/v1/review/signs?q=${encodeURIComponent(query)}&offset=${offset}`)).items);
     }, 'Upload validated and staged. Existing active content is preserved.');
   }
+  function downloadMetadata() {
+    work.run('Loading registered metadata', async api => {
+      const result = await api(`/api/v1/review/signs/${concept.id}/motions/${candidate.id}/metadata`);
+      setMetadataHistory(result.history);
+      const url = URL.createObjectURL(new Blob([JSON.stringify(result.metadata, null, 2)], { type: 'application/json' }));
+      const link = document.createElement('a'); link.href = url; link.download = `${concept.semantic_key}-v${candidate.version_no}.metadata.json`;
+      link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+  }
+  function saveMetadata() {
+    work.run('Validating metadata update', async api => {
+      if (metadataEdit.size > 33554432) throw new Error('Metadata exceeds 32 MiB.');
+      const form = new FormData(); form.append('metadata', metadataEdit); form.append('expected_revision', concept.revision); form.append('reason', reason);
+      await api(`/api/v1/admin/signs/${concept.id}/motions/${candidate.id}/metadata`, { body: form, timeoutMs: 180000 });
+      await load(api, concept.id, candidate.id);
+      setItems((await api(`/api/v1/review/signs?q=${encodeURIComponent(query)}&offset=${offset}`)).items);
+    }, 'Metadata revision saved. Semantic edits require reactivation; previous metadata and GLBs are retained.');
+  }
   return <div className="management-section">
+    <p><strong>Library</strong> contains available sign concepts and their GLB versions. <strong>Templates</strong> arrange signs into an announcement pattern; <strong>coverage</strong> checks its required signs and version bindings.</p>
     <form className="actions search-form" onSubmit={e => { e.preventDefault(); search(); }}><Field label="Search library" value={query} onChange={setQuery} maxLength={160} />
       <button className="primary" disabled={busy}>Search</button></form>
     <Feedback {...work} />
     <div className="management-grid"><aside className="panel library-results" aria-label="Library results">
       {!items.length && <p>No matching concepts.</p>}{items.map(row => <button key={row.id} className={concept?.id === row.id ? 'selected' : ''} disabled={busy} onClick={() => select(row.id)}>
-        <strong>{row.gloss}</strong><span>{row.eligible ? 'Eligible' : row.meaning_status === 'PENDING' ? 'Meaning review pending' : 'Unavailable'} · {row.level}</span></button>)}
+        <strong>{row.gloss}</strong><span>{row.eligible ? 'Production eligible' : row.library_enabled ? 'Library selection enabled' : row.library_enabled === false ? 'Library inactive' : row.meaning_status === 'PENDING' ? 'Meaning review pending' : 'Unavailable'} · {row.level}</span></button>)}
       <Pager offset={offset} count={items.length} onChange={search} busy={busy} />
     </aside><div>
       {concept ? <section className="panel management-section" aria-label="Concept and version details"><div className="panel-heading"><h2>{concept.gloss}</h2>
         <button disabled={busy} onClick={() => work.run('Refreshing concept', api => load(api, concept.id, candidateId))}>Refresh concept</button></div>
-        <p>{concept.canonical_text} · {concept.meaning_status} · {concept.enabled ? 'Enabled' : 'Inactive'} · revision {concept.revision}</p>
+        <p>{concept.canonical_text} · {concept.meaning_status} · {libraryEnabled ? 'Enabled' : 'Inactive'} · revision {concept.revision}</p>
+        {detail.development_mode && <p>Activation selects the version for development retrieval immediately. It does not grant production or ISL review approval.</p>}
         <p className="identifier">Concept: {concept.id}</p>
         <label className="form-field">Motion version<select aria-label="Motion version" value={candidateId} disabled={busy} onChange={e => { clearPreview(); setCandidateId(e.target.value); setDeleteHash(''); }}>
-          {detail.versions.map(row => <option key={row.id} value={row.id}>v{row.version_no} · {row.lifecycle_status} · {row.id === concept.active_motion_version_id ? 'selected active' : row.revoked_at ? 'revoked' : row.linguistic_review_status}</option>)}
+          {detail.versions.map(row => <option key={row.id} value={row.id}>v{row.version_no} · {row.deleted_at ? 'DELETED' : row.lifecycle_status} · {row.id === selectedId ? 'selected for retrieval' : row.revoked_at ? 'revoked' : row.linguistic_review_status}</option>)}
         </select></label>
         {candidate && <><p>Technical: {candidate.technical_qc_status} · Linguistic: {candidate.linguistic_review_status} · Composition: {candidate.composition_review_status}</p>
           <p className="identifier">SHA-256: {candidate.sha256}</p><p>{candidate.clip_name} · {candidate.duration_seconds.toFixed(2)} seconds · {(candidate.size_bytes/1048576).toFixed(1)} MB</p>
           <JsonDetails label="Validation findings and binding report" value={candidate.technical_report} /><JsonDetails label="Protected references" value={candidate.references} />
           <div className="actions"><button disabled={busy || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => prepare(candidate.id)}>Preview selected version</button>
-            <button disabled={busy || !concept.active_motion_version_id} onClick={() => prepare(concept.active_motion_version_id)}>Preview current active version</button>
+            <button disabled={busy || !selectedId} onClick={() => prepare(selectedId)}>Preview current active version</button>
             <button disabled={busy || !avatar?.canonical_motion_version_id} onClick={() => prepare(avatar.canonical_motion_version_id)}>Preview canonical avatar</button></div>
           <div className="viewer-stage"><AvatarViewer key={playerSession} ref={viewer} token={token} onState={setSnapshot} /></div>
           <p role="status">Review playback: {snapshot.state} · {snapshot.completed || 0} / {snapshot.total || 0}</p>
@@ -136,14 +162,25 @@ export default function LibraryManager({ token, admin }) {
             <p className="field-hint">Complete the selected version's rendered preview before recording review. Construction approval is separate.</p>
           </fieldset>
           {admin && <fieldset disabled={busy}><legend>Active version and retirement</legend><div className="actions">
-            <button disabled={!hasReason || candidate.id === concept.active_motion_version_id || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => change('activate')}>Activate selected version</button>
+            <button disabled={!hasReason || (candidate.id === selectedId && libraryEnabled) || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => change('activate')}>Activate selected version</button>
             <button disabled={!hasReason || candidate.lifecycle_status !== 'ARCHIVED' || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => change('rollback')}>Roll back to selected version</button>
-            <button disabled={!hasReason || !concept.enabled} onClick={() => change('deactivate')}>Deactivate concept</button>
-            <button disabled={!hasReason || concept.enabled} onClick={() => change('reactivate')}>Reactivate concept</button>
+            <button disabled={!hasReason || (!libraryEnabled && detail.library_selection)} onClick={() => change('deactivate')}>Deactivate concept</button>
+            <button disabled={!hasReason || libraryEnabled || !selectedId} onClick={() => change('reactivate')}>Reactivate concept</button>
+            <button disabled={!hasReason || candidate.lifecycle_status === 'ARCHIVED' || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => change('archive')}>Archive selected version</button>
+            <button disabled={!hasReason || candidate.lifecycle_status !== 'ARCHIVED' || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => change('restore')}>Restore selected version</button>
             <button disabled={!hasReason || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => change('revoke')}>Revoke selected version</button>
-          </div><details><summary>Permanent version deletion</summary><p>Retained manifests, templates, canonical avatars and retention rules can prevent deletion. Revocation and deletion are separate operations.</p>
+          </div><details><summary>Permanent version deletion</summary><p>Retained manifests, templates, canonical avatars and library selections can prevent deletion. Archive the selected version first. The server retains versions for {detail.deletion_retention_days} days after their latest change or review. Revocation and deletion are separate operations.</p>
             <Field label="Type the selected SHA-256 to request deletion" value={deleteHash} onChange={setDeleteHash} />
+            <label><input type="checkbox" checked={purgeMetadata} onChange={e => setPurgeMetadata(e.target.checked)} />Also permanently remove this version's metadata and metadata revision payloads</label>
+            <p>Deletes the application's stored GLB when it is no longer shared. Original uploaded files on your PC are not deleted. Minimal IDs, checksums and audit history remain. A purged version cannot be restored.</p>
             <button disabled={!hasReason || deleteHash !== candidate.sha256 || !!candidate.deleted_at} onClick={() => change('delete')}>Request permanent deletion</button></details></fieldset>}
+          <details><summary>Metadata file and revisions</summary>
+            <button disabled={busy || !!candidate.deleted_at} onClick={downloadMetadata}>Download current metadata.json</button>
+            {metadataHistory && <JsonDetails label="Metadata revision history" value={metadataHistory} />}
+            {admin && <><p>Download, edit and upload metadata for this exact GLB. Keep motion_code, language, hashes, sizes and animation unchanged. Labels, aliases, meaning and context can change; semantic edits disable retrieval until reactivation.</p>
+              <label>Updated metadata file<input type="file" accept=".json" disabled={busy || !!candidate.deleted_at} onChange={e => setMetadataEdit(e.target.files[0] ?? null)} /></label>
+              <button disabled={busy || !metadataEdit || !hasReason || !!candidate.deleted_at} onClick={saveMetadata}>Save metadata revision</button></>}
+          </details>
           <details><summary>Canonical avatar approval · {avatar?.status || 'Unavailable'}</summary><p className="identifier">{avatar?.source_sha256}</p>
             <div className="actions">{['APPROVED','RETIRED'].map(decision => <button key={decision} disabled={busy || !hasReason || !evidence.trim() || snapshot.state !== 'COMPLETE' || preview?.items[0]?.motion_version_id !== avatar?.canonical_motion_version_id}
               onClick={() => reviewAvatar(decision)}>{decision === 'APPROVED' ? 'Approve canonical avatar' : 'Retire canonical avatar'}</button>)}</div></details>
@@ -182,7 +219,7 @@ export default function LibraryManager({ token, admin }) {
         </details>
         <details><summary>Version review history</summary>{detail.reviews.map(row => <article key={row.id}><strong>{row.entity_type} · {row.actor} · {time(row.created_at)}</strong><p>{row.reason}</p><p>{row.evidence}</p><JsonDetails label="Recorded decision" value={row.decision} /></article>)}</details>
       </section> : <section className="panel management-section"><h2>Version management</h2><p>Select a concept to inspect exact versions, approvals, validation findings and affected templates.</p></section>}
-      {admin && <section className="panel management-section"><h2>Stage supplied metadata and GLB</h2><label>Upload target<select aria-label="Upload target" disabled={busy} value={uploadNew ? 'new' : 'selected'} onChange={e => setUploadNew(e.target.value === 'new')}><option value="new">New or existing metadata identity</option><option value="selected" disabled={!concept}>Selected concept: {concept?.gloss}</option></select></label>
+      {admin && <section className="panel management-section"><h2>Add a concept or GLB version</h2><p>Supply the matching metadata.json and motion.glb. GLB limit: 128 MiB; metadata limit: 32 MiB. Uploading never overwrites an older version; activate the selected version after validation.</p><label>Upload target<select aria-label="Upload target" disabled={busy} value={uploadNew ? 'new' : 'selected'} onChange={e => setUploadNew(e.target.value === 'new')}><option value="new">Completely new concept</option><option value="selected" disabled={!concept}>New GLB version for: {concept?.gloss}</option></select></label>
         <label className="form-field">Metadata file<input type="file" accept=".json" disabled={busy} onChange={e => setMetadata(e.target.files[0] ?? null)} /></label>
         <label className="form-field">GLB file<input type="file" accept=".glb" disabled={busy} onChange={e => setMotion(e.target.files[0] ?? null)} /></label>
         <button disabled={busy || !metadata || !motion || (!uploadNew && !concept)} onClick={upload}>Validate and stage upload</button>

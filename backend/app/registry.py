@@ -12,7 +12,17 @@ from app.assets.glb import inspect_glb
 from app.assets.khronos import validate_glb
 from app.assets.metadata import load_metadata, metadata_findings
 from app.catalog import catalog_lock
-from app.models import AuditLog, AvatarProfile, MotionVersion, RegistryEvent, SignAlias, SignConcept
+from app.library import current_metadata, select_library
+from app.models import (
+    AuditLog,
+    AvatarProfile,
+    LibrarySelection,
+    MotionMetadataRevision,
+    MotionVersion,
+    RegistryEvent,
+    SignAlias,
+    SignConcept,
+)
 from app.storage import MAX_OBJECT_BYTES, AssetStore, StorageError
 
 
@@ -59,6 +69,8 @@ def stage_motion(
     *,
     expected_concept_id: uuid.UUID | None = None,
     expected_metadata_sha256: str | None = None,
+    manage_library: bool = False,
+    new_concept_only: bool = False,
 ) -> dict:
     metadata, metadata_hash, raw = load_metadata(metadata_path)
     if expected_metadata_sha256 is not None and metadata_hash != expected_metadata_sha256:
@@ -73,6 +85,12 @@ def stage_motion(
     # both the current input bytes and durable stored object are still checked.
     with session.begin():
         catalog_lock(session)
+        if new_concept_only and session.scalar(
+            select(SignConcept.id).where(
+                SignConcept.semantic_key == metadata.motion_identity.motion_code
+            )
+        ):
+            raise RegistryConflict("This concept already exists; select it and add a GLB version")
         known = session.scalar(
             select(MotionVersion)
             .join(SignConcept)
@@ -88,7 +106,7 @@ def stage_motion(
                 raise RegistryConflict(
                     "This exact version was deleted; retained history cannot be overwritten"
                 )
-            if known.metadata_sha256 != metadata_hash:
+            if known.metadata_sha256 != metadata_hash and current_metadata(session, known) != raw:
                 raise RegistryConflict(
                     "Metadata changed for existing bytes; explicit review required"
                 )
@@ -118,6 +136,10 @@ def stage_motion(
     # Inspection and durable storage finish before taking the catalog lock.
     with session.begin():
         catalog_lock(session, write=True)
+        if new_concept_only and session.scalar(
+            select(SignConcept.id).where(SignConcept.semantic_key == identity.motion_code)
+        ):
+            raise RegistryConflict("This concept already exists; select it and add a GLB version")
         # A cleanup worker cannot remove an object between this check and registration.
         store.verify(key, technical["sha256"])
         profile_id = uuid.uuid4()
@@ -170,7 +192,20 @@ def stage_motion(
             .order_by(MotionVersion.version_no)
             .limit(1)
         )
-        baseline = previous.source_metadata if previous else raw
+        latest_metadata = session.scalar(
+            select(MotionMetadataRevision)
+            .join(MotionVersion)
+            .where(MotionVersion.concept_id == concept.id)
+            .order_by(MotionMetadataRevision.created_at.desc(), MotionMetadataRevision.id.desc())
+            .limit(1)
+        )
+        baseline = (
+            latest_metadata.payload
+            if latest_metadata
+            else previous.source_metadata
+            if previous
+            else raw
+        )
         # Source meaning is compared with its registered source record. Runtime
         # meaning annotations never rewrite that record or break idempotent imports.
         for field, supplied in {
@@ -183,7 +218,7 @@ def stage_motion(
                 raise RegistryConflict(
                     "Semantic metadata changed; explicit concept review required"
                 )
-        if (
+        source_changed = bool(baseline) and (
             any(
                 baseline.get("linguistic", {}).get(field) != raw.get("linguistic", {}).get(field)
                 for field in ("meaning", "context")
@@ -191,7 +226,23 @@ def stage_motion(
             or (baseline["motion_identity"].get("domain") != identity.domain)
             or baseline.get("retrieval", {}).get("aliases", [])
             != raw.get("retrieval", {}).get("aliases", [])
-        ):
+        )
+        if not baseline:
+            # The old payload may have been deliberately purged. The retained
+            # concept and aliases still define identity for a fresh GLB version.
+            source_changed = any(
+                getattr(concept, field) != value
+                for field, value in {
+                    "domain": identity.domain,
+                    "meaning": metadata.linguistic.meaning,
+                    "context": metadata.linguistic.context,
+                }.items()
+            ) or set(
+                session.scalars(
+                    select(SignAlias.normalized_alias).where(SignAlias.concept_id == concept.id)
+                )
+            ) != {" ".join(a.casefold().split()) for a in metadata.retrieval.aliases}
+        if source_changed:
             raise RegistryConflict(
                 "Source semantics changed; use the explicit meaning review workflow"
             )
@@ -218,6 +269,20 @@ def stage_motion(
             text("SELECT coalesce(max(version_no),0)+1 FROM motion_versions WHERE concept_id=:id"),
             {"id": concept.id},
         )
+        if manage_library and previous and session.get(LibrarySelection, concept.id) is None:
+            # Uploading a replacement must not silently switch development playback.
+            retained = concept.active_motion_version_id or session.scalar(
+                select(MotionVersion.id)
+                .where(
+                    MotionVersion.concept_id == concept.id,
+                    MotionVersion.deleted_at.is_(None),
+                    MotionVersion.revoked_at.is_(None),
+                    MotionVersion.lifecycle_status.in_(["STAGING", "ACTIVE"]),
+                )
+                .order_by(MotionVersion.version_no)
+                .limit(1)
+            )
+            select_library(session, concept, retained, retained is not None)
         version = MotionVersion(
             concept_id=concept.id,
             version_no=version_no,
@@ -232,6 +297,8 @@ def stage_motion(
             technical_report={"inspection": technical, "khronos": official, "findings": findings},
         )
         session.add(version)
+        if manage_library and previous is None:
+            select_library(session, concept, None, False)
         if version_no > 1:
             concept.revision += 1
         session.flush()

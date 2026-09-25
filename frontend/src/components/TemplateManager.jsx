@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import AvatarViewer from './AvatarViewer.jsx';
 import { Feedback, Field, JsonDetails, Pager, readable, useWorkspace } from './workspace.jsx';
+import { arrivalExample } from '../services/template-example.mjs';
 
 export default function TemplateManager({ token, admin }) {
   const work = useWorkspace(token), viewer = useRef(null), activePreview = useRef(null);
@@ -57,8 +58,34 @@ export default function TemplateManager({ token, admin }) {
       await load(api, selected.id); setItems((await api(`/api/v1/review/templates?offset=${offset}`)).items);
     }, 'Construction availability updated.');
   }
+  function loadArrivalExample() {
+    work.run('Building a draft from your library', async api => {
+      const concepts = [];
+      for (let page = 0; ; page += 100) {
+        const result = await api(`/api/v1/review/signs?limit=100&offset=${page}`);
+        concepts.push(...result.items);
+        if (result.items.length < 100) break;
+      }
+      const train = concepts.find(item => item.canonical_text.toLowerCase() === 'train');
+      if (!train) throw new Error('The library needs a TRAIN concept.');
+      const detail = await api(`/api/v1/review/signs/${train.id}`);
+      const version = detail.versions.find(row => row.id === detail.library_selection?.motion_version_id || row.id === detail.concept.active_motion_version_id)
+        ?? detail.versions.find(row => !row.deleted_at && !row.revoked_at);
+      if (!version) throw new Error('TRAIN needs an available GLB version.');
+      const example = arrivalExample(concepts, version.avatar_profile_id);
+      clearPreview(); setSelected(null); setRendered([]); setExpected(0);
+      setKey(`arrival-example-${Date.now()}`); setDefinition(JSON.stringify(example, null, 2));
+      setReason('Stage an arrival example for learning template coverage');
+    }, 'Draft loaded. Inspect the JSON, then click Stage template version. This does not approve or publish it.');
+  }
   return <section className="management-section"><div className="panel-heading"><h2>Reviewed construction coverage</h2><button disabled={busy} onClick={() => list(offset)}>Refresh templates</button></div>
-    <p>Coverage is defined by each complete meaning, literal values and reviewed realization policy. Missing dependencies prevent preparation and activation.</p><Feedback {...work} />
+    <p><strong>Library</strong> stores signs and GLB versions. A <strong>template</strong> is an ordered announcement recipe with variable slots. <strong>Coverage</strong> checks the required signs, allowed slot values, avatar compatibility and exact reviewed version bindings.</p>
+    <details><summary>Try a template and understand coverage</summary>
+      <p>The arrival example supports train 1201 or 1202 and platform 1 or 2: “Train 1201 is arriving at platform 2.” It references TRAIN, PLATFORM, NOW RIGHT NOW, ARRIVE and digits 0, 1, 2 from your actual library.</p>
+      <p>Load the example below, stage it, then inspect Exact dependency bindings. Try train 1202 / platform 1. Train 9999 or platform 3 is outside this example's explicit values. A missing or unapproved dependency prevents strict construction preview; development announcement playback remains a separate path.</p>
+      <p>Replacing a sign can preserve vocabulary coverage but invalidate the template's exact-version review. Refresh the template and inspect “selected version requires construction review.” Staging or loading an example never approves ISL or publishes an announcement.</p>
+      {admin && <button disabled={busy} onClick={loadArrivalExample}>Load arrival example from library</button>}
+    </details><Feedback {...work} />
     <div className="table-scroll"><table><thead><tr><th>Template</th><th>Meaning</th><th>Review / availability</th><th>Action</th></tr></thead><tbody>
       {items.map(row => <tr key={row.id}><td>{row.template_key} v{row.version_no}</td><td>{readable(row.definition.intent)} · {readable(row.definition.temporal_state)} · {row.definition.polarity}</td>
         <td>{row.status} · {row.enabled ? 'Enabled' : 'Disabled'}</td><td><button disabled={busy} onClick={() => select(row.id)}>Review template</button></td></tr>)}

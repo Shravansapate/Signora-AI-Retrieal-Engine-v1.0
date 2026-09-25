@@ -11,7 +11,7 @@ from contextlib import asynccontextmanager
 from datetime import UTC, datetime
 from typing import Annotated
 
-from fastapi import Depends, FastAPI, File, HTTPException, Request, UploadFile
+from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import JSONResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy import text
@@ -197,7 +197,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             with engine.connect() as connection:
                 version = connection.scalar(text("SELECT version_num FROM alembic_version"))
                 connection.execute(text("SELECT 1 FROM eligible_motion_versions LIMIT 1"))
-            if version != "0006_live_delivery" or not configured.storage_root.is_dir():
+            if version != "0007_library_workflow" or not configured.storage_root.is_dir():
                 raise RuntimeError("Required registry contract unavailable")
         except (SQLAlchemyError, RuntimeError):
             return JSONResponse(status_code=503, content={"status": "NOT_READY"})
@@ -223,13 +223,20 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         identity: Annotated[Principal, Depends(admin)],
         metadata: Annotated[UploadFile, File()],
         motion: Annotated[UploadFile, File()],
+        new_concept_only: Annotated[bool, Form()] = False,
     ):
         try:
             with store.stage(metadata.file, MAX_METADATA_BYTES) as metadata_path:
                 with store.stage(motion.file) as motion_path:
                     with sessions() as session:
                         return stage_motion(
-                            metadata_path, motion_path, identity.subject, session, store
+                            metadata_path,
+                            motion_path,
+                            identity.subject,
+                            session,
+                            store,
+                            manage_library=True,
+                            new_concept_only=new_concept_only,
                         )
         except RegistryConflict as exc:
             raise HTTPException(409, str(exc)) from exc

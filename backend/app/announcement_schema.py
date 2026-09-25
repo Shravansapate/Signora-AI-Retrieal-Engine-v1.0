@@ -213,7 +213,9 @@ class RealizationPolicy(WireModel):
 class ConceptStep(WireModel):
     kind: Literal["CONCEPT"]
     concept_id: UUID
-    covers: list[str] = Field(min_length=1, max_length=12)
+    # Context signs (for example PLATFORM before its number) do not consume the
+    # variable slot. Whole-recipe validation still requires every meaning once.
+    covers: list[str] = Field(max_length=12)
     group: Annotated[str, Field(pattern=r"^[a-z][a-z0-9_-]{0,39}$")]
 
 

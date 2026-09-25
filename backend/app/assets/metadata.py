@@ -69,6 +69,10 @@ class Linguistic(SourceModel):
     non_manual_features_available: bool | None = None
 
 
+class RetrievalMetadata(SourceModel):
+    aliases: Annotated[list[Text], Field(max_length=256)] = Field(default_factory=list)
+
+
 class SourceMetadata(SourceModel):
     metadata_schema_version: Literal["3.1"]
     motion_identity: MotionIdentity
@@ -76,6 +80,7 @@ class SourceMetadata(SourceModel):
     file_integrity: Integrity
     animation: AnimationMetadata
     linguistic: Linguistic = Field(default_factory=Linguistic)
+    retrieval: RetrievalMetadata = Field(default_factory=RetrievalMetadata)
     isl_validation: Review = Field(default_factory=Review)
     technical_qc: str | None = None
     production_eligible: bool = False

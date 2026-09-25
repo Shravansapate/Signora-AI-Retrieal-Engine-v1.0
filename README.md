@@ -249,11 +249,50 @@ The authenticated API provides `GET /api/v1/admin/signs` and `POST /api/v1/admin
 
 Staging stores immutable checksum-addressed bytes before committing registry, audit and event records. Repeating identical input returns `UNCHANGED`; changed metadata requires explicit review. Source review values remain evidence and are not automatically promoted into runtime approvals. Failed registration may leave an unreferenced immutable object, never an active pointer to missing bytes.
 
-Migration head is `0006_live_delivery`. Phase 6 adds durable publication, display delivery and recovery; Phase 7 uses the same schema. Phase 5 adds scoped alias review bindings, reviewed retrieval profiles and immutable 384-dimensional embeddings. An exact cosine scan shares the central eligibility view; no approximate vector index is installed. Migration tests cover an empty round trip and preservation of existing assets and pinned playback records across a populated round trip. Existing reviews without a semantic-revision binding remain stored but require an explicit bound review before new selection. Phase 4 adds station revisions, immutable template definitions/dependencies, exact construction-review bindings, finalized transcript receipts and immutable input/manifest references. Retained construction reviews protect their motion versions from deletion.
+Migration head is `0007_library_workflow`, which adds explicit development-library selections and metadata revision history. Apply migrations with the database owner before starting the API; the local-PC launcher does not migrate automatically. Phase 6 adds durable publication, display delivery and recovery. Phase 5 adds scoped alias review bindings, reviewed retrieval profiles and immutable 384-dimensional embeddings. An exact cosine scan shares the central eligibility view; no approximate vector index is installed. Migration tests cover an empty round trip and preservation of existing assets and pinned playback records across a populated round trip. Existing reviews without a semantic-revision binding remain stored but require an explicit bound review before new selection. Phase 4 adds station revisions, immutable template definitions/dependencies, exact construction-review bindings, finalized transcript receipts and immutable input/manifest references. Retained construction reviews protect their motion versions from deletion.
 
 Stop workers and API writers and take a paired database-and-assets backup before deployment. The Phase 4 downgrade refuses to discard retained announcement previews; rolling back after these exist requires a compatible paired pre-upgrade backup or a forward repair. Without announcement previews, downgrading drops Phase 4 station/template/input/transcript records. Downgrading to `0002_playback` also drops Phase 3 review/job/deletion records and review bindings; downgrading to `0001_registry` drops playback records; `alembic downgrade base` **removes registry data**. Schema downgrade cannot restore physically deleted objects. No production backup/restore or pilot readiness is claimed by these tests.
 
 ## Bulk import and lifecycle
+
+### Library: upload, metadata and retained versions
+
+Open `/admin`, connect with an administrator token, and select **Library**.
+
+1. **New sign:** choose **Completely new concept**, supply its matching metadata JSON and GLB, then **Validate and stage upload**. Identity comes from `motion_identity.motion_code`, not the filename. Existing identities are rejected in this mode; select the existing concept to add a version instead.
+2. **Replacement:** search/select the concept, choose **New GLB version for**, and upload the matching pair. Different GLB bytes create a new immutable version. Uploading alone does not switch retrieval. Identical bytes and metadata return `UNCHANGED`.
+3. **Activate:** choose the version, enter a change reason, confirm the intended change, and click **Activate selected version**. The local development configuration uses that version on the next retrieval request without restarting. Production activation still requires its existing reviews. Development activation does not grant those approvals.
+4. **Metadata:** expand **Metadata file and revisions**, download the current JSON, edit it, choose the updated file, and save. GLB hashes, sizes, animation identity and concept identity must remain consistent. Meaning/label/alias edits create a semantic revision and disable selection until reactivation. The original metadata and prior revisions remain stored.
+5. **Retain/undo:** replacement retains the previous GLB. Select an archived version and use rollback to switch retrieval back. **Archive** removes that version from new selection; **Restore** returns it to staging, then activate it explicitly. **Deactivate** disables the selected concept without deleting bytes; **Reactivate** validates and re-enables it. Revocation is a separate, irreversible withdrawal of a defective version.
+6. **Delete:** archive the version, inspect its protected references, enter the exact checksum/reason and select the metadata-purge option if wanted. Deletion obeys the configured retention period (30 days by default) and refuses protected versions. The worker removes an eligible managed GLB asynchronously; refresh **Physical cleanup** to confirm completion. With metadata purge enabled, source metadata, technical reports and metadata-revision payloads are removed. Minimal version identity, checksum and audit records remain. Files in the original upload/source directory are never deleted; bytes shared by another retained version are preserved.
+
+GLB uploads are limited to 128 MiB and metadata to 32 MiB. A GLB replacement retains concept identity and aliases. Already prepared manifests pin their old versions; activation changes new retrieval requests, not those snapshots. Metadata changes are versioned independently of GLB bytes; rollback selects an older GLB, not an older concept meaning.
+
+The additional routes, all under `/api/v1`, are:
+
+| Method and route | Purpose |
+|---|---|
+| `POST /admin/motions/stage` | Multipart new concept; `new_concept_only=true` prevents accidentally targeting an existing identity |
+| `POST /admin/signs/{concept}/motions` | Multipart replacement version for that concept |
+| `GET /review/signs/{concept}/motions/{version}/metadata` | Current metadata and revision descriptors |
+| `POST /admin/signs/{concept}/motions/{version}/metadata` | Multipart metadata update with `expected_revision` and `reason` |
+| `POST /admin/signs/{concept}/motions/{version}/archive` or `/restore` | Version retention actions with revision/reason |
+| `DELETE /admin/signs/{concept}/motions/{version}` | Protected cleanup; optional `purge_metadata: true` |
+
+### Template and coverage: an example to try
+
+**Library** is the vocabulary: TRAIN, PLATFORM, ARRIVE and number signs, each mapped to retained GLB versions. **Template** is an ordered recipe with variable slots, such as train number and platform number. **Coverage** asks whether its allowed inputs can be realized using the required concepts, compatible avatar and, in the strict workflow, exact reviewed versions. Having every vocabulary item is only one part of strict coverage.
+
+In **Templates & coverage**, expand **Try a template and understand coverage**, then click **Load arrival example from library**. This builds an editable draft using your real concept IDs, with TRAIN, PLATFORM, NOW RIGHT NOW, ARRIVE and digits 0, 1, 2. It does not create approvals or publish anything. Click **Stage template version** to save the draft, inspect **Exact dependency bindings**, choose Nagpur as the example station, and enter the train/platform fields.
+
+| Example announcement | What it demonstrates |
+|---|---|
+| `Train 1201 is arriving at platform 2.` | Values explicitly included in the example recipe; preserves repeated digit 1 |
+| `Train 1202 is arriving at platform 1.` | The same pattern with different supported slot values |
+| `Train 9999 is arriving at platform 2.` | Outside the example's train values, even if digit 9 exists in the library |
+| `Train 1201 is arriving at platform 3.` | Outside the example's platform values, even if station platform 3 exists |
+
+Use **Prepare construction example** to see the strict result. Unreviewed dependencies can correctly report unavailable even when development announcement playback works. After genuine content and construction review, the same controls enable the strict template. Replacing a dependency can invalidate its exact-version construction review without removing the vocabulary concept. The generated recipe is a learning draft, not linguistic evidence.
 
 Configure `SIGNORA_IMPORT_ROOTS` as a JSON mapping of administrator-selected aliases to existing source directories, for example `{"library":"D:/ai_retrival_based system/metadata_json and glb"}`. Each root contains `metadata/` and `glb/`; the API accepts configured aliases, never arbitrary filesystem paths. The API and worker must use the same database, storage root and import-source configuration. Use a persistent storage directory outside the supplied source library.
 

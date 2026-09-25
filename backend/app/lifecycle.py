@@ -2,7 +2,7 @@
 
 from datetime import UTC, datetime, timedelta
 
-from sqlalchemy import func, select
+from sqlalchemy import delete, func, select
 
 from app.catalog import catalog_lock
 from app.models import (
@@ -10,6 +10,8 @@ from app.models import (
     AvatarProfile,
     CleanupJob,
     ContentReview,
+    LibrarySelection,
+    MotionMetadataRevision,
     MotionVersion,
     PlaybackItemRecord,
     PlaybackRecord,
@@ -175,6 +177,9 @@ def switch_version(session, store, concept_id, request, actor, *, rollback=False
         candidate.lifecycle_status = "ACTIVE"
         concept.active_motion_version_id = candidate.id
         concept.enabled = True
+        from app.library import select_library
+
+        select_library(session, concept, candidate.id, True)
         concept.revision += 1
         result = _result(concept)
         _event(
@@ -205,6 +210,9 @@ def set_enabled(session, store, concept_id, request, actor, enabled):
                 session, store, concept, _motion(session, concept, concept.active_motion_version_id)
             )
         concept.enabled = enabled
+        from app.library import select_library
+
+        select_library(session, concept, concept.active_motion_version_id, enabled)
         concept.revision += 1
         result = _result(concept)
         _event(
@@ -227,6 +235,10 @@ def revoke_version(session, concept_id, motion_id, request, actor):
             concept.enabled = False
             motion.lifecycle_status = "ARCHIVED"
         motion.revoked_at = datetime.now(UTC)
+        selection = session.get(LibrarySelection, concept.id)
+        if selection and selection.motion_version_id == motion.id:
+            selection.enabled = False
+            selection.motion_version_id = None
         concept.revision += 1
         result = {**_result(concept), "motion_version_id": str(motion.id)}
         _event(session, actor, "MOTION_REVOKED", motion.id, {**result, "reason": request.reason})
@@ -381,6 +393,11 @@ def review_motion(session, store, concept_id, motion_id, request, actor):
 
 def protected_references(session, motion):
     return {
+        "library_selection": session.scalar(
+            select(func.count())
+            .select_from(LibrarySelection)
+            .where(LibrarySelection.motion_version_id == motion.id)
+        ),
         "template_reviews": session.scalar(
             select(func.count())
             .select_from(TemplateMotionBinding)
@@ -445,7 +462,8 @@ def delete_version(session, concept_id, motion_id, request, actor, retention_day
         require(
             touched + timedelta(days=retention_days) <= datetime.now(UTC),
             "RETENTION_PERIOD",
-            "The configured retention period has not elapsed",
+            f"The {retention_days}-day retention period ends at "
+            f"{(touched + timedelta(days=retention_days)).isoformat()}",
         )
         motion.deleted_at = datetime.now(UTC)
         concept.revision += 1
@@ -457,7 +475,16 @@ def delete_version(session, concept_id, motion_id, request, actor, retention_day
         )
         session.add(cleanup)
         session.flush()
+        if request.purge_metadata:
+            motion.source_metadata = {}
+            motion.technical_report = {}
+            session.execute(
+                delete(MotionMetadataRevision).where(
+                    MotionMetadataRevision.motion_version_id == motion.id
+                )
+            )
         result = {**_result(concept), "cleanup_job_id": str(cleanup.id), "status": "CLEANUP_QUEUED"}
+        result["metadata_purged"] = request.purge_metadata
         _event(
             session,
             actor,

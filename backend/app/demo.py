@@ -6,12 +6,12 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import and_, or_, select
 from sqlalchemy.orm import defer
 
 from app.gloss import GlossUnit
 from app.lexical import fuzzy_word
-from app.models import AvatarProfile, MotionVersion, SignAlias, SignConcept
+from app.models import AvatarProfile, LibrarySelection, MotionVersion, SignAlias, SignConcept
 from app.playback import PlaybackUnavailable, _check_bytes, _check_content, _persist
 from app.storage import StorageError
 
@@ -212,17 +212,35 @@ def prepare_demo(session, store, caption, owner, valid_until, *, units, translat
         .options(defer(MotionVersion.source_metadata), defer(MotionVersion.technical_report))
         .join(SignConcept, MotionVersion.concept_id == SignConcept.id)
         .join(AvatarProfile, MotionVersion.avatar_profile_id == AvatarProfile.id)
+        .outerjoin(LibrarySelection, LibrarySelection.concept_id == SignConcept.id)
         .where(
             MotionVersion.technical_qc_status == "PASSED",
-            MotionVersion.lifecycle_status.in_({"STAGING", "ACTIVE", "ARCHIVED"}),
+            MotionVersion.lifecycle_status.in_({"STAGING", "ACTIVE"}),
+            or_(
+                LibrarySelection.concept_id.is_(None),
+                and_(
+                    LibrarySelection.enabled.is_(True),
+                    LibrarySelection.motion_version_id == MotionVersion.id,
+                ),
+            ),
+            or_(
+                LibrarySelection.concept_id.is_not(None),
+                SignConcept.active_motion_version_id.is_(None),
+                SignConcept.enabled.is_(True),
+            ),
+            or_(
+                LibrarySelection.concept_id.is_not(None),
+                SignConcept.active_motion_version_id.is_(None),
+                SignConcept.active_motion_version_id == MotionVersion.id,
+            ),
             MotionVersion.deleted_at.is_(None),
             MotionVersion.revoked_at.is_(None),
             SignConcept.language_code == "ISL",
             MotionVersion.duration_seconds > 0,
             MotionVersion.duration_seconds <= 600,
         )
-        .order_by(SignConcept.semantic_key, MotionVersion.version_no.desc(), MotionVersion.id)
-        .with_for_update(read=True)
+        .order_by(SignConcept.semantic_key, MotionVersion.version_no, MotionVersion.id)
+        .with_for_update(read=True, of=(MotionVersion, SignConcept, AvatarProfile))
     ).all()
     aliases = defaultdict(list)
     for cid, value in session.execute(select(SignAlias.concept_id, SignAlias.alias)):

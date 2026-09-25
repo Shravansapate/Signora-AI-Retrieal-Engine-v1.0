@@ -65,6 +65,15 @@ def test_wrong_language_and_string_boolean_rejected(metadata):
         SourceMetadata.model_validate(metadata)
 
 
+@pytest.mark.parametrize(
+    "retrieval", [None, [], "aliases", {"aliases": "train"}, {"aliases": [12]}]
+)
+def test_malformed_retrieval_metadata_rejected(metadata, retrieval):
+    metadata["retrieval"] = retrieval
+    with pytest.raises(ValidationError):
+        SourceMetadata.model_validate(metadata)
+
+
 def test_conflicting_exact_hashes_and_sizes_reported(metadata):
     parsed = SourceMetadata.model_validate(metadata)
     findings = metadata_findings(parsed, metadata, "b" * 64, 12)

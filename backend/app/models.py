@@ -204,6 +204,26 @@ class CleanupJob(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
+class LibrarySelection(Base):
+    """Explicit development selection; never grants production approval."""
+
+    __tablename__ = "library_selections"
+    concept_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("sign_concepts.id"), primary_key=True)
+    motion_version_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)
+    enabled: Mapped[bool] = mapped_column(default=False)
+
+
+class MotionMetadataRevision(Base):
+    __tablename__ = "motion_metadata_revisions"
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    motion_version_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("motion_versions.id"))
+    metadata_sha256: Mapped[str] = mapped_column(String(64))
+    payload: Mapped[dict] = mapped_column(JSONB)
+    actor: Mapped[str] = mapped_column(Text)
+    reason: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
 class Station(Base):
     __tablename__ = "stations"
     id: Mapped[str] = mapped_column(Text, primary_key=True)
