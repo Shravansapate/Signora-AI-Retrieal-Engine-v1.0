@@ -196,6 +196,7 @@ class CleanupJob(Base):
     storage_key: Mapped[str] = mapped_column(Text)
     sha256: Mapped[str] = mapped_column(Text)
     actor: Mapped[str] = mapped_column(Text)
+    development_reset: Mapped[bool] = mapped_column(default=False)
     state: Mapped[str] = mapped_column(Text, default="QUEUED")
     attempts: Mapped[int] = mapped_column(Integer, default=0)
     attempt_limit: Mapped[int] = mapped_column(Integer, default=3)

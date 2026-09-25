@@ -2,7 +2,7 @@
 
 from datetime import UTC, datetime, timedelta
 
-from sqlalchemy import delete, func, select
+from sqlalchemy import delete, func, or_, select
 
 from app.catalog import catalog_lock
 from app.models import (
@@ -391,7 +391,14 @@ def review_motion(session, store, concept_id, motion_id, request, actor):
         return result
 
 
-def protected_references(session, motion):
+def protected_references(session, motion, *, development_reset=False):
+    # Development deletion invalidates these manifests through deleted_at;
+    # retained production plans and construction evidence still protect bytes.
+    disposable = or_(
+        PlaybackRecord.purpose == "CONTENT_REVIEW",
+        func.coalesce(PlaybackRecord.payload["schema_version"].as_integer() == 5, False),
+    )
+    protected_plan = ~disposable if development_reset else True
     return {
         "library_selection": session.scalar(
             select(func.count())
@@ -406,12 +413,13 @@ def protected_references(session, motion):
         "manifest_items": session.scalar(
             select(func.count())
             .select_from(PlaybackItemRecord)
-            .where(PlaybackItemRecord.motion_version_id == motion.id)
+            .join(PlaybackRecord, PlaybackRecord.id == PlaybackItemRecord.manifest_id)
+            .where(PlaybackItemRecord.motion_version_id == motion.id, protected_plan)
         ),
         "manifest_avatars": session.scalar(
             select(func.count())
             .select_from(PlaybackRecord)
-            .where(PlaybackRecord.avatar_motion_version_id == motion.id)
+            .where(PlaybackRecord.avatar_motion_version_id == motion.id, protected_plan)
         ),
         "canonical_avatars": session.scalar(
             select(func.count())
@@ -426,7 +434,15 @@ def protected_references(session, motion):
     }
 
 
-def delete_version(session, concept_id, motion_id, request, actor, retention_days):
+def delete_version(
+    session, concept_id, motion_id, request, actor, retention_days, *, development_enabled=False
+):
+    require(
+        not request.development_reset or development_enabled,
+        "DEVELOPMENT_ONLY",
+        "Immediate reset is available only on the development server",
+        403,
+    )
     with session.begin():
         concept = _concept(session, concept_id, request.expected_revision)
         motion = _motion(session, concept, motion_id)
@@ -435,13 +451,30 @@ def delete_version(session, concept_id, motion_id, request, actor, retention_day
             "IDENTITY_MISMATCH",
             "Deletion requires the exact checksum",
         )
+        if request.development_reset:
+            require(request.purge_metadata, "METADATA_PURGE_REQUIRED", "Reset removes metadata too")
+            from app.library import select_library
+
+            if concept.active_motion_version_id == motion.id:
+                concept.active_motion_version_id = None
+                concept.enabled = False
+            selection = session.get(LibrarySelection, concept.id)
+            if selection is None or selection.motion_version_id == motion.id:
+                select_library(session, concept, None, False)
+            motion.lifecycle_status = "ARCHIVED"
+            motion.revoked_at = datetime.now(UTC)
+            session.flush()
         require(
             motion.lifecycle_status != "ACTIVE",
             "ACTIVE_VERSION",
             "An active version cannot be deleted",
         )
         require(
-            not any(protected_references(session, motion).values()),
+            not any(
+                protected_references(
+                    session, motion, development_reset=request.development_reset
+                ).values()
+            ),
             "PROTECTED_REFERENCES",
             "This version is retained by a manifest, canonical avatar or selected concept",
         )
@@ -460,7 +493,8 @@ def delete_version(session, concept_id, motion_id, request, actor, retention_day
             if value is not None
         )
         require(
-            touched + timedelta(days=retention_days) <= datetime.now(UTC),
+            request.development_reset
+            or touched + timedelta(days=retention_days) <= datetime.now(UTC),
             "RETENTION_PERIOD",
             f"The {retention_days}-day retention period ends at "
             f"{(touched + timedelta(days=retention_days)).isoformat()}",
@@ -472,6 +506,7 @@ def delete_version(session, concept_id, motion_id, request, actor, retention_day
             storage_key=motion.storage_key,
             sha256=motion.sha256,
             actor=actor,
+            development_reset=request.development_reset,
         )
         session.add(cleanup)
         session.flush()
@@ -485,6 +520,7 @@ def delete_version(session, concept_id, motion_id, request, actor, retention_day
             )
         result = {**_result(concept), "cleanup_job_id": str(cleanup.id), "status": "CLEANUP_QUEUED"}
         result["metadata_purged"] = request.purge_metadata
+        result["development_reset"] = request.development_reset
         _event(
             session,
             actor,
@@ -553,7 +589,9 @@ def cleanup_one(session, store):
             .select_from(MotionVersion)
             .where(MotionVersion.storage_key == job.storage_key, MotionVersion.deleted_at.is_(None))
         )
-        if shared or any(protected_references(session, motion).values()):
+        if shared or any(
+            protected_references(session, motion, development_reset=job.development_reset).values()
+        ):
             job.state = "SHARED"
         else:
             try:

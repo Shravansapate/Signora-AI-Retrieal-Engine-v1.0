@@ -71,6 +71,7 @@ def stage_motion(
     expected_metadata_sha256: str | None = None,
     manage_library: bool = False,
     new_concept_only: bool = False,
+    allow_reupload_deleted: bool = False,
 ) -> dict:
     metadata, metadata_hash, raw = load_metadata(metadata_path)
     if expected_metadata_sha256 is not None and metadata_hash != expected_metadata_sha256:
@@ -87,7 +88,17 @@ def stage_motion(
         catalog_lock(session)
         if new_concept_only and session.scalar(
             select(SignConcept.id).where(
-                SignConcept.semantic_key == metadata.motion_identity.motion_code
+                SignConcept.semantic_key == metadata.motion_identity.motion_code,
+                (
+                    select(MotionVersion.id)
+                    .where(
+                        MotionVersion.concept_id == SignConcept.id,
+                        MotionVersion.deleted_at.is_(None),
+                    )
+                    .exists()
+                    if allow_reupload_deleted
+                    else True
+                ),
             )
         ):
             raise RegistryConflict("This concept already exists; select it and add a GLB version")
@@ -97,7 +108,9 @@ def stage_motion(
             .where(
                 SignConcept.semantic_key == metadata.motion_identity.motion_code,
                 MotionVersion.sha256 == supplied_hash,
+                MotionVersion.deleted_at.is_(None) if allow_reupload_deleted else True,
             )
+            .order_by(MotionVersion.deleted_at.asc().nullsfirst(), MotionVersion.version_no.desc())
         )
         if known is not None:
             if expected_concept_id is not None and known.concept_id != expected_concept_id:
@@ -137,7 +150,19 @@ def stage_motion(
     with session.begin():
         catalog_lock(session, write=True)
         if new_concept_only and session.scalar(
-            select(SignConcept.id).where(SignConcept.semantic_key == identity.motion_code)
+            select(SignConcept.id).where(
+                SignConcept.semantic_key == identity.motion_code,
+                (
+                    select(MotionVersion.id)
+                    .where(
+                        MotionVersion.concept_id == SignConcept.id,
+                        MotionVersion.deleted_at.is_(None),
+                    )
+                    .exists()
+                    if allow_reupload_deleted
+                    else True
+                ),
+            )
         ):
             raise RegistryConflict("This concept already exists; select it and add a GLB version")
         # A cleanup worker cannot remove an object between this check and registration.
@@ -247,9 +272,13 @@ def stage_motion(
                 "Source semantics changed; use the explicit meaning review workflow"
             )
         existing = session.scalar(
-            select(MotionVersion).where(
-                MotionVersion.concept_id == concept.id, MotionVersion.sha256 == technical["sha256"]
+            select(MotionVersion)
+            .where(
+                MotionVersion.concept_id == concept.id,
+                MotionVersion.sha256 == technical["sha256"],
+                MotionVersion.deleted_at.is_(None) if allow_reupload_deleted else True,
             )
+            .order_by(MotionVersion.deleted_at.asc().nullsfirst(), MotionVersion.version_no.desc())
         )
         if existing:
             if existing.deleted_at is not None:

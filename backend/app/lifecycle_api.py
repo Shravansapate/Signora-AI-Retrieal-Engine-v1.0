@@ -295,6 +295,7 @@ def lifecycle_router(sessions, store, settings, principal):
                             store,
                             expected_concept_id=concept_id,
                             manage_library=True,
+                            allow_reupload_deleted=settings.demo_mode_enabled,
                         )
         except RegistryConflict as exc:
             raise HTTPException(409, str(exc)) from exc
@@ -403,6 +404,7 @@ def lifecycle_router(sessions, store, settings, principal):
                 request,
                 identity.subject,
                 settings.deletion_retention_days,
+                development_enabled=settings.demo_mode_enabled,
             )
 
     @router.get("/admin/cleanup/{job_id}")

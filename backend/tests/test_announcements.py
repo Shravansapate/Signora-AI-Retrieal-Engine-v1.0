@@ -389,7 +389,7 @@ def test_template_immutability_and_downgrade_guards_retained_plans(
     with engine.connect() as connection:
         assert (
             connection.scalar(text("SELECT version_num FROM alembic_version"))
-            == "0007_library_workflow"
+            == "0008_library_reupload"
         )
 
 

@@ -12,10 +12,11 @@ export default function LibraryManager({ token, admin }) {
   const [playerSession, setPlayerSession] = useState(0), [reason, setReason] = useState(''), [evidence, setEvidence] = useState('');
   const [confirmed, setConfirmed] = useState(false), [linguistic, setLinguistic] = useState('APPROVED'), [composition, setComposition] = useState('PENDING');
   const [meaning, setMeaning] = useState(''), [context, setContext] = useState(''), [domain, setDomain] = useState('');
-  const [meaningDecision, setMeaningDecision] = useState('APPROVED'), [deleteHash, setDeleteHash] = useState('');
+  const [meaningDecision, setMeaningDecision] = useState('APPROVED');
   const [metadata, setMetadata] = useState(null), [motion, setMotion] = useState(null), [uploadNew, setUploadNew] = useState(true);
   const [cleanup, setCleanup] = useState(null);
-  const [metadataEdit, setMetadataEdit] = useState(null), [metadataHistory, setMetadataHistory] = useState(null), [purgeMetadata, setPurgeMetadata] = useState(false);
+  const [metadataEdit, setMetadataEdit] = useState(null), [metadataHistory, setMetadataHistory] = useState(null);
+  const [deleteVisible, setDeleteVisible] = useState(false), [deleteName, setDeleteName] = useState(''), [deleteReason, setDeleteReason] = useState('');
   const [alias, setAlias] = useState(''), [aliasDecision, setAliasDecision] = useState('APPROVED');
   const [description, setDescription] = useState(''), [sense, setSense] = useState('');
   const concept = detail?.concept, candidate = detail?.versions.find(row => row.id === candidateId);
@@ -39,7 +40,7 @@ export default function LibraryManager({ token, admin }) {
     setCandidateId(chosen && data.versions.some(row => row.id === chosen) ? chosen : data.versions[0]?.id ?? '');
     setMeaning(data.concept.meaning || ''); setContext(data.concept.context || ''); setDomain(data.concept.domain || '');
     setDescription(data.retrieval_profile?.description || ''); setSense(data.retrieval_profile ? JSON.stringify(data.retrieval_profile.sense, null, 2) : '');
-    setDeleteHash(''); setMetadataHistory(null); setMetadataEdit(null); setPurgeMetadata(false);
+    setDeleteVisible(false); setDeleteName(''); setDeleteReason(''); setMetadataHistory(null); setMetadataEdit(null);
   }
   function select(id) {
     clearPreview(); setPlayerSession(value => value+1); setReason(''); setEvidence(''); setCleanup(null);
@@ -60,8 +61,7 @@ export default function LibraryManager({ token, admin }) {
     const prefix = `/api/v1/admin/signs/${captured.id}`;
     const body = { expected_revision: captured.revision, reason };
     if (['activate', 'rollback'].includes(action)) Object.assign(body, { motion_version_id: version.id, expected_active_motion_version_id: captured.active_motion_version_id });
-    const path = ['revoke', 'delete', 'archive', 'restore'].includes(action) ? `${prefix}/motions/${version.id}${action === 'delete' ? '' : `/${action}`}` : `${prefix}/${action}`;
-    if (action === 'delete') Object.assign(body, { confirm_sha256: deleteHash, purge_metadata: purgeMetadata });
+    const path = ['revoke', 'archive', 'restore'].includes(action) ? `${prefix}/motions/${version.id}/${action}` : `${prefix}/${action}`;
     work.run('Applying version change', async api => {
       const result = await api(path, { body, ...(action === 'delete' ? { method: 'DELETE' } : {}) });
       if (result.cleanup_job_id) setCleanup({ id: result.cleanup_job_id });
@@ -102,6 +102,25 @@ export default function LibraryManager({ token, admin }) {
       setItems((await api(`/api/v1/review/signs?q=${encodeURIComponent(query)}&offset=${offset}`)).items);
     }, 'Upload validated and staged. Existing active content is preserved.');
   }
+  function deleteContent() {
+    const version = candidate, captured = concept;
+    if (deleteName.trim() !== captured.semantic_key || !deleteReason.trim()) return;
+    clearPreview();
+    work.run('Deleting selected GLB and metadata', async api => {
+      const result = await api(`/api/v1/admin/signs/${captured.id}/motions/${version.id}`, { method: 'DELETE', body: {
+        expected_revision: captured.revision, confirm_sha256: version.sha256, reason: deleteReason,
+        purge_metadata: true, development_reset: detail.development_mode,
+      } });
+      setCleanup({ id: result.cleanup_job_id, state: 'QUEUED' });
+      await load(api, captured.id, version.id); setUploadNew(false);
+      setItems((await api(`/api/v1/review/signs?q=${encodeURIComponent(query)}&offset=${offset}`)).items);
+      for (let attempt = 0; attempt < 20; attempt++) {
+        const job = await api(`/api/v1/admin/cleanup/${result.cleanup_job_id}`); setCleanup(job);
+        if (['COMPLETE', 'SHARED', 'FAILED'].includes(job.state)) break;
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+    }, 'Version and metadata deleted. Check physical cleanup below, then upload the matching files to add it again.');
+  }
   function downloadMetadata() {
     work.run('Loading registered metadata', async api => {
       const result = await api(`/api/v1/review/signs/${concept.id}/motions/${candidate.id}/metadata`);
@@ -122,6 +141,7 @@ export default function LibraryManager({ token, admin }) {
   }
   return <div className="management-section">
     <p><strong>Library</strong> contains available sign concepts and their GLB versions. <strong>Templates</strong> arrange signs into an announcement pattern; <strong>coverage</strong> checks its required signs and version bindings.</p>
+    <p>To delete a GLB and its metadata, search for the sign (for example <strong>ISL_A_01</strong>), click its result, then choose <strong>Delete GLB + metadata</strong> next to the version selector.</p>
     <form className="actions search-form" onSubmit={e => { e.preventDefault(); search(); }}><Field label="Search library" value={query} onChange={setQuery} maxLength={160} />
       <button className="primary" disabled={busy}>Search</button></form>
     <Feedback {...work} />
@@ -135,9 +155,23 @@ export default function LibraryManager({ token, admin }) {
         <p>{concept.canonical_text} · {concept.meaning_status} · {libraryEnabled ? 'Enabled' : 'Inactive'} · revision {concept.revision}</p>
         {detail.development_mode && <p>Activation selects the version for development retrieval immediately. It does not grant production or ISL review approval.</p>}
         <p className="identifier">Concept: {concept.id}</p>
-        <label className="form-field">Motion version<select aria-label="Motion version" value={candidateId} disabled={busy} onChange={e => { clearPreview(); setCandidateId(e.target.value); setDeleteHash(''); }}>
+        <label className="form-field">Motion version<select aria-label="Motion version" value={candidateId} disabled={busy} onChange={e => { clearPreview(); setCandidateId(e.target.value); setDeleteVisible(false); setDeleteName(''); setMetadataHistory(null); setMetadataEdit(null); }}>
           {detail.versions.map(row => <option key={row.id} value={row.id}>v{row.version_no} · {row.deleted_at ? 'DELETED' : row.lifecycle_status} · {row.id === selectedId ? 'selected for retrieval' : row.revoked_at ? 'revoked' : row.linguistic_review_status}</option>)}
         </select></label>
+        {admin && candidate && <>
+          <button disabled={busy || !!candidate.deleted_at} onClick={() => { setDeleteVisible(value => !value); setDeleteName(''); }}>Delete GLB + metadata</button>
+          {candidate.deleted_at && <p role="status">This version's content was deleted. Select <strong>New GLB version for: {concept.gloss}</strong> below and upload the matching metadata and GLB again. It will receive a fresh version ID.</p>}
+          {deleteVisible && <section className="panel management-section" aria-label="Delete selected content">
+            <h3>Delete {concept.gloss} v{candidate.version_no}: GLB + metadata</h3>
+            <p>{detail.development_mode ? 'This development action skips the retention wait and invalidates old test previews and development display sequences using this version. No separate archive step is needed.' : `Archive this version first. Production retention (${detail.deletion_retention_days} days) and reference checks apply.`}</p>
+            <p>Removes this version's stored GLB, metadata JSON and metadata revisions. Canonical avatars and production references remain protected. Shared GLB bytes stay while another version uses them. Original files on your PC and minimal audit identifiers remain.</p>
+            <Field label="Deletion reason" value={deleteReason} onChange={setDeleteReason} disabled={busy} maxLength={4000} />
+            <Field label={`Type ${concept.semantic_key} to confirm deletion`} value={deleteName} onChange={setDeleteName} disabled={busy} />
+            <div className="actions"><button disabled={busy || deleteName.trim() !== concept.semantic_key || !deleteReason.trim()} onClick={deleteContent}>Permanently delete selected GLB + metadata</button>
+              <button disabled={busy} onClick={() => setDeleteVisible(false)}>Cancel deletion</button></div>
+          </section>}
+          {cleanup && <p role="status">Managed GLB cleanup: {cleanup.state || 'QUEUED'}. {cleanup.state === 'COMPLETE' ? 'Stored file removed. You can upload it again below.' : cleanup.state === 'SHARED' ? 'Bytes are retained because another version still uses them.' : 'Use Physical cleanup below to refresh or retry.'}</p>}
+        </>}
         {candidate && <><p>Technical: {candidate.technical_qc_status} · Linguistic: {candidate.linguistic_review_status} · Composition: {candidate.composition_review_status}</p>
           <p className="identifier">SHA-256: {candidate.sha256}</p><p>{candidate.clip_name} · {candidate.duration_seconds.toFixed(2)} seconds · {(candidate.size_bytes/1048576).toFixed(1)} MB</p>
           <JsonDetails label="Validation findings and binding report" value={candidate.technical_report} /><JsonDetails label="Protected references" value={candidate.references} />
@@ -169,11 +203,7 @@ export default function LibraryManager({ token, admin }) {
             <button disabled={!hasReason || candidate.lifecycle_status === 'ARCHIVED' || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => change('archive')}>Archive selected version</button>
             <button disabled={!hasReason || candidate.lifecycle_status !== 'ARCHIVED' || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => change('restore')}>Restore selected version</button>
             <button disabled={!hasReason || !!candidate.revoked_at || !!candidate.deleted_at} onClick={() => change('revoke')}>Revoke selected version</button>
-          </div><details><summary>Permanent version deletion</summary><p>Retained manifests, templates, canonical avatars and library selections can prevent deletion. Archive the selected version first. The server retains versions for {detail.deletion_retention_days} days after their latest change or review. Revocation and deletion are separate operations.</p>
-            <Field label="Type the selected SHA-256 to request deletion" value={deleteHash} onChange={setDeleteHash} />
-            <label><input type="checkbox" checked={purgeMetadata} onChange={e => setPurgeMetadata(e.target.checked)} />Also permanently remove this version's metadata and metadata revision payloads</label>
-            <p>Deletes the application's stored GLB when it is no longer shared. Original uploaded files on your PC are not deleted. Minimal IDs, checksums and audit history remain. A purged version cannot be restored.</p>
-            <button disabled={!hasReason || deleteHash !== candidate.sha256 || !!candidate.deleted_at} onClick={() => change('delete')}>Request permanent deletion</button></details></fieldset>}
+          </div></fieldset>}
           <details><summary>Metadata file and revisions</summary>
             <button disabled={busy || !!candidate.deleted_at} onClick={downloadMetadata}>Download current metadata.json</button>
             {metadataHistory && <JsonDetails label="Metadata revision history" value={metadataHistory} />}
