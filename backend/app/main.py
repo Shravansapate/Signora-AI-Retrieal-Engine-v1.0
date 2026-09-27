@@ -197,7 +197,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             with engine.connect() as connection:
                 version = connection.scalar(text("SELECT version_num FROM alembic_version"))
                 connection.execute(text("SELECT 1 FROM eligible_motion_versions LIMIT 1"))
-            if version != "0008_library_reupload" or not configured.storage_root.is_dir():
+            if version != "0009_display_routing" or not configured.storage_root.is_dir():
                 raise RuntimeError("Required registry contract unavailable")
         except (SQLAlchemyError, RuntimeError):
             return JSONResponse(status_code=503, content={"status": "NOT_READY"})
@@ -257,5 +257,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         )
     )
     app.include_router(retrieval_router(sessions, principal, encoder))
+    from app.display_control import control_router
+
+    app.include_router(control_router(sessions, principal))
     app.include_router(live_router(sessions, store, configured, principal))
     return app

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { SectionTitle, StatusBadge } from './Icon.jsx';
 import AvatarViewer from './AvatarViewer.jsx';
 import { Feedback, Field, JsonDetails, Pager, readable, useWorkspace } from './workspace.jsx';
 import { arrivalExample } from '../services/template-example.mjs';
@@ -78,7 +79,7 @@ export default function TemplateManager({ token, admin }) {
       setReason('Stage an arrival example for learning template coverage');
     }, 'Draft loaded. Inspect the JSON, then click Stage template version. This does not approve or publish it.');
   }
-  return <section className="management-section"><div className="panel-heading"><h2>Reviewed construction coverage</h2><button disabled={busy} onClick={() => list(offset)}>Refresh templates</button></div>
+  return <section className="panel management-section"><div className="panel-heading"><SectionTitle icon="file" title="Reviewed construction coverage" /><button disabled={busy} onClick={() => list(offset)}>Refresh templates</button></div>
     <p><strong>Library</strong> stores signs and GLB versions. A <strong>template</strong> is an ordered announcement recipe with variable slots. <strong>Coverage</strong> checks the required signs, allowed slot values, avatar compatibility and exact reviewed version bindings.</p>
     <details><summary>Try a template and understand coverage</summary>
       <p>The arrival example supports train 1201 or 1202 and platform 1 or 2: “Train 1201 is arriving at platform 2.” It references TRAIN, PLATFORM, NOW RIGHT NOW, ARRIVE and digits 0, 1, 2 from your actual library.</p>
@@ -87,6 +88,7 @@ export default function TemplateManager({ token, admin }) {
       {admin && <button disabled={busy} onClick={loadArrivalExample}>Load arrival example from library</button>}
     </details><Feedback {...work} />
     <div className="table-scroll"><table><thead><tr><th>Template</th><th>Meaning</th><th>Review / availability</th><th>Action</th></tr></thead><tbody>
+      {!items.length && <tr><td colSpan={4}><div className="empty-state"><strong>No templates loaded</strong>Load an arrival example below or stage a construction definition.</div></td></tr>}
       {items.map(row => <tr key={row.id}><td>{row.template_key} v{row.version_no}</td><td>{readable(row.definition.intent)} · {readable(row.definition.temporal_state)} · {row.definition.polarity}</td>
         <td>{row.status} · {row.enabled ? 'Enabled' : 'Disabled'}</td><td><button disabled={busy} onClick={() => select(row.id)}>Review template</button></td></tr>)}
     </tbody></table></div><Pager offset={offset} count={items.length} onChange={list} busy={busy} />
@@ -115,7 +117,7 @@ export default function TemplateManager({ token, admin }) {
           <button disabled={busy || !confirmed || !reason.trim() || !selected.enabled} onClick={() => activate(false)}>Disable template</button></>}
       </div>
     </section>}
-    {admin && <section className="panel management-section"><h2>Stage a construction definition</h2><p>Supply a complete definition from the approved content workflow, or edit a selected retained version. Staging does not approve or enable it.</p>
+    {admin && <section className="panel management-section"><SectionTitle icon="file" title="Stage a construction definition" /><p>Supply a complete definition from the approved content workflow, or edit a selected retained version. Staging does not approve or enable it.</p>
       <Field label="Template key" value={key} disabled={busy} onChange={value => { setKey(value); setExpected(0); }} maxLength={80} />
       <Field label="Expected latest version (0 for a new key)" value={expected} type="number" min={0} disabled={busy} onChange={value => setExpected(Number(value))} />
       <Field label="Construction definition JSON" value={definition} onChange={setDefinition} multiline rows={12} maxLength={30000} disabled={busy} />

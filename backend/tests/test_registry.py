@@ -115,7 +115,7 @@ def test_migration_roundtrip_and_extensions(registry_database):
     with engine.connect() as connection:
         assert (
             connection.scalar(text("SELECT version_num FROM alembic_version"))
-            == "0008_library_reupload"
+            == "0009_display_routing"
         )
         assert (
             connection.scalar(text("SELECT extname FROM pg_extension WHERE extname='pg_trgm'"))

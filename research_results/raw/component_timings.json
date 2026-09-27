@@ -1,0 +1,1778 @@
+[
+  {
+    "id": "arrival-00-0",
+    "parse_combined_ms": 0.5374,
+    "gloss_ms": 0.0473,
+    "lookup_cpu_ms": 0.1901,
+    "normalization_inclusive_ms": 0.036699999999999997,
+    "domain_normalization_ms": 0.0399,
+    "entity_extraction_and_validation_inclusive_ms": 0.2914
+  },
+  {
+    "id": "arrival-01-0",
+    "parse_combined_ms": 0.1597,
+    "gloss_ms": 0.0272,
+    "lookup_cpu_ms": 0.1224,
+    "normalization_inclusive_ms": 0.025300000000000003,
+    "domain_normalization_ms": 0.0274,
+    "entity_extraction_and_validation_inclusive_ms": 0.040600000000000004
+  },
+  {
+    "id": "arrival-02-0",
+    "parse_combined_ms": 0.1269,
+    "gloss_ms": 0.0226,
+    "lookup_cpu_ms": 0.184,
+    "normalization_inclusive_ms": 0.0195,
+    "domain_normalization_ms": 0.0312,
+    "entity_extraction_and_validation_inclusive_ms": 0.0336
+  },
+  {
+    "id": "arrival-03-0",
+    "parse_combined_ms": 0.1075,
+    "gloss_ms": 0.019,
+    "lookup_cpu_ms": 0.1616,
+    "normalization_inclusive_ms": 0.0185,
+    "domain_normalization_ms": 0.0149,
+    "entity_extraction_and_validation_inclusive_ms": 0.0369
+  },
+  {
+    "id": "arrival-04-0",
+    "parse_combined_ms": 0.1041,
+    "gloss_ms": 0.0197,
+    "lookup_cpu_ms": 0.1148,
+    "normalization_inclusive_ms": 0.0154,
+    "domain_normalization_ms": 0.0127,
+    "entity_extraction_and_validation_inclusive_ms": 0.028200000000000003
+  },
+  {
+    "id": "arrival-05-0",
+    "parse_combined_ms": 0.0967,
+    "gloss_ms": 0.0202,
+    "lookup_cpu_ms": 0.0979,
+    "normalization_inclusive_ms": 0.0143,
+    "domain_normalization_ms": 0.013,
+    "entity_extraction_and_validation_inclusive_ms": 0.0254
+  },
+  {
+    "id": "arrival-06-0",
+    "parse_combined_ms": 0.2511,
+    "gloss_ms": 0.0366,
+    "lookup_cpu_ms": 0.375,
+    "normalization_inclusive_ms": 0.0282,
+    "domain_normalization_ms": 0.1254,
+    "entity_extraction_and_validation_inclusive_ms": 0.0616
+  },
+  {
+    "id": "arrival-07-0",
+    "parse_combined_ms": 9.2019,
+    "gloss_ms": 0.0272,
+    "lookup_cpu_ms": 0.195,
+    "normalization_inclusive_ms": 0.026400000000000003,
+    "domain_normalization_ms": 0.0286,
+    "entity_extraction_and_validation_inclusive_ms": 9.0947
+  },
+  {
+    "id": "arrival-08-0",
+    "parse_combined_ms": 0.0956,
+    "gloss_ms": 0.1207,
+    "lookup_cpu_ms": 0.1444,
+    "normalization_inclusive_ms": 0.0124,
+    "domain_normalization_ms": 0.0648
+  },
+  {
+    "id": "arrival-09-0",
+    "parse_combined_ms": 0.0479,
+    "gloss_ms": 0.0301,
+    "lookup_cpu_ms": 0.7459,
+    "normalization_inclusive_ms": 0.0135,
+    "domain_normalization_ms": 0.0208
+  },
+  {
+    "id": "departure-00-0",
+    "parse_combined_ms": 0.1505,
+    "gloss_ms": 0.0226,
+    "lookup_cpu_ms": 0.1721,
+    "normalization_inclusive_ms": 0.0168,
+    "domain_normalization_ms": 0.016,
+    "entity_extraction_and_validation_inclusive_ms": 0.045899999999999996
+  },
+  {
+    "id": "departure-01-0",
+    "parse_combined_ms": 0.1036,
+    "gloss_ms": 0.017,
+    "lookup_cpu_ms": 0.1275,
+    "normalization_inclusive_ms": 0.017499999999999998,
+    "domain_normalization_ms": 0.0254,
+    "entity_extraction_and_validation_inclusive_ms": 0.0223
+  },
+  {
+    "id": "departure-02-0",
+    "parse_combined_ms": 0.077,
+    "gloss_ms": 0.0135,
+    "lookup_cpu_ms": 0.1759,
+    "normalization_inclusive_ms": 0.013499999999999998,
+    "domain_normalization_ms": 0.0185,
+    "entity_extraction_and_validation_inclusive_ms": 0.0235
+  },
+  {
+    "id": "departure-03-0",
+    "parse_combined_ms": 0.0681,
+    "gloss_ms": 0.0144,
+    "lookup_cpu_ms": 0.1772,
+    "normalization_inclusive_ms": 0.0151,
+    "domain_normalization_ms": 0.0104,
+    "entity_extraction_and_validation_inclusive_ms": 0.02
+  },
+  {
+    "id": "departure-04-0",
+    "parse_combined_ms": 0.0696,
+    "gloss_ms": 0.0125,
+    "lookup_cpu_ms": 0.1254,
+    "normalization_inclusive_ms": 0.012999999999999998,
+    "domain_normalization_ms": 0.0086,
+    "entity_extraction_and_validation_inclusive_ms": 0.018099999999999998
+  },
+  {
+    "id": "departure-05-0",
+    "parse_combined_ms": 0.0621,
+    "gloss_ms": 0.0116,
+    "lookup_cpu_ms": 0.0936,
+    "normalization_inclusive_ms": 0.0115,
+    "domain_normalization_ms": 0.0085,
+    "entity_extraction_and_validation_inclusive_ms": 0.016800000000000002
+  },
+  {
+    "id": "departure-06-0",
+    "parse_combined_ms": 0.145,
+    "gloss_ms": 0.0201,
+    "lookup_cpu_ms": 0.2869,
+    "normalization_inclusive_ms": 0.0183,
+    "domain_normalization_ms": 0.0746,
+    "entity_extraction_and_validation_inclusive_ms": 0.032799999999999996
+  },
+  {
+    "id": "departure-07-0",
+    "parse_combined_ms": 0.1114,
+    "gloss_ms": 0.0261,
+    "lookup_cpu_ms": 0.1938,
+    "normalization_inclusive_ms": 0.0167,
+    "domain_normalization_ms": 0.0177,
+    "entity_extraction_and_validation_inclusive_ms": 0.0498
+  },
+  {
+    "id": "departure-08-0",
+    "parse_combined_ms": 0.1244,
+    "gloss_ms": 0.0311,
+    "lookup_cpu_ms": 0.2892,
+    "normalization_inclusive_ms": 0.0091,
+    "domain_normalization_ms": 0.0981
+  },
+  {
+    "id": "departure-09-0",
+    "parse_combined_ms": 0.0508,
+    "gloss_ms": 0.034,
+    "lookup_cpu_ms": 0.7266,
+    "normalization_inclusive_ms": 0.0153,
+    "domain_normalization_ms": 0.0212
+  },
+  {
+    "id": "delay-00-0",
+    "parse_combined_ms": 0.2517,
+    "gloss_ms": 0.1218,
+    "lookup_cpu_ms": 0.0867,
+    "normalization_inclusive_ms": 0.018699999999999998,
+    "domain_normalization_ms": 0.0133,
+    "entity_extraction_and_validation_inclusive_ms": 0.1733
+  },
+  {
+    "id": "delay-01-0",
+    "parse_combined_ms": 0.0939,
+    "gloss_ms": 0.0175,
+    "lookup_cpu_ms": 0.0794,
+    "normalization_inclusive_ms": 0.016100000000000003,
+    "domain_normalization_ms": 0.0174,
+    "entity_extraction_and_validation_inclusive_ms": 0.0273
+  },
+  {
+    "id": "delay-02-0",
+    "parse_combined_ms": 0.04,
+    "gloss_ms": 0.0299,
+    "lookup_cpu_ms": 0.6415,
+    "normalization_inclusive_ms": 0.0099,
+    "domain_normalization_ms": 0.011
+  },
+  {
+    "id": "delay-03-0",
+    "parse_combined_ms": 0.0481,
+    "gloss_ms": 0.0802,
+    "lookup_cpu_ms": 0.3495,
+    "normalization_inclusive_ms": 0.0104,
+    "domain_normalization_ms": 0.0202
+  },
+  {
+    "id": "delay-04-0",
+    "parse_combined_ms": 0.1468,
+    "gloss_ms": 0.0269,
+    "lookup_cpu_ms": 0.4728,
+    "normalization_inclusive_ms": 0.0117,
+    "domain_normalization_ms": 0.1149
+  },
+  {
+    "id": "delay-05-0",
+    "parse_combined_ms": 0.0913,
+    "gloss_ms": 0.0215,
+    "lookup_cpu_ms": 0.0876,
+    "normalization_inclusive_ms": 0.0157,
+    "domain_normalization_ms": 0.0103,
+    "entity_extraction_and_validation_inclusive_ms": 0.032100000000000004
+  },
+  {
+    "id": "delay-06-0",
+    "parse_combined_ms": 0.0322,
+    "gloss_ms": 0.0186,
+    "lookup_cpu_ms": 0.0935,
+    "normalization_inclusive_ms": 0.0076,
+    "domain_normalization_ms": 0.0084
+  },
+  {
+    "id": "delay-07-0",
+    "parse_combined_ms": 0.0752,
+    "gloss_ms": 0.0215,
+    "lookup_cpu_ms": 0.4533,
+    "normalization_inclusive_ms": 0.0102,
+    "domain_normalization_ms": 0.0554
+  },
+  {
+    "id": "delay-08-0",
+    "parse_combined_ms": 0.2411,
+    "gloss_ms": 0.0621,
+    "lookup_cpu_ms": 0.3725,
+    "normalization_inclusive_ms": 0.029799999999999997,
+    "domain_normalization_ms": 0.077,
+    "entity_extraction_and_validation_inclusive_ms": 0.08229999999999998
+  },
+  {
+    "id": "delay-09-0",
+    "parse_combined_ms": 0.1491,
+    "gloss_ms": 0.0247,
+    "lookup_cpu_ms": 0.1318,
+    "normalization_inclusive_ms": 0.024599999999999997,
+    "domain_normalization_ms": 0.0236,
+    "entity_extraction_and_validation_inclusive_ms": 0.0397
+  },
+  {
+    "id": "cancellation-00-0",
+    "parse_combined_ms": 0.0695,
+    "gloss_ms": 0.0144,
+    "lookup_cpu_ms": 0.0732,
+    "normalization_inclusive_ms": 0.012,
+    "domain_normalization_ms": 0.0097,
+    "entity_extraction_and_validation_inclusive_ms": 0.0184
+  },
+  {
+    "id": "cancellation-01-0",
+    "parse_combined_ms": 0.0682,
+    "gloss_ms": 0.012,
+    "lookup_cpu_ms": 0.0845,
+    "normalization_inclusive_ms": 0.0125,
+    "domain_normalization_ms": 0.0182,
+    "entity_extraction_and_validation_inclusive_ms": 0.0139
+  },
+  {
+    "id": "cancellation-02-0",
+    "parse_combined_ms": 0.0594,
+    "gloss_ms": 0.0126,
+    "lookup_cpu_ms": 0.0667,
+    "normalization_inclusive_ms": 0.0135,
+    "domain_normalization_ms": 0.0102,
+    "entity_extraction_and_validation_inclusive_ms": 0.0139
+  },
+  {
+    "id": "cancellation-03-0",
+    "parse_combined_ms": 0.0381,
+    "gloss_ms": 0.0088,
+    "lookup_cpu_ms": 0.0858,
+    "normalization_inclusive_ms": 0.0081,
+    "domain_normalization_ms": 0.0067,
+    "entity_extraction_and_validation_inclusive_ms": 0.0085
+  },
+  {
+    "id": "cancellation-04-0",
+    "parse_combined_ms": 0.0634,
+    "gloss_ms": 0.0091,
+    "lookup_cpu_ms": 0.0481,
+    "normalization_inclusive_ms": 0.0095,
+    "domain_normalization_ms": 0.022,
+    "entity_extraction_and_validation_inclusive_ms": 0.0153
+  },
+  {
+    "id": "cancellation-05-0",
+    "parse_combined_ms": 0.1064,
+    "gloss_ms": 0.0192,
+    "lookup_cpu_ms": 0.4725,
+    "normalization_inclusive_ms": 0.0074,
+    "domain_normalization_ms": 0.0808
+  },
+  {
+    "id": "cancellation-06-0",
+    "parse_combined_ms": 0.0474,
+    "gloss_ms": 0.0145,
+    "lookup_cpu_ms": 0.3327,
+    "normalization_inclusive_ms": 0.0072,
+    "domain_normalization_ms": 0.0285
+  },
+  {
+    "id": "cancellation-07-0",
+    "parse_combined_ms": 0.1421,
+    "gloss_ms": 0.0183,
+    "lookup_cpu_ms": 0.1712,
+    "normalization_inclusive_ms": 0.0161,
+    "domain_normalization_ms": 0.0696,
+    "entity_extraction_and_validation_inclusive_ms": 0.031
+  },
+  {
+    "id": "cancellation-08-0",
+    "parse_combined_ms": 0.0447,
+    "gloss_ms": 0.0163,
+    "lookup_cpu_ms": 0.2339,
+    "normalization_inclusive_ms": 0.007,
+    "domain_normalization_ms": 0.022
+  },
+  {
+    "id": "cancellation-09-0",
+    "parse_combined_ms": 0.0462,
+    "gloss_ms": 0.0099,
+    "lookup_cpu_ms": 0.0492,
+    "normalization_inclusive_ms": 0.0078,
+    "domain_normalization_ms": 0.0051,
+    "entity_extraction_and_validation_inclusive_ms": 0.011
+  },
+  {
+    "id": "platform-change-00-0",
+    "parse_combined_ms": 0.1208,
+    "gloss_ms": 0.0144,
+    "lookup_cpu_ms": 0.1636,
+    "normalization_inclusive_ms": 0.0146,
+    "domain_normalization_ms": 0.0564,
+    "entity_extraction_and_validation_inclusive_ms": 0.0242
+  },
+  {
+    "id": "platform-change-01-0",
+    "parse_combined_ms": 0.0859,
+    "gloss_ms": 0.0258,
+    "lookup_cpu_ms": 0.3863,
+    "normalization_inclusive_ms": 0.0174,
+    "domain_normalization_ms": 0.0521
+  },
+  {
+    "id": "platform-change-02-0",
+    "parse_combined_ms": 0.0463,
+    "gloss_ms": 0.0258,
+    "lookup_cpu_ms": 0.6067,
+    "normalization_inclusive_ms": 0.0116,
+    "domain_normalization_ms": 0.0203
+  },
+  {
+    "id": "platform-change-03-0",
+    "parse_combined_ms": 0.0635,
+    "gloss_ms": 0.0249,
+    "lookup_cpu_ms": 0.5015,
+    "normalization_inclusive_ms": 0.0095,
+    "domain_normalization_ms": 0.0451
+  },
+  {
+    "id": "platform-change-04-0",
+    "parse_combined_ms": 0.034,
+    "gloss_ms": 0.0252,
+    "lookup_cpu_ms": 0.4626,
+    "normalization_inclusive_ms": 0.0107,
+    "domain_normalization_ms": 0.0104
+  },
+  {
+    "id": "platform-change-05-0",
+    "parse_combined_ms": 0.1229,
+    "gloss_ms": 0.0164,
+    "lookup_cpu_ms": 0.1648,
+    "normalization_inclusive_ms": 0.0158,
+    "domain_normalization_ms": 0.0541,
+    "entity_extraction_and_validation_inclusive_ms": 0.0265
+  },
+  {
+    "id": "platform-change-06-0",
+    "parse_combined_ms": 0.127,
+    "gloss_ms": 0.0266,
+    "lookup_cpu_ms": 0.8173,
+    "normalization_inclusive_ms": 0.0118,
+    "domain_normalization_ms": 0.103
+  },
+  {
+    "id": "platform-change-07-0",
+    "parse_combined_ms": 0.0453,
+    "gloss_ms": 0.0233,
+    "lookup_cpu_ms": 0.4052,
+    "normalization_inclusive_ms": 0.0102,
+    "domain_normalization_ms": 0.0183
+  },
+  {
+    "id": "platform-change-08-0",
+    "parse_combined_ms": 0.1815,
+    "gloss_ms": 0.0251,
+    "lookup_cpu_ms": 0.2229,
+    "normalization_inclusive_ms": 0.0229,
+    "domain_normalization_ms": 0.0725,
+    "entity_extraction_and_validation_inclusive_ms": 0.0435
+  },
+  {
+    "id": "platform-change-09-0",
+    "parse_combined_ms": 0.1874,
+    "gloss_ms": 0.0254,
+    "lookup_cpu_ms": 0.1679,
+    "normalization_inclusive_ms": 0.018500000000000003,
+    "domain_normalization_ms": 0.0658,
+    "entity_extraction_and_validation_inclusive_ms": 0.0521
+  },
+  {
+    "id": "emergency-00-0",
+    "parse_combined_ms": 0.0929,
+    "gloss_ms": 0.0223,
+    "lookup_cpu_ms": 1.1688,
+    "normalization_inclusive_ms": 0.0109,
+    "domain_normalization_ms": 0.0685
+  },
+  {
+    "id": "emergency-01-0",
+    "parse_combined_ms": 0.0491,
+    "gloss_ms": 0.0258,
+    "lookup_cpu_ms": 0.527,
+    "normalization_inclusive_ms": 0.0116,
+    "domain_normalization_ms": 0.0255
+  },
+  {
+    "id": "emergency-02-0",
+    "parse_combined_ms": 0.0914,
+    "gloss_ms": 0.0183,
+    "lookup_cpu_ms": 1.7119,
+    "normalization_inclusive_ms": 0.0099,
+    "domain_normalization_ms": 0.07
+  },
+  {
+    "id": "emergency-03-0",
+    "parse_combined_ms": 0.0646,
+    "gloss_ms": 0.0203,
+    "lookup_cpu_ms": 1.1313,
+    "normalization_inclusive_ms": 0.0099,
+    "domain_normalization_ms": 0.0426
+  },
+  {
+    "id": "emergency-04-0",
+    "parse_combined_ms": 0.0601,
+    "gloss_ms": 0.02,
+    "lookup_cpu_ms": 1.2423,
+    "normalization_inclusive_ms": 0.0083,
+    "domain_normalization_ms": 0.0405
+  },
+  {
+    "id": "emergency-05-0",
+    "parse_combined_ms": 0.0787,
+    "gloss_ms": 0.0232,
+    "lookup_cpu_ms": 0.38,
+    "normalization_inclusive_ms": 0.0106,
+    "domain_normalization_ms": 0.0483
+  },
+  {
+    "id": "emergency-06-0",
+    "parse_combined_ms": 0.093,
+    "gloss_ms": 0.0136,
+    "lookup_cpu_ms": 0.3419,
+    "normalization_inclusive_ms": 0.0078,
+    "domain_normalization_ms": 0.075
+  },
+  {
+    "id": "emergency-07-0",
+    "parse_combined_ms": 0.1459,
+    "gloss_ms": 0.0142,
+    "lookup_cpu_ms": 0.7915,
+    "normalization_inclusive_ms": 0.0103,
+    "domain_normalization_ms": 0.1258
+  },
+  {
+    "id": "emergency-08-0",
+    "parse_combined_ms": 0.0462,
+    "gloss_ms": 0.0154,
+    "lookup_cpu_ms": 0.994,
+    "normalization_inclusive_ms": 0.0087,
+    "domain_normalization_ms": 0.0288
+  },
+  {
+    "id": "emergency-09-0",
+    "parse_combined_ms": 0.0358,
+    "gloss_ms": 0.0147,
+    "lookup_cpu_ms": 0.4418,
+    "normalization_inclusive_ms": 0.0092,
+    "domain_normalization_ms": 0.0175
+  },
+  {
+    "id": "other-00-0",
+    "parse_combined_ms": 0.052,
+    "gloss_ms": 0.0127,
+    "lookup_cpu_ms": 0.6522,
+    "normalization_inclusive_ms": 0.0068,
+    "domain_normalization_ms": 0.0378
+  },
+  {
+    "id": "other-01-0",
+    "parse_combined_ms": 0.0266,
+    "gloss_ms": 0.0164,
+    "lookup_cpu_ms": 0.2167,
+    "normalization_inclusive_ms": 0.0078,
+    "domain_normalization_ms": 0.0117
+  },
+  {
+    "id": "other-02-0",
+    "parse_combined_ms": 0.0275,
+    "gloss_ms": 0.0123,
+    "lookup_cpu_ms": 0.1351,
+    "normalization_inclusive_ms": 0.0055,
+    "domain_normalization_ms": 0.01
+  },
+  {
+    "id": "other-03-0",
+    "parse_combined_ms": 0.182,
+    "gloss_ms": 0.0174,
+    "lookup_cpu_ms": 0.7833,
+    "normalization_inclusive_ms": 0.0093,
+    "domain_normalization_ms": 0.1655
+  },
+  {
+    "id": "other-04-0",
+    "parse_combined_ms": 0.0308,
+    "gloss_ms": 0.0128,
+    "lookup_cpu_ms": 0.3606,
+    "normalization_inclusive_ms": 0.0055,
+    "domain_normalization_ms": 0.0156
+  },
+  {
+    "id": "other-05-0",
+    "parse_combined_ms": 0.0912,
+    "gloss_ms": 0.0154,
+    "lookup_cpu_ms": 0.5016,
+    "normalization_inclusive_ms": 0.0071,
+    "domain_normalization_ms": 0.0735
+  },
+  {
+    "id": "other-06-0",
+    "parse_combined_ms": 0.0415,
+    "gloss_ms": 0.0119,
+    "lookup_cpu_ms": 0.4188,
+    "normalization_inclusive_ms": 0.0065,
+    "domain_normalization_ms": 0.0264
+  },
+  {
+    "id": "other-07-0",
+    "parse_combined_ms": 0.0518,
+    "gloss_ms": 0.0174,
+    "lookup_cpu_ms": 0.6346,
+    "normalization_inclusive_ms": 0.0114,
+    "domain_normalization_ms": 0.0209
+  },
+  {
+    "id": "other-08-0",
+    "parse_combined_ms": 0.136,
+    "gloss_ms": 0.0196,
+    "lookup_cpu_ms": 1.4495,
+    "normalization_inclusive_ms": 0.0104,
+    "domain_normalization_ms": 0.1173
+  },
+  {
+    "id": "other-09-0",
+    "parse_combined_ms": 0.0425,
+    "gloss_ms": 0.0118,
+    "lookup_cpu_ms": 0.3863,
+    "normalization_inclusive_ms": 0.0059,
+    "domain_normalization_ms": 0.0268
+  },
+  {
+    "id": "arrival-00-1",
+    "parse_combined_ms": 0.0972,
+    "gloss_ms": 0.0161,
+    "lookup_cpu_ms": 0.0668,
+    "normalization_inclusive_ms": 0.0123,
+    "domain_normalization_ms": 0.0077,
+    "entity_extraction_and_validation_inclusive_ms": 0.0277
+  },
+  {
+    "id": "arrival-01-1",
+    "parse_combined_ms": 0.0669,
+    "gloss_ms": 0.0119,
+    "lookup_cpu_ms": 0.0693,
+    "normalization_inclusive_ms": 0.0129,
+    "domain_normalization_ms": 0.0106,
+    "entity_extraction_and_validation_inclusive_ms": 0.0177
+  },
+  {
+    "id": "arrival-02-1",
+    "parse_combined_ms": 0.0589,
+    "gloss_ms": 0.0104,
+    "lookup_cpu_ms": 0.1023,
+    "normalization_inclusive_ms": 0.012,
+    "domain_normalization_ms": 0.0144,
+    "entity_extraction_and_validation_inclusive_ms": 0.015200000000000002
+  },
+  {
+    "id": "arrival-03-1",
+    "parse_combined_ms": 0.0474,
+    "gloss_ms": 0.0098,
+    "lookup_cpu_ms": 0.0994,
+    "normalization_inclusive_ms": 0.011200000000000002,
+    "domain_normalization_ms": 0.008,
+    "entity_extraction_and_validation_inclusive_ms": 0.013
+  },
+  {
+    "id": "arrival-04-1",
+    "parse_combined_ms": 0.0539,
+    "gloss_ms": 0.0099,
+    "lookup_cpu_ms": 0.0648,
+    "normalization_inclusive_ms": 0.01,
+    "domain_normalization_ms": 0.0068,
+    "entity_extraction_and_validation_inclusive_ms": 0.0143
+  },
+  {
+    "id": "arrival-05-1",
+    "parse_combined_ms": 0.0521,
+    "gloss_ms": 0.0094,
+    "lookup_cpu_ms": 0.0551,
+    "normalization_inclusive_ms": 0.0098,
+    "domain_normalization_ms": 0.0071,
+    "entity_extraction_and_validation_inclusive_ms": 0.0131
+  },
+  {
+    "id": "arrival-06-1",
+    "parse_combined_ms": 0.1335,
+    "gloss_ms": 0.0954,
+    "lookup_cpu_ms": 0.2248,
+    "normalization_inclusive_ms": 0.018,
+    "domain_normalization_ms": 0.0673,
+    "entity_extraction_and_validation_inclusive_ms": 0.030499999999999996
+  },
+  {
+    "id": "arrival-07-1",
+    "parse_combined_ms": 0.097,
+    "gloss_ms": 0.0128,
+    "lookup_cpu_ms": 0.1382,
+    "normalization_inclusive_ms": 0.0161,
+    "domain_normalization_ms": 0.0151,
+    "entity_extraction_and_validation_inclusive_ms": 0.0436
+  },
+  {
+    "id": "arrival-08-1",
+    "parse_combined_ms": 0.0653,
+    "gloss_ms": 0.0218,
+    "lookup_cpu_ms": 0.1192,
+    "normalization_inclusive_ms": 0.0085,
+    "domain_normalization_ms": 0.0469
+  },
+  {
+    "id": "arrival-09-1",
+    "parse_combined_ms": 0.0381,
+    "gloss_ms": 0.0243,
+    "lookup_cpu_ms": 0.4589,
+    "normalization_inclusive_ms": 0.0119,
+    "domain_normalization_ms": 0.0165
+  },
+  {
+    "id": "departure-00-1",
+    "parse_combined_ms": 0.0678,
+    "gloss_ms": 0.0129,
+    "lookup_cpu_ms": 0.093,
+    "normalization_inclusive_ms": 0.012,
+    "domain_normalization_ms": 0.0082,
+    "entity_extraction_and_validation_inclusive_ms": 0.0175
+  },
+  {
+    "id": "departure-01-1",
+    "parse_combined_ms": 0.0592,
+    "gloss_ms": 0.0109,
+    "lookup_cpu_ms": 0.0992,
+    "normalization_inclusive_ms": 0.0127,
+    "domain_normalization_ms": 0.0098,
+    "entity_extraction_and_validation_inclusive_ms": 0.016800000000000002
+  },
+  {
+    "id": "departure-02-1",
+    "parse_combined_ms": 0.055,
+    "gloss_ms": 0.0102,
+    "lookup_cpu_ms": 0.1322,
+    "normalization_inclusive_ms": 0.0118,
+    "domain_normalization_ms": 0.0134,
+    "entity_extraction_and_validation_inclusive_ms": 0.0142
+  },
+  {
+    "id": "departure-03-1",
+    "parse_combined_ms": 0.0469,
+    "gloss_ms": 0.0093,
+    "lookup_cpu_ms": 0.1448,
+    "normalization_inclusive_ms": 0.0114,
+    "domain_normalization_ms": 0.0072,
+    "entity_extraction_and_validation_inclusive_ms": 0.014
+  },
+  {
+    "id": "departure-04-1",
+    "parse_combined_ms": 0.0577,
+    "gloss_ms": 0.0103,
+    "lookup_cpu_ms": 0.1005,
+    "normalization_inclusive_ms": 0.0104,
+    "domain_normalization_ms": 0.0069,
+    "entity_extraction_and_validation_inclusive_ms": 0.0155
+  },
+  {
+    "id": "departure-05-1",
+    "parse_combined_ms": 0.0569,
+    "gloss_ms": 0.0094,
+    "lookup_cpu_ms": 0.0905,
+    "normalization_inclusive_ms": 0.0099,
+    "domain_normalization_ms": 0.007,
+    "entity_extraction_and_validation_inclusive_ms": 0.016
+  },
+  {
+    "id": "departure-06-1",
+    "parse_combined_ms": 0.1417,
+    "gloss_ms": 0.0183,
+    "lookup_cpu_ms": 0.2504,
+    "normalization_inclusive_ms": 0.02,
+    "domain_normalization_ms": 0.071,
+    "entity_extraction_and_validation_inclusive_ms": 0.0335
+  },
+  {
+    "id": "departure-07-1",
+    "parse_combined_ms": 0.0827,
+    "gloss_ms": 0.0131,
+    "lookup_cpu_ms": 0.1753,
+    "normalization_inclusive_ms": 0.0152,
+    "domain_normalization_ms": 0.0144,
+    "entity_extraction_and_validation_inclusive_ms": 0.0351
+  },
+  {
+    "id": "departure-08-1",
+    "parse_combined_ms": 0.0678,
+    "gloss_ms": 0.0208,
+    "lookup_cpu_ms": 0.2282,
+    "normalization_inclusive_ms": 0.0095,
+    "domain_normalization_ms": 0.0478
+  },
+  {
+    "id": "departure-09-1",
+    "parse_combined_ms": 0.0385,
+    "gloss_ms": 0.0247,
+    "lookup_cpu_ms": 0.5441,
+    "normalization_inclusive_ms": 0.0121,
+    "domain_normalization_ms": 0.0175
+  },
+  {
+    "id": "delay-00-1",
+    "parse_combined_ms": 0.0778,
+    "gloss_ms": 0.0193,
+    "lookup_cpu_ms": 0.0865,
+    "normalization_inclusive_ms": 0.0142,
+    "domain_normalization_ms": 0.0171,
+    "entity_extraction_and_validation_inclusive_ms": 0.0233
+  },
+  {
+    "id": "delay-01-1",
+    "parse_combined_ms": 0.0797,
+    "gloss_ms": 0.0125,
+    "lookup_cpu_ms": 0.0855,
+    "normalization_inclusive_ms": 0.0146,
+    "domain_normalization_ms": 0.0142,
+    "entity_extraction_and_validation_inclusive_ms": 0.0206
+  },
+  {
+    "id": "delay-02-1",
+    "parse_combined_ms": 0.0351,
+    "gloss_ms": 0.0249,
+    "lookup_cpu_ms": 0.5927,
+    "normalization_inclusive_ms": 0.0107,
+    "domain_normalization_ms": 0.0091
+  },
+  {
+    "id": "delay-03-1",
+    "parse_combined_ms": 0.0416,
+    "gloss_ms": 0.0198,
+    "lookup_cpu_ms": 0.288,
+    "normalization_inclusive_ms": 0.0092,
+    "domain_normalization_ms": 0.0188
+  },
+  {
+    "id": "delay-04-1",
+    "parse_combined_ms": 0.1242,
+    "gloss_ms": 0.0212,
+    "lookup_cpu_ms": 0.4443,
+    "normalization_inclusive_ms": 0.0096,
+    "domain_normalization_ms": 0.1058
+  },
+  {
+    "id": "delay-05-1",
+    "parse_combined_ms": 0.0783,
+    "gloss_ms": 0.0161,
+    "lookup_cpu_ms": 0.0838,
+    "normalization_inclusive_ms": 0.0148,
+    "domain_normalization_ms": 0.0098,
+    "entity_extraction_and_validation_inclusive_ms": 0.0308
+  },
+  {
+    "id": "delay-06-1",
+    "parse_combined_ms": 0.0272,
+    "gloss_ms": 0.0151,
+    "lookup_cpu_ms": 0.0994,
+    "normalization_inclusive_ms": 0.0073,
+    "domain_normalization_ms": 0.007
+  },
+  {
+    "id": "delay-07-1",
+    "parse_combined_ms": 0.0681,
+    "gloss_ms": 0.019,
+    "lookup_cpu_ms": 0.3676,
+    "normalization_inclusive_ms": 0.0098,
+    "domain_normalization_ms": 0.05
+  },
+  {
+    "id": "delay-08-1",
+    "parse_combined_ms": 0.1403,
+    "gloss_ms": 0.0227,
+    "lookup_cpu_ms": 0.1996,
+    "normalization_inclusive_ms": 0.0207,
+    "domain_normalization_ms": 0.0618,
+    "entity_extraction_and_validation_inclusive_ms": 0.0363
+  },
+  {
+    "id": "delay-09-1",
+    "parse_combined_ms": 0.063,
+    "gloss_ms": 0.0135,
+    "lookup_cpu_ms": 0.0844,
+    "normalization_inclusive_ms": 0.011899999999999999,
+    "domain_normalization_ms": 0.0075,
+    "entity_extraction_and_validation_inclusive_ms": 0.019799999999999998
+  },
+  {
+    "id": "cancellation-00-1",
+    "parse_combined_ms": 0.0393,
+    "gloss_ms": 0.0081,
+    "lookup_cpu_ms": 0.0445,
+    "normalization_inclusive_ms": 0.007899999999999999,
+    "domain_normalization_ms": 0.0065,
+    "entity_extraction_and_validation_inclusive_ms": 0.0093
+  },
+  {
+    "id": "cancellation-01-1",
+    "parse_combined_ms": 0.0425,
+    "gloss_ms": 0.0075,
+    "lookup_cpu_ms": 0.0448,
+    "normalization_inclusive_ms": 0.0092,
+    "domain_normalization_ms": 0.0118,
+    "entity_extraction_and_validation_inclusive_ms": 0.0087
+  },
+  {
+    "id": "cancellation-02-1",
+    "parse_combined_ms": 0.0363,
+    "gloss_ms": 0.0071,
+    "lookup_cpu_ms": 0.0411,
+    "normalization_inclusive_ms": 0.0088,
+    "domain_normalization_ms": 0.0062,
+    "entity_extraction_and_validation_inclusive_ms": 0.0084
+  },
+  {
+    "id": "cancellation-03-1",
+    "parse_combined_ms": 0.035,
+    "gloss_ms": 0.0078,
+    "lookup_cpu_ms": 0.0713,
+    "normalization_inclusive_ms": 0.008,
+    "domain_normalization_ms": 0.006,
+    "entity_extraction_and_validation_inclusive_ms": 0.0083
+  },
+  {
+    "id": "cancellation-04-1",
+    "parse_combined_ms": 0.0482,
+    "gloss_ms": 0.0075,
+    "lookup_cpu_ms": 0.0452,
+    "normalization_inclusive_ms": 0.0091,
+    "domain_normalization_ms": 0.0171,
+    "entity_extraction_and_validation_inclusive_ms": 0.0094
+  },
+  {
+    "id": "cancellation-05-1",
+    "parse_combined_ms": 0.0827,
+    "gloss_ms": 0.0141,
+    "lookup_cpu_ms": 0.4304,
+    "normalization_inclusive_ms": 0.0073,
+    "domain_normalization_ms": 0.0627
+  },
+  {
+    "id": "cancellation-06-1",
+    "parse_combined_ms": 0.0451,
+    "gloss_ms": 0.0139,
+    "lookup_cpu_ms": 0.4611,
+    "normalization_inclusive_ms": 0.0071,
+    "domain_normalization_ms": 0.0283
+  },
+  {
+    "id": "cancellation-07-1",
+    "parse_combined_ms": 0.1736,
+    "gloss_ms": 0.0278,
+    "lookup_cpu_ms": 0.2903,
+    "normalization_inclusive_ms": 0.021099999999999997,
+    "domain_normalization_ms": 0.0696,
+    "entity_extraction_and_validation_inclusive_ms": 0.0446
+  },
+  {
+    "id": "cancellation-08-1",
+    "parse_combined_ms": 0.1345,
+    "gloss_ms": 0.0958,
+    "lookup_cpu_ms": 0.2946,
+    "normalization_inclusive_ms": 0.0261,
+    "domain_normalization_ms": 0.0658
+  },
+  {
+    "id": "cancellation-09-1",
+    "parse_combined_ms": 0.0869,
+    "gloss_ms": 0.0165,
+    "lookup_cpu_ms": 0.0553,
+    "normalization_inclusive_ms": 0.0107,
+    "domain_normalization_ms": 0.0104,
+    "entity_extraction_and_validation_inclusive_ms": 0.0234
+  },
+  {
+    "id": "platform-change-00-1",
+    "parse_combined_ms": 0.1279,
+    "gloss_ms": 0.0165,
+    "lookup_cpu_ms": 0.1673,
+    "normalization_inclusive_ms": 0.0159,
+    "domain_normalization_ms": 0.0602,
+    "entity_extraction_and_validation_inclusive_ms": 0.026000000000000002
+  },
+  {
+    "id": "platform-change-01-1",
+    "parse_combined_ms": 0.0821,
+    "gloss_ms": 0.0283,
+    "lookup_cpu_ms": 0.386,
+    "normalization_inclusive_ms": 0.0102,
+    "domain_normalization_ms": 0.0547
+  },
+  {
+    "id": "platform-change-02-1",
+    "parse_combined_ms": 0.0528,
+    "gloss_ms": 0.0281,
+    "lookup_cpu_ms": 0.614,
+    "normalization_inclusive_ms": 0.013,
+    "domain_normalization_ms": 0.023
+  },
+  {
+    "id": "platform-change-03-1",
+    "parse_combined_ms": 0.0697,
+    "gloss_ms": 0.0246,
+    "lookup_cpu_ms": 0.4898,
+    "normalization_inclusive_ms": 0.0115,
+    "domain_normalization_ms": 0.0481
+  },
+  {
+    "id": "platform-change-04-1",
+    "parse_combined_ms": 0.0363,
+    "gloss_ms": 0.0251,
+    "lookup_cpu_ms": 0.444,
+    "normalization_inclusive_ms": 0.0119,
+    "domain_normalization_ms": 0.0109
+  },
+  {
+    "id": "platform-change-05-1",
+    "parse_combined_ms": 0.1251,
+    "gloss_ms": 0.0175,
+    "lookup_cpu_ms": 0.16,
+    "normalization_inclusive_ms": 0.0178,
+    "domain_normalization_ms": 0.0552,
+    "entity_extraction_and_validation_inclusive_ms": 0.026099999999999998
+  },
+  {
+    "id": "platform-change-06-1",
+    "parse_combined_ms": 0.125,
+    "gloss_ms": 0.0278,
+    "lookup_cpu_ms": 0.7753,
+    "normalization_inclusive_ms": 0.0119,
+    "domain_normalization_ms": 0.1024
+  },
+  {
+    "id": "platform-change-07-1",
+    "parse_combined_ms": 0.0387,
+    "gloss_ms": 0.02,
+    "lookup_cpu_ms": 0.2574,
+    "normalization_inclusive_ms": 0.0093,
+    "domain_normalization_ms": 0.0156
+  },
+  {
+    "id": "platform-change-08-1",
+    "parse_combined_ms": 0.1147,
+    "gloss_ms": 0.0158,
+    "lookup_cpu_ms": 0.1541,
+    "normalization_inclusive_ms": 0.015499999999999998,
+    "domain_normalization_ms": 0.0518,
+    "entity_extraction_and_validation_inclusive_ms": 0.024499999999999997
+  },
+  {
+    "id": "platform-change-09-1",
+    "parse_combined_ms": 0.1043,
+    "gloss_ms": 0.0139,
+    "lookup_cpu_ms": 0.1535,
+    "normalization_inclusive_ms": 0.0143,
+    "domain_normalization_ms": 0.0511,
+    "entity_extraction_and_validation_inclusive_ms": 0.0194
+  },
+  {
+    "id": "emergency-00-1",
+    "parse_combined_ms": 0.0853,
+    "gloss_ms": 0.018,
+    "lookup_cpu_ms": 1.5879,
+    "normalization_inclusive_ms": 0.0104,
+    "domain_normalization_ms": 0.0643
+  },
+  {
+    "id": "emergency-01-1",
+    "parse_combined_ms": 0.1887,
+    "gloss_ms": 0.047,
+    "lookup_cpu_ms": 0.6514,
+    "normalization_inclusive_ms": 0.0367,
+    "domain_normalization_ms": 0.1029
+  },
+  {
+    "id": "emergency-02-1",
+    "parse_combined_ms": 0.0981,
+    "gloss_ms": 0.0188,
+    "lookup_cpu_ms": 1.6094,
+    "normalization_inclusive_ms": 0.0126,
+    "domain_normalization_ms": 0.0729
+  },
+  {
+    "id": "emergency-03-1",
+    "parse_combined_ms": 0.062,
+    "gloss_ms": 0.0207,
+    "lookup_cpu_ms": 1.1012,
+    "normalization_inclusive_ms": 0.0107,
+    "domain_normalization_ms": 0.0403
+  },
+  {
+    "id": "emergency-04-1",
+    "parse_combined_ms": 0.0527,
+    "gloss_ms": 0.0162,
+    "lookup_cpu_ms": 1.0815,
+    "normalization_inclusive_ms": 0.008,
+    "domain_normalization_ms": 0.0347
+  },
+  {
+    "id": "emergency-05-1",
+    "parse_combined_ms": 0.0589,
+    "gloss_ms": 0.0164,
+    "lookup_cpu_ms": 0.3682,
+    "normalization_inclusive_ms": 0.0086,
+    "domain_normalization_ms": 0.0413
+  },
+  {
+    "id": "emergency-06-1",
+    "parse_combined_ms": 0.0905,
+    "gloss_ms": 0.0134,
+    "lookup_cpu_ms": 0.3511,
+    "normalization_inclusive_ms": 0.0075,
+    "domain_normalization_ms": 0.074
+  },
+  {
+    "id": "emergency-07-1",
+    "parse_combined_ms": 0.1544,
+    "gloss_ms": 0.014,
+    "lookup_cpu_ms": 1.0386,
+    "normalization_inclusive_ms": 0.0096,
+    "domain_normalization_ms": 0.1361
+  },
+  {
+    "id": "emergency-08-1",
+    "parse_combined_ms": 0.0588,
+    "gloss_ms": 0.0195,
+    "lookup_cpu_ms": 0.9759,
+    "normalization_inclusive_ms": 0.0099,
+    "domain_normalization_ms": 0.0375
+  },
+  {
+    "id": "emergency-09-1",
+    "parse_combined_ms": 0.0353,
+    "gloss_ms": 0.0151,
+    "lookup_cpu_ms": 0.4436,
+    "normalization_inclusive_ms": 0.0094,
+    "domain_normalization_ms": 0.0173
+  },
+  {
+    "id": "other-00-1",
+    "parse_combined_ms": 0.0522,
+    "gloss_ms": 0.0127,
+    "lookup_cpu_ms": 0.6768,
+    "normalization_inclusive_ms": 0.0066,
+    "domain_normalization_ms": 0.038
+  },
+  {
+    "id": "other-01-1",
+    "parse_combined_ms": 0.0296,
+    "gloss_ms": 0.0184,
+    "lookup_cpu_ms": 0.2182,
+    "normalization_inclusive_ms": 0.0084,
+    "domain_normalization_ms": 0.0125
+  },
+  {
+    "id": "other-02-1",
+    "parse_combined_ms": 0.0288,
+    "gloss_ms": 0.0131,
+    "lookup_cpu_ms": 0.1353,
+    "normalization_inclusive_ms": 0.0056,
+    "domain_normalization_ms": 0.0104
+  },
+  {
+    "id": "other-03-1",
+    "parse_combined_ms": 0.1799,
+    "gloss_ms": 0.0169,
+    "lookup_cpu_ms": 0.7218,
+    "normalization_inclusive_ms": 0.0091,
+    "domain_normalization_ms": 0.163
+  },
+  {
+    "id": "other-04-1",
+    "parse_combined_ms": 0.0275,
+    "gloss_ms": 0.011,
+    "lookup_cpu_ms": 0.338,
+    "normalization_inclusive_ms": 0.0052,
+    "domain_normalization_ms": 0.0147
+  },
+  {
+    "id": "other-05-1",
+    "parse_combined_ms": 0.0896,
+    "gloss_ms": 0.0132,
+    "lookup_cpu_ms": 0.4921,
+    "normalization_inclusive_ms": 0.007,
+    "domain_normalization_ms": 0.0738
+  },
+  {
+    "id": "other-06-1",
+    "parse_combined_ms": 0.0408,
+    "gloss_ms": 0.0115,
+    "lookup_cpu_ms": 0.4066,
+    "normalization_inclusive_ms": 0.007,
+    "domain_normalization_ms": 0.0264
+  },
+  {
+    "id": "other-07-1",
+    "parse_combined_ms": 0.0481,
+    "gloss_ms": 0.0161,
+    "lookup_cpu_ms": 0.6235,
+    "normalization_inclusive_ms": 0.01,
+    "domain_normalization_ms": 0.0201
+  },
+  {
+    "id": "other-08-1",
+    "parse_combined_ms": 0.1416,
+    "gloss_ms": 0.02,
+    "lookup_cpu_ms": 1.5104,
+    "normalization_inclusive_ms": 0.0126,
+    "domain_normalization_ms": 0.1193
+  },
+  {
+    "id": "other-09-1",
+    "parse_combined_ms": 0.0443,
+    "gloss_ms": 0.015,
+    "lookup_cpu_ms": 0.3786,
+    "normalization_inclusive_ms": 0.0066,
+    "domain_normalization_ms": 0.0274
+  },
+  {
+    "id": "arrival-00-2",
+    "parse_combined_ms": 0.1022,
+    "gloss_ms": 0.0173,
+    "lookup_cpu_ms": 0.0575,
+    "normalization_inclusive_ms": 0.0123,
+    "domain_normalization_ms": 0.0076,
+    "entity_extraction_and_validation_inclusive_ms": 0.0314
+  },
+  {
+    "id": "arrival-01-2",
+    "parse_combined_ms": 0.0697,
+    "gloss_ms": 0.0123,
+    "lookup_cpu_ms": 0.0542,
+    "normalization_inclusive_ms": 0.013300000000000001,
+    "domain_normalization_ms": 0.0111,
+    "entity_extraction_and_validation_inclusive_ms": 0.0188
+  },
+  {
+    "id": "arrival-02-2",
+    "parse_combined_ms": 0.0568,
+    "gloss_ms": 0.0105,
+    "lookup_cpu_ms": 0.0916,
+    "normalization_inclusive_ms": 0.0112,
+    "domain_normalization_ms": 0.0138,
+    "entity_extraction_and_validation_inclusive_ms": 0.0139
+  },
+  {
+    "id": "arrival-03-2",
+    "parse_combined_ms": 0.0488,
+    "gloss_ms": 0.0101,
+    "lookup_cpu_ms": 0.1956,
+    "normalization_inclusive_ms": 0.0114,
+    "domain_normalization_ms": 0.0076,
+    "entity_extraction_and_validation_inclusive_ms": 0.0137
+  },
+  {
+    "id": "arrival-04-2",
+    "parse_combined_ms": 0.1145,
+    "gloss_ms": 0.0188,
+    "lookup_cpu_ms": 0.0613,
+    "normalization_inclusive_ms": 0.015000000000000001,
+    "domain_normalization_ms": 0.0142,
+    "entity_extraction_and_validation_inclusive_ms": 0.033
+  },
+  {
+    "id": "arrival-05-2",
+    "parse_combined_ms": 0.0723,
+    "gloss_ms": 0.013,
+    "lookup_cpu_ms": 0.046,
+    "normalization_inclusive_ms": 0.013000000000000001,
+    "domain_normalization_ms": 0.0099,
+    "entity_extraction_and_validation_inclusive_ms": 0.02
+  },
+  {
+    "id": "arrival-06-2",
+    "parse_combined_ms": 0.1565,
+    "gloss_ms": 0.0216,
+    "lookup_cpu_ms": 0.2143,
+    "normalization_inclusive_ms": 0.0206,
+    "domain_normalization_ms": 0.0743,
+    "entity_extraction_and_validation_inclusive_ms": 0.0364
+  },
+  {
+    "id": "arrival-07-2",
+    "parse_combined_ms": 0.1012,
+    "gloss_ms": 0.0154,
+    "lookup_cpu_ms": 0.1362,
+    "normalization_inclusive_ms": 0.016999999999999998,
+    "domain_normalization_ms": 0.0166,
+    "entity_extraction_and_validation_inclusive_ms": 0.045
+  },
+  {
+    "id": "arrival-08-2",
+    "parse_combined_ms": 0.0714,
+    "gloss_ms": 0.0243,
+    "lookup_cpu_ms": 0.1166,
+    "normalization_inclusive_ms": 0.0092,
+    "domain_normalization_ms": 0.0505
+  },
+  {
+    "id": "arrival-09-2",
+    "parse_combined_ms": 0.0409,
+    "gloss_ms": 0.0249,
+    "lookup_cpu_ms": 0.453,
+    "normalization_inclusive_ms": 0.013,
+    "domain_normalization_ms": 0.0182
+  },
+  {
+    "id": "departure-00-2",
+    "parse_combined_ms": 0.0704,
+    "gloss_ms": 0.0134,
+    "lookup_cpu_ms": 0.0868,
+    "normalization_inclusive_ms": 0.0122,
+    "domain_normalization_ms": 0.0087,
+    "entity_extraction_and_validation_inclusive_ms": 0.0183
+  },
+  {
+    "id": "departure-01-2",
+    "parse_combined_ms": 0.0597,
+    "gloss_ms": 0.0118,
+    "lookup_cpu_ms": 0.0946,
+    "normalization_inclusive_ms": 0.013,
+    "domain_normalization_ms": 0.0103,
+    "entity_extraction_and_validation_inclusive_ms": 0.0149
+  },
+  {
+    "id": "departure-02-2",
+    "parse_combined_ms": 0.058,
+    "gloss_ms": 0.0106,
+    "lookup_cpu_ms": 0.132,
+    "normalization_inclusive_ms": 0.012199999999999999,
+    "domain_normalization_ms": 0.0143,
+    "entity_extraction_and_validation_inclusive_ms": 0.014199999999999999
+  },
+  {
+    "id": "departure-03-2",
+    "parse_combined_ms": 0.0516,
+    "gloss_ms": 0.0102,
+    "lookup_cpu_ms": 0.1246,
+    "normalization_inclusive_ms": 0.012400000000000001,
+    "domain_normalization_ms": 0.0082,
+    "entity_extraction_and_validation_inclusive_ms": 0.0147
+  },
+  {
+    "id": "departure-04-2",
+    "parse_combined_ms": 0.0546,
+    "gloss_ms": 0.0104,
+    "lookup_cpu_ms": 0.0903,
+    "normalization_inclusive_ms": 0.010100000000000001,
+    "domain_normalization_ms": 0.0071,
+    "entity_extraction_and_validation_inclusive_ms": 0.0139
+  },
+  {
+    "id": "departure-05-2",
+    "parse_combined_ms": 0.0551,
+    "gloss_ms": 0.0101,
+    "lookup_cpu_ms": 0.0817,
+    "normalization_inclusive_ms": 0.010499999999999999,
+    "domain_normalization_ms": 0.0074,
+    "entity_extraction_and_validation_inclusive_ms": 0.0149
+  },
+  {
+    "id": "departure-06-2",
+    "parse_combined_ms": 0.1397,
+    "gloss_ms": 0.0184,
+    "lookup_cpu_ms": 0.2457,
+    "normalization_inclusive_ms": 0.019200000000000002,
+    "domain_normalization_ms": 0.0689,
+    "entity_extraction_and_validation_inclusive_ms": 0.033100000000000004
+  },
+  {
+    "id": "departure-07-2",
+    "parse_combined_ms": 0.0829,
+    "gloss_ms": 0.0122,
+    "lookup_cpu_ms": 0.165,
+    "normalization_inclusive_ms": 0.0158,
+    "domain_normalization_ms": 0.0152,
+    "entity_extraction_and_validation_inclusive_ms": 0.033
+  },
+  {
+    "id": "departure-08-2",
+    "parse_combined_ms": 0.0667,
+    "gloss_ms": 0.0219,
+    "lookup_cpu_ms": 0.2378,
+    "normalization_inclusive_ms": 0.009,
+    "domain_normalization_ms": 0.047
+  },
+  {
+    "id": "departure-09-2",
+    "parse_combined_ms": 0.1236,
+    "gloss_ms": 0.0308,
+    "lookup_cpu_ms": 0.8097,
+    "normalization_inclusive_ms": 0.0136,
+    "domain_normalization_ms": 0.0931
+  },
+  {
+    "id": "delay-00-2",
+    "parse_combined_ms": 0.1195,
+    "gloss_ms": 0.0239,
+    "lookup_cpu_ms": 0.0762,
+    "normalization_inclusive_ms": 0.017099999999999997,
+    "domain_normalization_ms": 0.0125,
+    "entity_extraction_and_validation_inclusive_ms": 0.0467
+  },
+  {
+    "id": "delay-01-2",
+    "parse_combined_ms": 0.0859,
+    "gloss_ms": 0.015,
+    "lookup_cpu_ms": 0.0689,
+    "normalization_inclusive_ms": 0.015300000000000001,
+    "domain_normalization_ms": 0.017,
+    "entity_extraction_and_validation_inclusive_ms": 0.0232
+  },
+  {
+    "id": "delay-02-2",
+    "parse_combined_ms": 0.0395,
+    "gloss_ms": 0.0283,
+    "lookup_cpu_ms": 0.5928,
+    "normalization_inclusive_ms": 0.0104,
+    "domain_normalization_ms": 0.0109
+  },
+  {
+    "id": "delay-03-2",
+    "parse_combined_ms": 0.0455,
+    "gloss_ms": 0.0197,
+    "lookup_cpu_ms": 0.2586,
+    "normalization_inclusive_ms": 0.0097,
+    "domain_normalization_ms": 0.0193
+  },
+  {
+    "id": "delay-04-2",
+    "parse_combined_ms": 0.13,
+    "gloss_ms": 0.0223,
+    "lookup_cpu_ms": 0.4253,
+    "normalization_inclusive_ms": 0.0097,
+    "domain_normalization_ms": 0.1106
+  },
+  {
+    "id": "delay-05-2",
+    "parse_combined_ms": 0.068,
+    "gloss_ms": 0.0157,
+    "lookup_cpu_ms": 0.0578,
+    "normalization_inclusive_ms": 0.015,
+    "domain_normalization_ms": 0.0088,
+    "entity_extraction_and_validation_inclusive_ms": 0.0235
+  },
+  {
+    "id": "delay-06-2",
+    "parse_combined_ms": 0.0274,
+    "gloss_ms": 0.0167,
+    "lookup_cpu_ms": 0.0738,
+    "normalization_inclusive_ms": 0.0069,
+    "domain_normalization_ms": 0.0069
+  },
+  {
+    "id": "delay-07-2",
+    "parse_combined_ms": 0.0686,
+    "gloss_ms": 0.0199,
+    "lookup_cpu_ms": 0.3496,
+    "normalization_inclusive_ms": 0.0105,
+    "domain_normalization_ms": 0.0493
+  },
+  {
+    "id": "delay-08-2",
+    "parse_combined_ms": 0.1506,
+    "gloss_ms": 0.0232,
+    "lookup_cpu_ms": 0.1747,
+    "normalization_inclusive_ms": 0.0208,
+    "domain_normalization_ms": 0.0618,
+    "entity_extraction_and_validation_inclusive_ms": 0.043800000000000006
+  },
+  {
+    "id": "delay-09-2",
+    "parse_combined_ms": 0.0644,
+    "gloss_ms": 0.0125,
+    "lookup_cpu_ms": 0.0587,
+    "normalization_inclusive_ms": 0.0122,
+    "domain_normalization_ms": 0.0077,
+    "entity_extraction_and_validation_inclusive_ms": 0.0207
+  },
+  {
+    "id": "cancellation-00-2",
+    "parse_combined_ms": 0.0401,
+    "gloss_ms": 0.008,
+    "lookup_cpu_ms": 0.0313,
+    "normalization_inclusive_ms": 0.0086,
+    "domain_normalization_ms": 0.0063,
+    "entity_extraction_and_validation_inclusive_ms": 0.0098
+  },
+  {
+    "id": "cancellation-01-2",
+    "parse_combined_ms": 0.0441,
+    "gloss_ms": 0.008,
+    "lookup_cpu_ms": 0.032,
+    "normalization_inclusive_ms": 0.0095,
+    "domain_normalization_ms": 0.0116,
+    "entity_extraction_and_validation_inclusive_ms": 0.0095
+  },
+  {
+    "id": "cancellation-02-2",
+    "parse_combined_ms": 0.0367,
+    "gloss_ms": 0.0069,
+    "lookup_cpu_ms": 0.0292,
+    "normalization_inclusive_ms": 0.0088,
+    "domain_normalization_ms": 0.006,
+    "entity_extraction_and_validation_inclusive_ms": 0.0094
+  },
+  {
+    "id": "cancellation-03-2",
+    "parse_combined_ms": 0.0344,
+    "gloss_ms": 0.0078,
+    "lookup_cpu_ms": 0.0597,
+    "normalization_inclusive_ms": 0.0084,
+    "domain_normalization_ms": 0.0058,
+    "entity_extraction_and_validation_inclusive_ms": 0.0086
+  },
+  {
+    "id": "cancellation-04-2",
+    "parse_combined_ms": 0.0476,
+    "gloss_ms": 0.0074,
+    "lookup_cpu_ms": 0.0304,
+    "normalization_inclusive_ms": 0.008799999999999999,
+    "domain_normalization_ms": 0.0172,
+    "entity_extraction_and_validation_inclusive_ms": 0.0086
+  },
+  {
+    "id": "cancellation-05-2",
+    "parse_combined_ms": 0.0816,
+    "gloss_ms": 0.0143,
+    "lookup_cpu_ms": 0.4086,
+    "normalization_inclusive_ms": 0.0074,
+    "domain_normalization_ms": 0.0613
+  },
+  {
+    "id": "cancellation-06-2",
+    "parse_combined_ms": 0.0445,
+    "gloss_ms": 0.0145,
+    "lookup_cpu_ms": 0.3079,
+    "normalization_inclusive_ms": 0.0069,
+    "domain_normalization_ms": 0.0268
+  },
+  {
+    "id": "cancellation-07-2",
+    "parse_combined_ms": 0.1193,
+    "gloss_ms": 0.0171,
+    "lookup_cpu_ms": 0.1471,
+    "normalization_inclusive_ms": 0.0164,
+    "domain_normalization_ms": 0.059,
+    "entity_extraction_and_validation_inclusive_ms": 0.026000000000000002
+  },
+  {
+    "id": "cancellation-08-2",
+    "parse_combined_ms": 0.0436,
+    "gloss_ms": 0.0238,
+    "lookup_cpu_ms": 0.2213,
+    "normalization_inclusive_ms": 0.0072,
+    "domain_normalization_ms": 0.0211
+  },
+  {
+    "id": "cancellation-09-2",
+    "parse_combined_ms": 0.0505,
+    "gloss_ms": 0.0098,
+    "lookup_cpu_ms": 0.0326,
+    "normalization_inclusive_ms": 0.0088,
+    "domain_normalization_ms": 0.0064,
+    "entity_extraction_and_validation_inclusive_ms": 0.0122
+  },
+  {
+    "id": "platform-change-00-2",
+    "parse_combined_ms": 0.1116,
+    "gloss_ms": 0.0129,
+    "lookup_cpu_ms": 0.1493,
+    "normalization_inclusive_ms": 0.0147,
+    "domain_normalization_ms": 0.0551,
+    "entity_extraction_and_validation_inclusive_ms": 0.0217
+  },
+  {
+    "id": "platform-change-01-2",
+    "parse_combined_ms": 0.0749,
+    "gloss_ms": 0.0232,
+    "lookup_cpu_ms": 0.4405,
+    "normalization_inclusive_ms": 0.0095,
+    "domain_normalization_ms": 0.0522
+  },
+  {
+    "id": "platform-change-02-2",
+    "parse_combined_ms": 0.0867,
+    "gloss_ms": 0.0404,
+    "lookup_cpu_ms": 1.4702,
+    "normalization_inclusive_ms": 0.015,
+    "domain_normalization_ms": 0.0309
+  },
+  {
+    "id": "platform-change-03-2",
+    "parse_combined_ms": 0.1399,
+    "gloss_ms": 0.0414,
+    "lookup_cpu_ms": 0.5889,
+    "normalization_inclusive_ms": 0.0197,
+    "domain_normalization_ms": 0.0811
+  },
+  {
+    "id": "platform-change-04-2",
+    "parse_combined_ms": 0.042,
+    "gloss_ms": 0.0283,
+    "lookup_cpu_ms": 0.434,
+    "normalization_inclusive_ms": 0.0123,
+    "domain_normalization_ms": 0.0123
+  },
+  {
+    "id": "platform-change-05-2",
+    "parse_combined_ms": 0.1476,
+    "gloss_ms": 0.0198,
+    "lookup_cpu_ms": 0.1689,
+    "normalization_inclusive_ms": 0.017099999999999997,
+    "domain_normalization_ms": 0.0561,
+    "entity_extraction_and_validation_inclusive_ms": 0.0326
+  },
+  {
+    "id": "platform-change-06-2",
+    "parse_combined_ms": 0.1271,
+    "gloss_ms": 0.0284,
+    "lookup_cpu_ms": 0.7373,
+    "normalization_inclusive_ms": 0.0121,
+    "domain_normalization_ms": 0.103
+  },
+  {
+    "id": "platform-change-07-2",
+    "parse_combined_ms": 0.037,
+    "gloss_ms": 0.0196,
+    "lookup_cpu_ms": 0.2444,
+    "normalization_inclusive_ms": 0.0084,
+    "domain_normalization_ms": 0.015
+  },
+  {
+    "id": "platform-change-08-2",
+    "parse_combined_ms": 0.1137,
+    "gloss_ms": 0.0151,
+    "lookup_cpu_ms": 0.1399,
+    "normalization_inclusive_ms": 0.015099999999999999,
+    "domain_normalization_ms": 0.0513,
+    "entity_extraction_and_validation_inclusive_ms": 0.0235
+  },
+  {
+    "id": "platform-change-09-2",
+    "parse_combined_ms": 0.1044,
+    "gloss_ms": 0.0132,
+    "lookup_cpu_ms": 0.1394,
+    "normalization_inclusive_ms": 0.0142,
+    "domain_normalization_ms": 0.0511,
+    "entity_extraction_and_validation_inclusive_ms": 0.019200000000000002
+  },
+  {
+    "id": "emergency-00-2",
+    "parse_combined_ms": 0.0836,
+    "gloss_ms": 0.0728,
+    "lookup_cpu_ms": 1.3707,
+    "normalization_inclusive_ms": 0.0101,
+    "domain_normalization_ms": 0.0633
+  },
+  {
+    "id": "emergency-01-2",
+    "parse_combined_ms": 0.0508,
+    "gloss_ms": 0.024,
+    "lookup_cpu_ms": 0.6094,
+    "normalization_inclusive_ms": 0.0117,
+    "domain_normalization_ms": 0.0248
+  },
+  {
+    "id": "emergency-02-2",
+    "parse_combined_ms": 0.1089,
+    "gloss_ms": 0.0191,
+    "lookup_cpu_ms": 1.8534,
+    "normalization_inclusive_ms": 0.0107,
+    "domain_normalization_ms": 0.0823
+  },
+  {
+    "id": "emergency-03-2",
+    "parse_combined_ms": 0.0769,
+    "gloss_ms": 0.0232,
+    "lookup_cpu_ms": 1.0836,
+    "normalization_inclusive_ms": 0.0112,
+    "domain_normalization_ms": 0.05
+  },
+  {
+    "id": "emergency-04-2",
+    "parse_combined_ms": 0.0515,
+    "gloss_ms": 0.0162,
+    "lookup_cpu_ms": 1.0529,
+    "normalization_inclusive_ms": 0.0079,
+    "domain_normalization_ms": 0.0346
+  },
+  {
+    "id": "emergency-05-2",
+    "parse_combined_ms": 0.0609,
+    "gloss_ms": 0.0153,
+    "lookup_cpu_ms": 0.3533,
+    "normalization_inclusive_ms": 0.0084,
+    "domain_normalization_ms": 0.0431
+  },
+  {
+    "id": "emergency-06-2",
+    "parse_combined_ms": 0.0897,
+    "gloss_ms": 0.0136,
+    "lookup_cpu_ms": 0.3308,
+    "normalization_inclusive_ms": 0.0076,
+    "domain_normalization_ms": 0.0745
+  },
+  {
+    "id": "emergency-07-2",
+    "parse_combined_ms": 0.1415,
+    "gloss_ms": 0.0134,
+    "lookup_cpu_ms": 0.7814,
+    "normalization_inclusive_ms": 0.0092,
+    "domain_normalization_ms": 0.1244
+  },
+  {
+    "id": "emergency-08-2",
+    "parse_combined_ms": 0.0472,
+    "gloss_ms": 0.0155,
+    "lookup_cpu_ms": 1.0366,
+    "normalization_inclusive_ms": 0.0094,
+    "domain_normalization_ms": 0.0289
+  },
+  {
+    "id": "emergency-09-2",
+    "parse_combined_ms": 0.0422,
+    "gloss_ms": 0.2787,
+    "lookup_cpu_ms": 0.6114,
+    "normalization_inclusive_ms": 0.0099,
+    "domain_normalization_ms": 0.0208
+  },
+  {
+    "id": "other-00-2",
+    "parse_combined_ms": 0.0714,
+    "gloss_ms": 0.0192,
+    "lookup_cpu_ms": 0.7695,
+    "normalization_inclusive_ms": 0.0082,
+    "domain_normalization_ms": 0.0449
+  },
+  {
+    "id": "other-01-2",
+    "parse_combined_ms": 0.0489,
+    "gloss_ms": 0.0236,
+    "lookup_cpu_ms": 0.2342,
+    "normalization_inclusive_ms": 0.011,
+    "domain_normalization_ms": 0.0186
+  },
+  {
+    "id": "other-02-2",
+    "parse_combined_ms": 0.0324,
+    "gloss_ms": 0.0147,
+    "lookup_cpu_ms": 0.147,
+    "normalization_inclusive_ms": 0.0064,
+    "domain_normalization_ms": 0.0121
+  },
+  {
+    "id": "other-03-2",
+    "parse_combined_ms": 0.186,
+    "gloss_ms": 0.0192,
+    "lookup_cpu_ms": 0.8943,
+    "normalization_inclusive_ms": 0.0105,
+    "domain_normalization_ms": 0.1665
+  },
+  {
+    "id": "other-04-2",
+    "parse_combined_ms": 0.0452,
+    "gloss_ms": 0.0181,
+    "lookup_cpu_ms": 0.4201,
+    "normalization_inclusive_ms": 0.0076,
+    "domain_normalization_ms": 0.0193
+  },
+  {
+    "id": "other-05-2",
+    "parse_combined_ms": 0.1295,
+    "gloss_ms": 0.0206,
+    "lookup_cpu_ms": 0.5326,
+    "normalization_inclusive_ms": 0.0086,
+    "domain_normalization_ms": 0.0794
+  },
+  {
+    "id": "other-06-2",
+    "parse_combined_ms": 0.0535,
+    "gloss_ms": 0.0143,
+    "lookup_cpu_ms": 0.3943,
+    "normalization_inclusive_ms": 0.008,
+    "domain_normalization_ms": 0.0305
+  },
+  {
+    "id": "other-07-2",
+    "parse_combined_ms": 0.053,
+    "gloss_ms": 0.0188,
+    "lookup_cpu_ms": 0.818,
+    "normalization_inclusive_ms": 0.0113,
+    "domain_normalization_ms": 0.0216
+  },
+  {
+    "id": "other-08-2",
+    "parse_combined_ms": 0.1947,
+    "gloss_ms": 0.0288,
+    "lookup_cpu_ms": 2.4476,
+    "normalization_inclusive_ms": 0.0156,
+    "domain_normalization_ms": 0.161
+  },
+  {
+    "id": "other-09-2",
+    "parse_combined_ms": 0.079,
+    "gloss_ms": 0.0495,
+    "lookup_cpu_ms": 0.4292,
+    "normalization_inclusive_ms": 0.0085,
+    "domain_normalization_ms": 0.0388
+  }
+]

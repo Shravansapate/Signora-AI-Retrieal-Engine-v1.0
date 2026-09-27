@@ -21,9 +21,21 @@ class Publication(WireModel):
     preview_manifest_hash: Digest | None = None
     cancel: bool = False
     reason: ReviewText
+    audience: Literal["SELECTED", "ALL"] | None = None
+    display_ids: list[UUID] = Field(default_factory=list, max_length=256)
+    expected_routes: dict[UUID, int] = Field(default_factory=dict, max_length=256)
+    emergency: bool = False
 
     @model_validator(mode="after")
     def content(self):
+        if self.audience == "SELECTED" and not self.display_ids:
+            raise ValueError("Select at least one display")
+        if len(set(self.display_ids)) != len(self.display_ids):
+            raise ValueError("Duplicate displays")
+        if self.audience != "SELECTED" and self.display_ids:
+            raise ValueError("Display IDs require SELECTED audience")
+        if self.emergency and not self.audience:
+            raise ValueError("Emergency dispatch requires an explicit audience")
         if self.cancel == bool(self.preview_manifest_id) or (
             not self.cancel and not self.preview_manifest_hash
         ):

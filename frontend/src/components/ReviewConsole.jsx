@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import AvatarViewer from './AvatarViewer';
+import { Navigation } from './workspace.jsx';
 import { apiRequest } from '../services/api.mjs';
 
 const IDLE = { state: 'IDLE', index: -1, total: 0, completed: 0, error: null };
@@ -192,12 +193,7 @@ export default function ReviewConsole() {
 
   return <>
     <a className="skip-link" href="#workspace">Skip to workspace</a>
-    <header className="topbar">
-      <a className="brand" href="/" aria-label="Signora home"><span className="brand-mark" aria-hidden="true">S</span>signora<span className="brand-ai">AI</span></a>
-      <div className="header-context"><span className="status-dot" />ISL CONTENT WORKSPACE</div>
-      <a className="phase-label" href="/announcements">Announcements</a>
-      <a className="phase-label" href="/admin">Library & operations</a>
-    </header>
+    <Navigation />
     <main id="workspace">
       <div className="page-heading">
         <div><p className="eyebrow">INDIAN SIGN LANGUAGE / MOTION LIBRARY</p><h1>Content review</h1>

@@ -69,6 +69,7 @@ def playback_router(sessions, store, principal, *, demo_mode_enabled=False):
         if record is None:
             raise HTTPException(404, "Playback plan not found")
         if record.purpose == "PUBLISHED":
+            from app.display_control import assigned_to
             from app.live import now, one
 
             device = one(
@@ -84,6 +85,7 @@ def playback_router(sessions, store, principal, *, demo_mode_enabled=False):
                 or device["station_id"] != record.payload["announcement"]["station_id"]
                 or not device["lease_until"]
                 or device["lease_until"] <= now()
+                or not assigned_to(session, device["id"], manifest_id)
             ):
                 raise HTTPException(403, "Fresh station-scoped display session required")
         elif record.owner_subject != identity.subject:

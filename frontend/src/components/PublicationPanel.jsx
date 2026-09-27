@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Feedback, Field, Pager, readable, time, useWorkspace } from './workspace.jsx';
 
-export default function PublicationPanel({ token, station, preview, previewComplete, onCorrect, invalidatePreview }) {
+export default function PublicationPanel({ token, station, preview, routing, previewComplete, onCorrect, invalidatePreview }) {
   const work = useWorkspace(token);
   const [messages, setMessages] = useState([]), [devices, setDevices] = useState([]), [offset, setOffset] = useState(0);
   const [selected, setSelected] = useState(null), [history, setHistory] = useState(null);
@@ -36,7 +36,7 @@ export default function PublicationPanel({ token, station, preview, previewCompl
     const body = retry.current?.body ?? {
       station_id: station, source_event_id: selected?.source_event_id ?? source.current,
       source_revision: (selected?.source_revision ?? 0)+1, expected_revision: selected?.revision ?? 0,
-      reason, ...(cancel ? { cancel: true } : { preview_manifest_id: preview.manifest_id, preview_manifest_hash: preview.manifest_hash }),
+      reason, ...(!cancel && routing?.ready ? { audience: routing.audience, display_ids: routing.display_ids, expected_routes: routing.expected_routes, emergency: routing.emergency } : {}), ...(cancel ? { cancel: true } : { preview_manifest_id: preview.manifest_id, preview_manifest_hash: preview.manifest_hash }),
     };
     retry.current = { path, body };
     try {
@@ -48,7 +48,7 @@ export default function PublicationPanel({ token, station, preview, previewCompl
       }, cancel ? 'Announcement withdrawn from live delivery.' : 'Announcement published. Check display completion below.');
     } finally { lock.current = false; }
   }
-  const validPreview = preview?.purpose === 'ANNOUNCEMENT_PREVIEW' && preview.announcement.station_id === station;
+  const validPreview = routing?.ready && preview?.purpose === 'ANNOUNCEMENT_PREVIEW' && preview.announcement.station_id === station;
   return <section className="panel management-section" aria-label="Publication and station activity">
     <h2>{selected ? `Correct announcement · revision ${selected.revision}` : 'Publish this announcement'}</h2>
     <p>{selected?.caption_text || (selected ? 'Withdrawn announcement' : '')} <button disabled={!!work.busy} onClick={newAnnouncement}>New announcement</button></p>

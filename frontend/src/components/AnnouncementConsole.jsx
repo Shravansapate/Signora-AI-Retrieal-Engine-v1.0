@@ -1,9 +1,11 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import Icon, { SectionTitle } from './Icon.jsx';
 import AvatarViewer from './AvatarViewer';
 import { apiRequest } from '../services/api.mjs';
 import { PushToTalkRecorder } from '../services/recorder.mjs';
+import ControlRoom from './ControlRoom.jsx';
 import PublicationPanel from './PublicationPanel.jsx';
 import { Navigation } from './workspace.jsx';
 
@@ -31,6 +33,7 @@ export default function AnnouncementConsole() {
   const [error, setError] = useState('');
   const [result, setResult] = useState(null);
   const [delivery, setDelivery] = useState(null);
+  const [routing, setRouting] = useState(null);
   const [snapshot, setSnapshot] = useState(EMPTY);
   const [session, setSession] = useState(0);
   const player = useRef(null);
@@ -44,7 +47,7 @@ export default function AnnouncementConsole() {
     setSnapshot(value);
     if (value.error) setError(value.error.message);
   }, []);
-  const busy = !!pending || ['PRELOADING', 'PLAYING', 'TRANSITIONING'].includes(snapshot.state);
+  const busy = !!pending || ['PRELOADING'].includes(snapshot.state);
   useEffect(() => {
     if (result?.demo_mode && result.manifest && !error) {
       output.current?.scrollIntoView({ block: 'center', behavior: 'smooth' });
@@ -107,10 +110,11 @@ export default function AnnouncementConsole() {
       if (generation.current !== current) return;
       setResult(data);
       if (data.status === 'READY' && data.manifest) {
-        if (data.demo_mode && capabilities?.roles?.some(role => ['admin', 'operator'].includes(role))) {
+        if (data.demo_mode && routing?.ready && capabilities?.roles?.some(role => ['admin', 'operator'].includes(role))) {
           setPending('Sending to live display');
           await sendToDisplay({ station_id: station, source_event_id: data.input_id,
-            source_revision: 1, expected_revision: 0, reason: 'Local development announcement playback',
+            source_revision: 1, expected_revision: 0, audience: routing.audience, display_ids: routing.display_ids,
+            expected_routes: routing.expected_routes, emergency: routing.emergency, reason: routing.reason,
             preview_manifest_id: data.manifest.manifest_id, preview_manifest_hash: data.manifest.manifest_hash }, current, controller.signal);
           if (generation.current !== current) return;
         }
@@ -153,11 +157,12 @@ export default function AnnouncementConsole() {
     <a className="skip-link" href="#announcement-workspace">Skip to announcement input</a>
     <Navigation />
     <main id="announcement-workspace">
-      <div className="page-heading"><div><p className="eyebrow">RAILWAY ANNOUNCEMENTS</p><h1>Prepare an announcement</h1><p className="subtitle">Type an announcement or record your voice to play the available motions.</p></div></div>
+      <div className="page-heading announcement-hero"><div><p className="eyebrow">RAILWAY ANNOUNCEMENTS</p><h1>Prepare an announcement</h1><p className="subtitle">Type an announcement or record your voice to play the available motions.</p></div></div>
       <section className="panel connection">
         {!token ? <form className="connection-form" onSubmit={connect}><label htmlFor="announcement-token">Access token</label><input id="announcement-token" type="password" autoComplete="off" value={credential} onChange={e => setCredential(e.target.value)} /><button className="primary" disabled={busy || !credential.trim()}>Connect</button></form>
-          : <div className="connected-row"><span>Credentials held in memory for this session</span><button onClick={disconnect}>Disconnect</button></div>}
+          : <div className="connected-row"><span className="session-indicator"><span className="status-dot" />Credentials held in memory for this session</span><button onClick={disconnect}>Disconnect</button></div>}
       </section>
+      {token && station && capabilities?.roles?.some(role => ['admin', 'operator'].includes(role)) && <ControlRoom key={`${session}:${station}`} token={token} station={station} platforms={stationData?.definition.platforms || []} onRouting={setRouting} />}
       {pending && <p role="status">{pending}…</p>}
       <div ref={feedback} tabIndex={-1} aria-label="Announcement preparation result">
         {error && <div role="alert" className="notice error-notice">{error}</div>}
@@ -173,12 +178,12 @@ export default function AnnouncementConsole() {
       </div>
       <div className="announcement-grid">
         <section className="panel announcement-form">
-          <h2>Announcement input</h2>
+          <SectionTitle icon="megaphone" title="Announcement input" description="Configure your announcement, or record a voice message." />
           <label>Station<select value={station} disabled={!token || busy || recording} onChange={e => edit(() => setStation(e.target.value))}><option value="">Select a configured station</option>{capabilities?.stations.map(row => <option key={row.id} value={row.id}>{row.definition.name} ({row.id})</option>)}</select></label>
           {token && !capabilities?.stations.length && <p className="notice review-notice">No station is configured for this account. An administrator must add the station and its platform inventory.</p>}
-          <div className="mode-switch" role="group" aria-label="Input method">{['TEXT', 'STRUCTURED', 'VOICE'].map(value => <button key={value} aria-pressed={mode === value} disabled={busy || recording} onClick={() => edit(() => { setMode(value); setTranscript(null); recorder.current?.cancel(); })}>{value === 'TEXT' ? 'Type' : value === 'VOICE' ? 'Record voice' : 'Structured fields'}</button>)}</div>
+          <div className="mode-switch" role="group" aria-label="Input method">{['TEXT', 'STRUCTURED', 'VOICE'].map(value => <button key={value} aria-pressed={mode === value} disabled={busy || recording} onClick={() => edit(() => { setMode(value); setTranscript(null); recorder.current?.cancel(); })}><Icon name={value === 'TEXT' ? 'keyboard' : value === 'VOICE' ? 'mic' : 'list'} />{value === 'TEXT' ? 'Type' : value === 'VOICE' ? 'Record voice' : 'Structured fields'}</button>)}</div>
           {mode === 'VOICE' && <div className="voice-controls"><p>English · maximum 60 seconds · local transcription</p><button disabled={!token || busy} onClick={recording ? stopRecording : startRecording}>{recording ? 'Stop and transcribe' : 'Start recording'}</button><span role="status">{recording ? 'Microphone recording' : capabilities?.asr_state === 'NOT_CONFIGURED' ? 'Speech recognition is not configured. Typed input remains available.' : ''}</span></div>}
-          {mode !== 'STRUCTURED' ? <div><label htmlFor="announcement-text">{mode === 'VOICE' ? 'Final transcript — check and correct' : 'Announcement text'}</label><textarea id="announcement-text" rows={5} maxLength={2048} value={text} disabled={busy || recording} onChange={e => edit(() => setText(e.target.value))} /></div> : <>
+          {mode !== 'STRUCTURED' ? <div><label htmlFor="announcement-text">{mode === 'VOICE' ? 'Final transcript — check and correct' : 'Announcement text'}</label><textarea id="announcement-text" placeholder="Type your announcement here" rows={5} maxLength={2048} value={text} disabled={busy || recording} onChange={e => edit(() => setText(e.target.value))} /></div> : <>
             <label>Event<select value={fields.event} disabled={busy} onChange={e => edit(() => setFields({ ...fields, event: e.target.value }))}>{OPTIONS.map(([, value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
             <label>Polarity<select value={fields.polarity} disabled={busy} onChange={e => edit(() => setFields({ ...fields, polarity: e.target.value }))}><option value="POSITIVE">Affirmed</option><option value="NEGATIVE">Negated (not)</option></select></label>
             {field('train_identifier', 'Train identifier (keep leading zeros)')}
@@ -188,24 +193,26 @@ export default function AnnouncementConsole() {
           <label>Service date, when the announcement includes a clock time<input type="date" value={date} disabled={busy || recording} onChange={e => edit(() => setDate(e.target.value))} /></label>
           {stationData && <p className="field-hint">Configured platforms: {stationData.definition.platforms.join(', ')} · Asia/Kolkata</p>}
           {!capabilities?.demo_mode_enabled && mode === 'VOICE' && transcript && result?.meaning && <label className="confirmation"><input type="checkbox" checked={confirmed} disabled={busy} onChange={e => { player.current?.cancel(); setConfirmed(e.target.checked); setResult(current => ({ ...current, manifest: null, status: 'NEEDS_CONFIRMATION' })); }} />I checked the transcript, identifiers, platforms, status, negation and times.</label>}
-          <button className="primary" disabled={!canPrepare} onClick={() => prepare()}>{capabilities?.demo_mode_enabled ? 'Play announcement' : mode === 'VOICE' && !confirmed ? 'Check transcript and fields' : 'Prepare complete preview'}</button>
-          <p className="field-hint">{capabilities?.demo_mode_enabled ? 'Available motions play here and are sent to connected live displays for this station.' : 'Publication and live display delivery are separate from this private preview.'}</p>
-          {delivery?.state === 'SENT' && <p role="status">Sent to station live displays. <a href="/display" target="_blank" rel="noreferrer">Open live display</a></p>}
+          <button className="primary" disabled={!canPrepare} onClick={() => prepare()}><Icon name="play" />{capabilities?.demo_mode_enabled ? 'Play announcement' : mode === 'VOICE' && !confirmed ? 'Check transcript and fields' : 'Prepare complete preview'}</button>
+          <p className="field-hint">{capabilities?.demo_mode_enabled ? 'Available motions play here. Select target displays above to also send this announcement.' : 'Publication and live display delivery are separate from this private preview.'}</p>
+          {delivery?.state === 'SENT' && <p role="status">Sent to assigned station displays. <a href="/display" target="_blank" rel="noreferrer">Open live display</a></p>}
           {delivery?.state === 'FAILED' && <div role="alert">Live delivery failed: {delivery.error} <button disabled={!!pending} onClick={() => sendToDisplay(delivery.publication, generation.current)}>Retry live delivery</button></div>}
         </section>
-        <section ref={output} className="panel viewer-panel"><div className="panel-heading"><h2>Avatar output</h2><span className="player-state">{snapshot.state}</span></div>
-          <AvatarViewer key={session} ref={player} token={token} onState={onState} />
+        <section ref={output} className="panel viewer-panel"><div className="panel-heading"><SectionTitle icon="monitor" title="Avatar output" /><span className="player-state">{snapshot.state}</span></div>
+          <div className="announcement-stage"><AvatarViewer key={session} ref={player} token={token} onState={onState} />
+            {snapshot.state === 'IDLE' && !result?.manifest && <div className="stage-empty"><span className="avatar-empty-symbol"><Icon name="user" /></span><strong>Your announcement will appear here</strong><p>The avatar will load and play the selected motions.</p></div>}
+          </div>
           <div className="caption-area"><p>{result?.original_text || text || 'Your complete announcement will appear here.'}</p></div>
           {result?.retrieval?.translation_status === 'DOMAIN_DRAFT' && <p className="field-hint">Railway gloss uses configurable draft rules; ISL linguistic correctness has not been validated.</p>}
           {result?.retrieval?.translation_status === 'LEXICAL_RECOVERY' && <p className="field-hint">Playing matching words and available letters. This sequence has not been validated as an ISL sentence.</p>}
           {!!result?.retrieval?.missing_gloss?.length && <p className="field-hint">Incomplete signing — missing signs: {result.retrieval.missing_gloss.join(', ')}. Read the complete caption for the intended meaning.</p>}
           {!!result?.retrieval?.skipped?.length && <p className="field-hint">Some motions were unavailable. Playing the available sequence.</p>}
           {result?.retrieval && <details><summary>Motion lookup details</summary><pre style={{ whiteSpace: 'pre-wrap' }}>{JSON.stringify(result.retrieval, null, 2)}</pre></details>}
-          <div className="playback-controls"><button className="primary" disabled={!['READY', 'COMPLETE'].includes(snapshot.state) || busy} onClick={async () => { try { await player.current.start(); } catch (cause) { setError(cause.message); } }}>Play preview</button><button disabled={!['PLAYING', 'PRELOADING'].includes(snapshot.state)} onClick={() => player.current?.cancel()}>Stop</button><span role="status">{snapshot.completed} / {snapshot.total} clips</span></div>
+          <div className="playback-controls"><button className="primary" disabled={!['READY', 'COMPLETE'].includes(snapshot.state) || busy} onClick={async () => { try { await player.current.start(); } catch (cause) { setError(cause.message); } }}><Icon name="play" />Play preview</button><button disabled={!['PLAYING', 'PRELOADING'].includes(snapshot.state)} onClick={() => player.current?.cancel()}>Stop</button><span role="status">{snapshot.completed} / {snapshot.total} clips</span></div>
         </section>
       </div>
       {token && station && !capabilities?.demo_mode_enabled && capabilities?.roles?.some(role => ['admin', 'operator'].includes(role)) && <PublicationPanel key={`${session}:${station}`} token={token} station={station}
-        preview={result?.manifest} previewComplete={snapshot.state === 'COMPLETE'} invalidatePreview={invalidate}
+        routing={routing} preview={result?.manifest} previewComplete={snapshot.state === 'COMPLETE'} invalidatePreview={invalidate}
         onCorrect={caption => { edit(() => { setMode('TEXT'); setText(caption); setTranscript(null); }); }} />}
     </main>
   </>;

@@ -30,6 +30,7 @@ try {
   await input.locator('#announcement-token').fill(operator);
   await input.getByRole('button', { name: 'Connect', exact: true }).click();
   await input.getByRole('button', { name: 'Disconnect', exact: true }).waitFor();
+  await input.getByLabel('Broadcast to all displays', { exact: true }).check();
   await input.locator('#announcement-text').fill('Train 1201 arrives at platform 2');
   const translation = input.waitForResponse(response => response.url().endsWith('/api/v1/translate'), { timeout: 180000 });
   const publication = input.waitForResponse(response => response.url().endsWith('/api/v1/development/announcements'), { timeout: 180000 });
@@ -45,7 +46,7 @@ try {
   assert.deepEqual(body.retrieval.fingerspelled, []);
   await writeFile(`${output}/mandatory-response.json`, JSON.stringify(body, null, 2));
   console.log(`Published to station: ${receipt.manifest_id}`);
-  await input.getByText('Sent to station live displays.', { exact: false }).waitFor();
+  await input.getByText('Sent to assigned station displays.', { exact: false }).waitFor();
   await display.waitForFunction(() => document.querySelector('canvas')?.dataset.playbackState === 'PLAYING'
     || document.querySelector('[role=alert]'), null, { timeout: 240000 });
   const canvas = display.locator('canvas');

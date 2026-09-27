@@ -69,6 +69,7 @@ const AvatarViewer = forwardRef(function AvatarViewer({ token, onState }, ref) {
         renderer.domElement.dataset.playbackState = snapshot.state;
         renderer.domElement.dataset.completedClips = String(snapshot.completed);
         renderer.domElement.dataset.clipCount = String(snapshot.total);
+        renderer.domElement.dataset.manifestId = snapshot.manifestId ?? '';
         latest.current.onState(snapshot);
       },
       onAvatar: (root) => {

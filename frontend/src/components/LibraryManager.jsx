@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Icon, { SectionTitle } from './Icon.jsx';
 import AvatarViewer from './AvatarViewer.jsx';
 import { Feedback, Field, JsonDetails, Pager, readable, time, useWorkspace } from './workspace.jsx';
 
@@ -142,12 +143,12 @@ export default function LibraryManager({ token, admin }) {
   return <div className="management-section">
     <p><strong>Library</strong> contains available sign concepts and their GLB versions. <strong>Templates</strong> arrange signs into an announcement pattern; <strong>coverage</strong> checks its required signs and version bindings.</p>
     <p>To delete a GLB and its metadata, search for the sign (for example <strong>ISL_A_01</strong>), click its result, then choose <strong>Delete GLB + metadata</strong> next to the version selector.</p>
-    <form className="actions search-form" onSubmit={e => { e.preventDefault(); search(); }}><Field label="Search library" value={query} onChange={setQuery} maxLength={160} />
-      <button className="primary" disabled={busy}>Search</button></form>
+    <form className="panel actions search-form" onSubmit={e => { e.preventDefault(); search(); }}><Field label="Search library" placeholder="Find a concept by name or keyword" value={query} onChange={setQuery} maxLength={160} />
+      <button className="primary" disabled={busy}><Icon name="search" />Search</button></form>
     <Feedback {...work} />
-    <div className="management-grid"><aside className="panel library-results" aria-label="Library results">
+    <div className="management-grid"><aside className="panel library-results" aria-label="Library results"><SectionTitle icon="book" title="Concepts" description="Select a sign to manage its versions." />
       {!items.length && <p>No matching concepts.</p>}{items.map(row => <button key={row.id} className={concept?.id === row.id ? 'selected' : ''} disabled={busy} onClick={() => select(row.id)}>
-        <strong>{row.gloss}</strong><span>{row.eligible ? 'Production eligible' : row.library_enabled ? 'Library selection enabled' : row.library_enabled === false ? 'Library inactive' : row.meaning_status === 'PENDING' ? 'Meaning review pending' : 'Unavailable'} · {row.level}</span></button>)}
+        <strong><Icon name="file" />{row.gloss}</strong><span>{row.eligible ? 'Production eligible' : row.library_enabled ? 'Library selection enabled' : row.library_enabled === false ? 'Library inactive' : row.meaning_status === 'PENDING' ? 'Meaning review pending' : 'Unavailable'} · {row.level}</span></button>)}
       <Pager offset={offset} count={items.length} onChange={search} busy={busy} />
     </aside><div>
       {concept ? <section className="panel management-section" aria-label="Concept and version details"><div className="panel-heading"><h2>{concept.gloss}</h2>
@@ -159,7 +160,7 @@ export default function LibraryManager({ token, admin }) {
           {detail.versions.map(row => <option key={row.id} value={row.id}>v{row.version_no} · {row.deleted_at ? 'DELETED' : row.lifecycle_status} · {row.id === selectedId ? 'selected for retrieval' : row.revoked_at ? 'revoked' : row.linguistic_review_status}</option>)}
         </select></label>
         {admin && candidate && <>
-          <button disabled={busy || !!candidate.deleted_at} onClick={() => { setDeleteVisible(value => !value); setDeleteName(''); }}>Delete GLB + metadata</button>
+          <button className="danger-button" disabled={busy || !!candidate.deleted_at} onClick={() => { setDeleteVisible(value => !value); setDeleteName(''); }}><Icon name="trash" />Delete GLB + metadata</button>
           {candidate.deleted_at && <p role="status">This version's content was deleted. Select <strong>New GLB version for: {concept.gloss}</strong> below and upload the matching metadata and GLB again. It will receive a fresh version ID.</p>}
           {deleteVisible && <section className="panel management-section" aria-label="Delete selected content">
             <h3>Delete {concept.gloss} v{candidate.version_no}: GLB + metadata</h3>
@@ -167,7 +168,7 @@ export default function LibraryManager({ token, admin }) {
             <p>Removes this version's stored GLB, metadata JSON and metadata revisions. Canonical avatars and production references remain protected. Shared GLB bytes stay while another version uses them. Original files on your PC and minimal audit identifiers remain.</p>
             <Field label="Deletion reason" value={deleteReason} onChange={setDeleteReason} disabled={busy} maxLength={4000} />
             <Field label={`Type ${concept.semantic_key} to confirm deletion`} value={deleteName} onChange={setDeleteName} disabled={busy} />
-            <div className="actions"><button disabled={busy || deleteName.trim() !== concept.semantic_key || !deleteReason.trim()} onClick={deleteContent}>Permanently delete selected GLB + metadata</button>
+            <div className="actions"><button className="danger-button" disabled={busy || deleteName.trim() !== concept.semantic_key || !deleteReason.trim()} onClick={deleteContent}>Permanently delete selected GLB + metadata</button>
               <button disabled={busy} onClick={() => setDeleteVisible(false)}>Cancel deletion</button></div>
           </section>}
           {cleanup && <p role="status">Managed GLB cleanup: {cleanup.state || 'QUEUED'}. {cleanup.state === 'COMPLETE' ? 'Stored file removed. You can upload it again below.' : cleanup.state === 'SHARED' ? 'Bytes are retained because another version still uses them.' : 'Use Physical cleanup below to refresh or retry.'}</p>}
@@ -248,8 +249,8 @@ export default function LibraryManager({ token, admin }) {
           }, 'Reviewed retrieval indexing request completed.')}>Refresh reviewed embedding</button>
         </details>
         <details><summary>Version review history</summary>{detail.reviews.map(row => <article key={row.id}><strong>{row.entity_type} · {row.actor} · {time(row.created_at)}</strong><p>{row.reason}</p><p>{row.evidence}</p><JsonDetails label="Recorded decision" value={row.decision} /></article>)}</details>
-      </section> : <section className="panel management-section"><h2>Version management</h2><p>Select a concept to inspect exact versions, approvals, validation findings and affected templates.</p></section>}
-      {admin && <section className="panel management-section"><h2>Add a concept or GLB version</h2><p>Supply the matching metadata.json and motion.glb. GLB limit: 128 MiB; metadata limit: 32 MiB. Uploading never overwrites an older version; activate the selected version after validation.</p><label>Upload target<select aria-label="Upload target" disabled={busy} value={uploadNew ? 'new' : 'selected'} onChange={e => setUploadNew(e.target.value === 'new')}><option value="new">Completely new concept</option><option value="selected" disabled={!concept}>New GLB version for: {concept?.gloss}</option></select></label>
+      </section> : <section className="panel management-section"><SectionTitle icon="stack" title="Version management" description="Inspect exact versions, approvals and affected templates." /><div className="empty-state"><Icon name="file" /><strong>Select a concept</strong>Choose a sign from the list to view its GLB versions and metadata.</div></section>}
+      {admin && <section className="panel management-section"><SectionTitle icon="upload" title="Add a concept or GLB version" /><p>Supply the matching metadata.json and motion.glb. GLB limit: 128 MiB; metadata limit: 32 MiB. Uploading never overwrites an older version; activate the selected version after validation.</p><label>Upload target<select aria-label="Upload target" disabled={busy} value={uploadNew ? 'new' : 'selected'} onChange={e => setUploadNew(e.target.value === 'new')}><option value="new">Completely new concept</option><option value="selected" disabled={!concept}>New GLB version for: {concept?.gloss}</option></select></label>
         <label className="form-field">Metadata file<input type="file" accept=".json" disabled={busy} onChange={e => setMetadata(e.target.files[0] ?? null)} /></label>
         <label className="form-field">GLB file<input type="file" accept=".glb" disabled={busy} onChange={e => setMotion(e.target.files[0] ?? null)} /></label>
         <button disabled={busy || !metadata || !motion || (!uploadNew && !concept)} onClick={upload}>Validate and stage upload</button>

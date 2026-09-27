@@ -66,7 +66,12 @@ def publish(session, store, request, identity, message_id=None, *, development=F
         403,
     )
     check_station_scope(identity, request.station_id)
-    digest = definition_hash(request.model_dump(mode="json"))
+    request_payload = request.model_dump(mode="json")
+    if request.audience is None:
+        # Preserve idempotent retries of station-wide requests committed before routing existed.
+        for key in ("audience", "display_ids", "expected_routes", "emergency"):
+            request_payload.pop(key)
+    digest = definition_hash(request_payload)
     with session.begin():
         catalog_lock(session)
         station = session.get(Station, request.station_id)
@@ -127,6 +132,11 @@ def publish(session, store, request, identity, message_id=None, *, development=F
             "Cannot cancel an absent event",
             404,
         )
+        from app.display_control import assign, targets
+
+        selected = (
+            targets(session, station.id, request) if request.audience and not request.cancel else []
+        )
         mid, rev = (message["id"] if message else uuid4()), current + 1
         plan, priority, expiry = None, 1, now() + timedelta(minutes=15)
         if not request.cancel:
@@ -183,14 +193,16 @@ def publish(session, store, request, identity, message_id=None, *, development=F
                 and preview.announcement.meaning.intent in {"TRAIN_CANCELLATION", "PLATFORM_CHANGE"}
                 else 2
             )
+            if request.emergency:
+                priority = 0
             count = session.scalar(
                 text("""SELECT count(*) FROM announcements a JOIN announcement_revisions r
               ON r.message_id=a.id AND r.revision=a.current_revision WHERE a.station_id=:station
-              AND a.state='LIVE' AND r.valid_until>now() AND a.id<>:id"""),
+              AND a.state='LIVE' AND NOT r.targeted AND r.valid_until>now() AND a.id<>:id"""),
                 {"station": station.id, "id": mid},
             )
             require(
-                count < 32,
+                bool(request.audience) or count < 32,
                 "QUEUE_CAPACITY",
                 "Station has 32 live messages; resolve expired or obsolete work",
                 429,
@@ -273,8 +285,8 @@ def publish(session, store, request, identity, message_id=None, *, development=F
             )
         session.execute(
             text("""INSERT INTO announcement_revisions
-(message_id,revision,source_revision,request_hash,manifest_id,state,priority,reason,actor,valid_until)
-          VALUES(:id,:rev,:source,:hash,:manifest,:state,:priority,:reason,:actor,:expiry)"""),
+(message_id,revision,source_revision,request_hash,manifest_id,state,priority,reason,actor,valid_until,targeted)
+          VALUES(:id,:rev,:source,:hash,:manifest,:state,:priority,:reason,:actor,:expiry,:targeted)"""),
             {
                 "id": mid,
                 "rev": rev,
@@ -286,8 +298,34 @@ def publish(session, store, request, identity, message_id=None, *, development=F
                 "reason": request.reason,
                 "actor": identity.subject,
                 "expiry": expiry,
+                "targeted": bool(request.audience),
             },
         )
+        if selected:
+            assign(
+                session,
+                selected,
+                plan.manifest_id,
+                identity,
+                "EMERGENCY_BROADCAST"
+                if request.emergency
+                else "BROADCAST"
+                if request.audience == "ALL"
+                else "ASSIGN",
+                request.reason,
+            )
+        if request.cancel:
+            cancelled = (
+                session.execute(
+                    text("""SELECT d.display_id AS id FROM display_routes d
+              JOIN announcement_revisions r ON r.manifest_id=d.manifest_id
+              WHERE r.message_id=:id"""),
+                    {"id": mid},
+                )
+                .mappings()
+                .all()
+            )
+            assign(session, cancelled, None, identity, "WITHDRAW", request.reason)
         append_event(session, station.id, mid, rev, "CANCELLED" if request.cancel else "PUBLISHED")
         _event(
             session,
@@ -509,8 +547,12 @@ def reconcile(sessions, store, did, identity, sid, cursor, lease_seconds, develo
           FROM announcements a JOIN announcement_revisions r ON r.message_id=a.id AND
               r.revision=a.current_revision
           WHERE a.station_id=:station AND a.state='LIVE' AND r.valid_until>now()
+          AND (EXISTS(SELECT 1 FROM display_routes dr WHERE dr.display_id=:display
+                   AND dr.manifest_id=r.manifest_id)
+            OR (NOT r.targeted AND NOT EXISTS(SELECT 1 FROM display_routes dr
+                   WHERE dr.display_id=:display)))
           ORDER BY r.priority,r.created_at,a.id LIMIT 33"""),
-                {"station": device["station_id"]},
+                {"station": device["station_id"], "display": did},
             )
             .mappings()
             .all()
@@ -603,6 +645,18 @@ def acknowledge(sessions, did, identity, sid, request, lease_seconds, developmen
                 "Manifest is outside this display's station",
                 403,
             )
+            from app.display_control import assigned_to
+
+            # Late terminal ACKs for an interrupted prior assignment are retained as history.
+            previous_delivery = one(
+                session,
+                "SELECT state FROM display_deliveries WHERE display_id=:id AND manifest_id=:plan",
+                id=did,
+                plan=record.id,
+            )
+            if request.state not in {"FAILED", "COMPLETED"} or not previous_delivery:
+                if not assigned_to(session, did, record.id):
+                    raise PlaybackUnavailable("Announcement is no longer assigned to this display")
             require(request.state is not None, "ACK_STATE", "Playback state required", 422)
             row = one(
                 session,

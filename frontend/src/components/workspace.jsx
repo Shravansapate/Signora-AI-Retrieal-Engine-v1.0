@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { apiRequest } from '../services/api.mjs';
+import { usePathname } from 'next/navigation';
+import Icon from './Icon.jsx';
 
 export function useWorkspace(token) {
   const [busy, setBusy] = useState(''), [error, setError] = useState(''), [notice, setNotice] = useState('');
@@ -43,10 +45,12 @@ export function Pager({ offset, count, onChange, busy, size = 50 }) {
   return <div className="actions"><button disabled={busy || !offset} onClick={() => onChange(Math.max(0, offset-size))}>Previous page</button>
     <span>Page {Math.floor(offset/size)+1}</span><button disabled={busy || count < size} onClick={() => onChange(offset+size)}>Next page</button></div>;
 }
-export function Navigation() {
-  return <header className="topbar"><a className="brand" href="/">Signora</a><nav aria-label="Workspaces">
-    <a href="/announcements">Announcements</a><a href="/admin">Library & operations</a><a href="/">Content preview</a><a href="/display">Live display</a>
-  </nav></header>;
+export function Navigation({ identity }) {
+  const pathname = usePathname();
+  const links = [['/announcements', 'Announcements', 'megaphone'], ['/admin', 'Library & operations', 'book'], ['/', 'Content preview', 'monitor'], ['/display', 'Live display', 'play']];
+  return <header className="topbar"><a className="brand" href="/" aria-label="Signora home">Signora<span className="brand-ai">AI</span></a><nav aria-label="Workspaces">
+    {links.map(([href, label, icon]) => <a key={href} href={href} aria-current={pathname === href ? 'page' : undefined}><Icon name={icon} />{label}</a>)}
+  </nav>{identity && <div className="profile-summary"><span className="profile-initials" aria-hidden="true">{identity.subject.split(/[-_ ]/u).map(word => word[0]).join('').slice(0, 2).toUpperCase()}</span><div><strong>{identity.subject}</strong><small>{identity.roles.join(', ')}</small></div></div>}</header>;
 }
 
 export const readable = value => String(value ?? '').replaceAll('_', ' ');

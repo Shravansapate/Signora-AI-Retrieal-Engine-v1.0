@@ -1,0 +1,3065 @@
+[
+  {
+    "id": "probe-0",
+    "query": "train",
+    "expected": "train",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "train",
+        "method": "WORD",
+        "matched": "ISL_TRAIN_01",
+        "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
+        "gloss_token": "TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0603,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-0",
+    "query": "train",
+    "expected": "train",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "train",
+        "method": "WORD",
+        "matched": "ISL_TRAIN_01",
+        "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
+        "gloss_token": "TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.017,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-0",
+    "query": "train",
+    "expected": "train",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "train",
+        "method": "WORD",
+        "matched": "ISL_TRAIN_01",
+        "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
+        "gloss_token": "TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0122,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-0",
+    "query": "train",
+    "expected": "train",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "train",
+        "method": "WORD",
+        "matched": "ISL_TRAIN_01",
+        "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
+        "gloss_token": "TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0116,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-1",
+    "query": "arrive",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "arrive",
+        "method": "WORD",
+        "matched": "ISL_ARRIVE_01",
+        "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
+        "gloss_token": "ARRIVE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0528,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-1",
+    "query": "arrive",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "arrive",
+        "method": "WORD",
+        "matched": "ISL_ARRIVE_01",
+        "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
+        "gloss_token": "ARRIVE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0118,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-1",
+    "query": "arrive",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "arrive",
+        "method": "WORD",
+        "matched": "ISL_ARRIVE_01",
+        "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
+        "gloss_token": "ARRIVE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0071,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-1",
+    "query": "arrive",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "arrive",
+        "method": "WORD",
+        "matched": "ISL_ARRIVE_01",
+        "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
+        "gloss_token": "ARRIVE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.006,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-2",
+    "query": "arrival",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1564,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-2",
+    "query": "arrival",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1492,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-2",
+    "query": "arrival",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1386,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-2",
+    "query": "arrival",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "a",
+        "method": "ALPHABET",
+        "matched": "ISL_A_01",
+        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
+        "gloss_token": "ARRIVAL",
+        "role": "probe"
+      },
+      {
+        "input": "r",
+        "method": "ALPHABET",
+        "matched": "ISL_R_01",
+        "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
+        "gloss_token": "ARRIVAL",
+        "role": "probe"
+      },
+      {
+        "input": "r",
+        "method": "ALPHABET",
+        "matched": "ISL_R_01",
+        "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
+        "gloss_token": "ARRIVAL",
+        "role": "probe"
+      },
+      {
+        "input": "i",
+        "method": "ALPHABET",
+        "matched": "ISL_I_01",
+        "motion_version_id": "44ef1a05-41f2-407e-b12a-7e6090bc58a8",
+        "gloss_token": "ARRIVAL",
+        "role": "probe"
+      },
+      {
+        "input": "v",
+        "method": "ALPHABET",
+        "matched": "ISL_V_01",
+        "motion_version_id": "955ec40a-8929-438a-9dbe-83704001bfe8",
+        "gloss_token": "ARRIVAL",
+        "role": "probe"
+      },
+      {
+        "input": "a",
+        "method": "ALPHABET",
+        "matched": "ISL_A_01",
+        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
+        "gloss_token": "ARRIVAL",
+        "role": "probe"
+      },
+      {
+        "input": "l",
+        "method": "ALPHABET",
+        "matched": "ISL_L_01",
+        "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
+        "gloss_token": "ARRIVAL",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 7,
+    "missing": [],
+    "selector_ms": 0.1334,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-3",
+    "query": "arriving",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "arriving",
+        "method": "WORD_FORM",
+        "matched": "ISL_ARRIVE_01",
+        "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
+        "gloss_token": "ARRIVING",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.018,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-3",
+    "query": "arriving",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "arriving",
+        "method": "WORD_FORM",
+        "matched": "ISL_ARRIVE_01",
+        "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
+        "gloss_token": "ARRIVING",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0152,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-3",
+    "query": "arriving",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "arriving",
+        "method": "WORD_FORM",
+        "matched": "ISL_ARRIVE_01",
+        "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
+        "gloss_token": "ARRIVING",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0131,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-3",
+    "query": "arriving",
+    "expected": "arrive",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "arriving",
+        "method": "WORD_FORM",
+        "matched": "ISL_ARRIVE_01",
+        "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
+        "gloss_token": "ARRIVING",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0121,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-4",
+    "query": "departure",
+    "expected": "depart",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0973,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-4",
+    "query": "departure",
+    "expected": "depart",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1098,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-4",
+    "query": "departure",
+    "expected": "depart",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1028,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-4",
+    "query": "departure",
+    "expected": "depart",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "d",
+        "method": "ALPHABET",
+        "matched": "ISL_D_01",
+        "motion_version_id": "7556430b-0aef-4ef0-b57f-7d849f8db709",
+        "gloss_token": "DEPARTURE",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "DEPARTURE",
+        "role": "probe"
+      },
+      {
+        "input": "p",
+        "method": "ALPHABET",
+        "matched": "ISL_P_01",
+        "motion_version_id": "bad3d672-68d9-46a3-9e38-1d864dd01b05",
+        "gloss_token": "DEPARTURE",
+        "role": "probe"
+      },
+      {
+        "input": "a",
+        "method": "ALPHABET",
+        "matched": "ISL_A_01",
+        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
+        "gloss_token": "DEPARTURE",
+        "role": "probe"
+      },
+      {
+        "input": "r",
+        "method": "ALPHABET",
+        "matched": "ISL_R_01",
+        "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
+        "gloss_token": "DEPARTURE",
+        "role": "probe"
+      },
+      {
+        "input": "t",
+        "method": "ALPHABET",
+        "matched": "ISL_T_01",
+        "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
+        "gloss_token": "DEPARTURE",
+        "role": "probe"
+      },
+      {
+        "input": "u",
+        "method": "ALPHABET",
+        "matched": "ISL_U_01",
+        "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
+        "gloss_token": "DEPARTURE",
+        "role": "probe"
+      },
+      {
+        "input": "r",
+        "method": "ALPHABET",
+        "matched": "ISL_R_01",
+        "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
+        "gloss_token": "DEPARTURE",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "DEPARTURE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 9,
+    "missing": [],
+    "selector_ms": 0.0991,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-5",
+    "query": "delayed",
+    "expected": "delay",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "delayed",
+        "method": "WORD_FORM",
+        "matched": "ISL_DELAY_01",
+        "motion_version_id": "7d59d45e-5139-43d8-af0c-a339a499bbf4",
+        "gloss_token": "DELAYED",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0196,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-5",
+    "query": "delayed",
+    "expected": "delay",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "delayed",
+        "method": "WORD_FORM",
+        "matched": "ISL_DELAY_01",
+        "motion_version_id": "7d59d45e-5139-43d8-af0c-a339a499bbf4",
+        "gloss_token": "DELAYED",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.019,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-5",
+    "query": "delayed",
+    "expected": "delay",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "delayed",
+        "method": "WORD_FORM",
+        "matched": "ISL_DELAY_01",
+        "motion_version_id": "7d59d45e-5139-43d8-af0c-a339a499bbf4",
+        "gloss_token": "DELAYED",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.018,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-5",
+    "query": "delayed",
+    "expected": "delay",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "delayed",
+        "method": "WORD_FORM",
+        "matched": "ISL_DELAY_01",
+        "motion_version_id": "7d59d45e-5139-43d8-af0c-a339a499bbf4",
+        "gloss_token": "DELAYED",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0175,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-6",
+    "query": "cancelled",
+    "expected": "cancel",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0881,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-6",
+    "query": "cancelled",
+    "expected": "cancel",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1005,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-6",
+    "query": "cancelled",
+    "expected": "cancel",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-6",
+    "query": "cancelled",
+    "expected": "cancel",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "c",
+        "method": "ALPHABET",
+        "matched": "ISL_C_01",
+        "motion_version_id": "9f6d2d48-875a-41f8-bba0-b1c74e4faf8d",
+        "gloss_token": "CANCELLED",
+        "role": "probe"
+      },
+      {
+        "input": "a",
+        "method": "ALPHABET",
+        "matched": "ISL_A_01",
+        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
+        "gloss_token": "CANCELLED",
+        "role": "probe"
+      },
+      {
+        "input": "n",
+        "method": "ALPHABET",
+        "matched": "ISL_N_01",
+        "motion_version_id": "38161d0b-8387-42d7-8540-2c5f413ecc7f",
+        "gloss_token": "CANCELLED",
+        "role": "probe"
+      },
+      {
+        "input": "c",
+        "method": "ALPHABET",
+        "matched": "ISL_C_01",
+        "motion_version_id": "9f6d2d48-875a-41f8-bba0-b1c74e4faf8d",
+        "gloss_token": "CANCELLED",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "CANCELLED",
+        "role": "probe"
+      },
+      {
+        "input": "l",
+        "method": "ALPHABET",
+        "matched": "ISL_L_01",
+        "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
+        "gloss_token": "CANCELLED",
+        "role": "probe"
+      },
+      {
+        "input": "l",
+        "method": "ALPHABET",
+        "matched": "ISL_L_01",
+        "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
+        "gloss_token": "CANCELLED",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "CANCELLED",
+        "role": "probe"
+      },
+      {
+        "input": "d",
+        "method": "ALPHABET",
+        "matched": "ISL_D_01",
+        "motion_version_id": "7556430b-0aef-4ef0-b57f-7d849f8db709",
+        "gloss_token": "CANCELLED",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 9,
+    "missing": [],
+    "selector_ms": 0.1122,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-7",
+    "query": "platform",
+    "expected": "platform",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "platform",
+        "method": "WORD",
+        "matched": "ISL_PLATFORM_01",
+        "motion_version_id": "0b491654-7763-4654-b7be-09ee24b44be5",
+        "gloss_token": "PLATFORM",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0102,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-7",
+    "query": "platform",
+    "expected": "platform",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "platform",
+        "method": "WORD",
+        "matched": "ISL_PLATFORM_01",
+        "motion_version_id": "0b491654-7763-4654-b7be-09ee24b44be5",
+        "gloss_token": "PLATFORM",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.009,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-7",
+    "query": "platform",
+    "expected": "platform",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "platform",
+        "method": "WORD",
+        "matched": "ISL_PLATFORM_01",
+        "motion_version_id": "0b491654-7763-4654-b7be-09ee24b44be5",
+        "gloss_token": "PLATFORM",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0085,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-7",
+    "query": "platform",
+    "expected": "platform",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "platform",
+        "method": "WORD",
+        "matched": "ISL_PLATFORM_01",
+        "motion_version_id": "0b491654-7763-4654-b7be-09ee24b44be5",
+        "gloss_token": "PLATFORM",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0083,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-8",
+    "query": "ticket",
+    "expected": "ticket",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "ticket",
+        "method": "WORD",
+        "matched": "ISL_TICKET_01",
+        "motion_version_id": "6fc1c1fb-ff51-4e2a-b491-abf2d686e477",
+        "gloss_token": "TICKET",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0089,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-8",
+    "query": "ticket",
+    "expected": "ticket",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "ticket",
+        "method": "WORD",
+        "matched": "ISL_TICKET_01",
+        "motion_version_id": "6fc1c1fb-ff51-4e2a-b491-abf2d686e477",
+        "gloss_token": "TICKET",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0093,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-8",
+    "query": "ticket",
+    "expected": "ticket",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "ticket",
+        "method": "WORD",
+        "matched": "ISL_TICKET_01",
+        "motion_version_id": "6fc1c1fb-ff51-4e2a-b491-abf2d686e477",
+        "gloss_token": "TICKET",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0094,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-8",
+    "query": "ticket",
+    "expected": "ticket",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "ticket",
+        "method": "WORD",
+        "matched": "ISL_TICKET_01",
+        "motion_version_id": "6fc1c1fb-ff51-4e2a-b491-abf2d686e477",
+        "gloss_token": "TICKET",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0087,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-9",
+    "query": "baggage",
+    "expected": "luggage",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.117,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-9",
+    "query": "baggage",
+    "expected": "luggage",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1243,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-9",
+    "query": "baggage",
+    "expected": "luggage",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1208,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-9",
+    "query": "baggage",
+    "expected": "luggage",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "b",
+        "method": "ALPHABET",
+        "matched": "ISL_B_01",
+        "motion_version_id": "ba2e0257-9b39-4eee-80ef-3bd45cff37d6",
+        "gloss_token": "BAGGAGE",
+        "role": "probe"
+      },
+      {
+        "input": "a",
+        "method": "ALPHABET",
+        "matched": "ISL_A_01",
+        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
+        "gloss_token": "BAGGAGE",
+        "role": "probe"
+      },
+      {
+        "input": "g",
+        "method": "ALPHABET",
+        "matched": "ISL_G_01",
+        "motion_version_id": "291a0095-14d3-41bb-8a8f-b7f2ec92af38",
+        "gloss_token": "BAGGAGE",
+        "role": "probe"
+      },
+      {
+        "input": "g",
+        "method": "ALPHABET",
+        "matched": "ISL_G_01",
+        "motion_version_id": "291a0095-14d3-41bb-8a8f-b7f2ec92af38",
+        "gloss_token": "BAGGAGE",
+        "role": "probe"
+      },
+      {
+        "input": "a",
+        "method": "ALPHABET",
+        "matched": "ISL_A_01",
+        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
+        "gloss_token": "BAGGAGE",
+        "role": "probe"
+      },
+      {
+        "input": "g",
+        "method": "ALPHABET",
+        "matched": "ISL_G_01",
+        "motion_version_id": "291a0095-14d3-41bb-8a8f-b7f2ec92af38",
+        "gloss_token": "BAGGAGE",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "BAGGAGE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 7,
+    "missing": [],
+    "selector_ms": 0.1178,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-10",
+    "query": "exit",
+    "expected": "exit",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "exit",
+        "method": "WORD",
+        "matched": "ISL_EXIT_01",
+        "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
+        "gloss_token": "EXIT",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0084,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-10",
+    "query": "exit",
+    "expected": "exit",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "exit",
+        "method": "WORD",
+        "matched": "ISL_EXIT_01",
+        "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
+        "gloss_token": "EXIT",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.007,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-10",
+    "query": "exit",
+    "expected": "exit",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "exit",
+        "method": "WORD",
+        "matched": "ISL_EXIT_01",
+        "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
+        "gloss_token": "EXIT",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0064,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-10",
+    "query": "exit",
+    "expected": "exit",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "exit",
+        "method": "WORD",
+        "matched": "ISL_EXIT_01",
+        "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
+        "gloss_token": "EXIT",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0061,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-11",
+    "query": "emergency",
+    "expected": "emergency",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "emergency",
+        "method": "WORD",
+        "matched": "ISL_EMERGENCY_01",
+        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
+        "gloss_token": "EMERGENCY",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0068,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-11",
+    "query": "emergency",
+    "expected": "emergency",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "emergency",
+        "method": "WORD",
+        "matched": "ISL_EMERGENCY_01",
+        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
+        "gloss_token": "EMERGENCY",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0072,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-11",
+    "query": "emergency",
+    "expected": "emergency",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "emergency",
+        "method": "WORD",
+        "matched": "ISL_EMERGENCY_01",
+        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
+        "gloss_token": "EMERGENCY",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0068,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-11",
+    "query": "emergency",
+    "expected": "emergency",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "emergency",
+        "method": "WORD",
+        "matched": "ISL_EMERGENCY_01",
+        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
+        "gloss_token": "EMERGENCY",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0069,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-12",
+    "query": "fire",
+    "expected": "fire",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "fire",
+        "method": "WORD",
+        "matched": "ISL_FIRE_01",
+        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
+        "gloss_token": "FIRE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0066,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-12",
+    "query": "fire",
+    "expected": "fire",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "fire",
+        "method": "WORD",
+        "matched": "ISL_FIRE_01",
+        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
+        "gloss_token": "FIRE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0069,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-12",
+    "query": "fire",
+    "expected": "fire",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "fire",
+        "method": "WORD",
+        "matched": "ISL_FIRE_01",
+        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
+        "gloss_token": "FIRE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0068,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-12",
+    "query": "fire",
+    "expected": "fire",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "fire",
+        "method": "WORD",
+        "matched": "ISL_FIRE_01",
+        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
+        "gloss_token": "FIRE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0072,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-13",
+    "query": "help",
+    "expected": "help",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "help",
+        "method": "WORD",
+        "matched": "ISL_HELP_01",
+        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
+        "gloss_token": "HELP",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0068,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-13",
+    "query": "help",
+    "expected": "help",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "help",
+        "method": "WORD",
+        "matched": "ISL_HELP_01",
+        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
+        "gloss_token": "HELP",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.007,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-13",
+    "query": "help",
+    "expected": "help",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "help",
+        "method": "WORD",
+        "matched": "ISL_HELP_01",
+        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
+        "gloss_token": "HELP",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.007,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-13",
+    "query": "help",
+    "expected": "help",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "help",
+        "method": "WORD",
+        "matched": "ISL_HELP_01",
+        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
+        "gloss_token": "HELP",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0073,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-14",
+    "query": "station",
+    "expected": "station",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "station",
+        "method": "WORD",
+        "matched": "ISL_STATION_01",
+        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
+        "gloss_token": "STATION",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0083,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-14",
+    "query": "station",
+    "expected": "station",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "station",
+        "method": "WORD",
+        "matched": "ISL_STATION_01",
+        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
+        "gloss_token": "STATION",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0094,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-14",
+    "query": "station",
+    "expected": "station",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "station",
+        "method": "WORD",
+        "matched": "ISL_STATION_01",
+        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
+        "gloss_token": "STATION",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0089,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-14",
+    "query": "station",
+    "expected": "station",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "station",
+        "method": "WORD",
+        "matched": "ISL_STATION_01",
+        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
+        "gloss_token": "STATION",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0092,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-15",
+    "query": "water",
+    "expected": "water",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "water",
+        "method": "WORD",
+        "matched": "ISL_WATER_01",
+        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
+        "gloss_token": "WATER",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0106,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-15",
+    "query": "water",
+    "expected": "water",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "water",
+        "method": "WORD",
+        "matched": "ISL_WATER_01",
+        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
+        "gloss_token": "WATER",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0116,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-15",
+    "query": "water",
+    "expected": "water",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "water",
+        "method": "WORD",
+        "matched": "ISL_WATER_01",
+        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
+        "gloss_token": "WATER",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0097,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-15",
+    "query": "water",
+    "expected": "water",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "water",
+        "method": "WORD",
+        "matched": "ISL_WATER_01",
+        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
+        "gloss_token": "WATER",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0094,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-16",
+    "query": "local train",
+    "expected": "local train",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0743,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-16",
+    "query": "local train",
+    "expected": "local train",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "local train",
+        "method": "PHRASE",
+        "matched": "ISL_LOCAL_TRAIN_01",
+        "motion_version_id": "c3638d59-b618-43e0-a2e8-31251370c59e",
+        "gloss_token": "LOCAL TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0101,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-16",
+    "query": "local train",
+    "expected": "local train",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "local train",
+        "method": "PHRASE",
+        "matched": "ISL_LOCAL_TRAIN_01",
+        "motion_version_id": "c3638d59-b618-43e0-a2e8-31251370c59e",
+        "gloss_token": "LOCAL TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0087,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-16",
+    "query": "local train",
+    "expected": "local train",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "local train",
+        "method": "PHRASE",
+        "matched": "ISL_LOCAL_TRAIN_01",
+        "motion_version_id": "c3638d59-b618-43e0-a2e8-31251370c59e",
+        "gloss_token": "LOCAL TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0079,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-17",
+    "query": "express train",
+    "expected": "express train",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0837,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-17",
+    "query": "express train",
+    "expected": "express train",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "express train",
+        "method": "PHRASE",
+        "matched": "ISL_EXPRESS_TRAIN_01",
+        "motion_version_id": "9030c4ca-9c77-40fc-b30d-b1d73dfb2e89",
+        "gloss_token": "EXPRESS TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0095,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-17",
+    "query": "express train",
+    "expected": "express train",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "express train",
+        "method": "PHRASE",
+        "matched": "ISL_EXPRESS_TRAIN_01",
+        "motion_version_id": "9030c4ca-9c77-40fc-b30d-b1d73dfb2e89",
+        "gloss_token": "EXPRESS TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0079,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-17",
+    "query": "express train",
+    "expected": "express train",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "express train",
+        "method": "PHRASE",
+        "matched": "ISL_EXPRESS_TRAIN_01",
+        "motion_version_id": "9030c4ca-9c77-40fc-b30d-b1d73dfb2e89",
+        "gloss_token": "EXPRESS TRAIN",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0074,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-18",
+    "query": "waiting room",
+    "expected": "waiting room",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0743,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-18",
+    "query": "waiting room",
+    "expected": "waiting room",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "waiting room",
+        "method": "PHRASE",
+        "matched": "ISL_WAITING_ROOM_01",
+        "motion_version_id": "34c5b623-b3e5-4ab9-9e0b-7b1c437089ba",
+        "gloss_token": "WAITING ROOM",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0108,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-18",
+    "query": "waiting room",
+    "expected": "waiting room",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "waiting room",
+        "method": "PHRASE",
+        "matched": "ISL_WAITING_ROOM_01",
+        "motion_version_id": "34c5b623-b3e5-4ab9-9e0b-7b1c437089ba",
+        "gloss_token": "WAITING ROOM",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0102,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-18",
+    "query": "waiting room",
+    "expected": "waiting room",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "waiting room",
+        "method": "PHRASE",
+        "matched": "ISL_WAITING_ROOM_01",
+        "motion_version_id": "34c5b623-b3e5-4ab9-9e0b-7b1c437089ba",
+        "gloss_token": "WAITING ROOM",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0101,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-19",
+    "query": "new delhi",
+    "expected": "new delhi",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0601,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-19",
+    "query": "new delhi",
+    "expected": "new delhi",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "new delhi",
+        "method": "PHRASE",
+        "matched": "ISL_NEW_DELHI_01",
+        "motion_version_id": "6a4f36f4-f41d-4b50-ab7d-a43ecf01e3c0",
+        "gloss_token": "NEW DELHI",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0093,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-19",
+    "query": "new delhi",
+    "expected": "new delhi",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "new delhi",
+        "method": "PHRASE",
+        "matched": "ISL_NEW_DELHI_01",
+        "motion_version_id": "6a4f36f4-f41d-4b50-ab7d-a43ecf01e3c0",
+        "gloss_token": "NEW DELHI",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0086,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-19",
+    "query": "new delhi",
+    "expected": "new delhi",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "new delhi",
+        "method": "PHRASE",
+        "matched": "ISL_NEW_DELHI_01",
+        "motion_version_id": "6a4f36f4-f41d-4b50-ab7d-a43ecf01e3c0",
+        "gloss_token": "NEW DELHI",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0084,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-20",
+    "query": "identity card",
+    "expected": "identity card",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0813,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-20",
+    "query": "identity card",
+    "expected": "identity card",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "identity card",
+        "method": "PHRASE",
+        "matched": "ISL_IDENTITY_CARD_01",
+        "motion_version_id": "abcb0670-8dbc-43ff-a660-8e2219fa0ed1",
+        "gloss_token": "IDENTITY CARD",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0098,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-20",
+    "query": "identity card",
+    "expected": "identity card",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "identity card",
+        "method": "PHRASE",
+        "matched": "ISL_IDENTITY_CARD_01",
+        "motion_version_id": "abcb0670-8dbc-43ff-a660-8e2219fa0ed1",
+        "gloss_token": "IDENTITY CARD",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0174,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-20",
+    "query": "identity card",
+    "expected": "identity card",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "identity card",
+        "method": "PHRASE",
+        "matched": "ISL_IDENTITY_CARD_01",
+        "motion_version_id": "abcb0670-8dbc-43ff-a660-8e2219fa0ed1",
+        "gloss_token": "IDENTITY CARD",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0098,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-21",
+    "query": "time table",
+    "expected": "time table",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0676,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-21",
+    "query": "time table",
+    "expected": "time table",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "time table",
+        "method": "PHRASE",
+        "matched": "ISL_TIME_TABLE_01",
+        "motion_version_id": "e38e313c-651b-42e5-867b-4daa57c42c4e",
+        "gloss_token": "TIME TABLE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0106,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-21",
+    "query": "time table",
+    "expected": "time table",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "time table",
+        "method": "PHRASE",
+        "matched": "ISL_TIME_TABLE_01",
+        "motion_version_id": "e38e313c-651b-42e5-867b-4daa57c42c4e",
+        "gloss_token": "TIME TABLE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0098,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-21",
+    "query": "time table",
+    "expected": "time table",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "time table",
+        "method": "PHRASE",
+        "matched": "ISL_TIME_TABLE_01",
+        "motion_version_id": "e38e313c-651b-42e5-867b-4daa57c42c4e",
+        "gloss_token": "TIME TABLE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0093,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-22",
+    "query": "1201",
+    "expected": "1201",
+    "kind": "IDENTIFIER",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [
+      "Unavailable identifier 1 (probe)",
+      "Unavailable identifier 2 (probe)",
+      "Unavailable identifier 1 (probe)"
+    ],
+    "selector_ms": 0.0783,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-22",
+    "query": "1201",
+    "expected": "1201",
+    "kind": "IDENTIFIER",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0293,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-22",
+    "query": "1201",
+    "expected": "1201",
+    "kind": "IDENTIFIER",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0254,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-22",
+    "query": "1201",
+    "expected": "1201",
+    "kind": "IDENTIFIER",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "1",
+        "method": "DIGIT",
+        "matched": "ISL_1_ONE_01",
+        "motion_version_id": "13aa7c82-76e9-44dd-8df4-6439bc899aa8",
+        "gloss_token": "1201",
+        "role": "probe"
+      },
+      {
+        "input": "2",
+        "method": "DIGIT",
+        "matched": "ISL_2_TWO_01",
+        "motion_version_id": "07f2b2a4-8cbc-45c9-a423-c6436bc5cc2f",
+        "gloss_token": "1201",
+        "role": "probe"
+      },
+      {
+        "input": "0",
+        "method": "DIGIT",
+        "matched": "ISL_ZERO_01",
+        "motion_version_id": "1a1d3b63-bb0b-47c9-a210-c4c62b4d7bf4",
+        "gloss_token": "1201",
+        "role": "probe"
+      },
+      {
+        "input": "1",
+        "method": "DIGIT",
+        "matched": "ISL_1_ONE_01",
+        "motion_version_id": "13aa7c82-76e9-44dd-8df4-6439bc899aa8",
+        "gloss_token": "1201",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 4,
+    "missing": [],
+    "selector_ms": 0.0258,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-23",
+    "query": "00120",
+    "expected": "00120",
+    "kind": "IDENTIFIER",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [
+      "Unavailable identifier 1 (probe)",
+      "Unavailable identifier 2 (probe)"
+    ],
+    "selector_ms": 0.1145,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-23",
+    "query": "00120",
+    "expected": "00120",
+    "kind": "IDENTIFIER",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0618,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-23",
+    "query": "00120",
+    "expected": "00120",
+    "kind": "IDENTIFIER",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0563,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-23",
+    "query": "00120",
+    "expected": "00120",
+    "kind": "IDENTIFIER",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "0",
+        "method": "DIGIT",
+        "matched": "ISL_ZERO_01",
+        "motion_version_id": "1a1d3b63-bb0b-47c9-a210-c4c62b4d7bf4",
+        "gloss_token": "00120",
+        "role": "probe"
+      },
+      {
+        "input": "0",
+        "method": "DIGIT",
+        "matched": "ISL_ZERO_01",
+        "motion_version_id": "1a1d3b63-bb0b-47c9-a210-c4c62b4d7bf4",
+        "gloss_token": "00120",
+        "role": "probe"
+      },
+      {
+        "input": "1",
+        "method": "DIGIT",
+        "matched": "ISL_1_ONE_01",
+        "motion_version_id": "13aa7c82-76e9-44dd-8df4-6439bc899aa8",
+        "gloss_token": "00120",
+        "role": "probe"
+      },
+      {
+        "input": "2",
+        "method": "DIGIT",
+        "matched": "ISL_2_TWO_01",
+        "motion_version_id": "07f2b2a4-8cbc-45c9-a423-c6436bc5cc2f",
+        "gloss_token": "00120",
+        "role": "probe"
+      },
+      {
+        "input": "0",
+        "method": "DIGIT",
+        "matched": "ISL_ZERO_01",
+        "motion_version_id": "1a1d3b63-bb0b-47c9-a210-c4c62b4d7bf4",
+        "gloss_token": "00120",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 5,
+    "missing": [],
+    "selector_ms": 0.0551,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-24",
+    "query": "22120",
+    "expected": "22120",
+    "kind": "IDENTIFIER",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [
+      "Unavailable identifier 2 (probe)",
+      "Unavailable identifier 2 (probe)",
+      "Unavailable identifier 1 (probe)",
+      "Unavailable identifier 2 (probe)"
+    ],
+    "selector_ms": 0.0822,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-24",
+    "query": "22120",
+    "expected": "22120",
+    "kind": "IDENTIFIER",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0285,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-24",
+    "query": "22120",
+    "expected": "22120",
+    "kind": "IDENTIFIER",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0272,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-24",
+    "query": "22120",
+    "expected": "22120",
+    "kind": "IDENTIFIER",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "2",
+        "method": "DIGIT",
+        "matched": "ISL_2_TWO_01",
+        "motion_version_id": "07f2b2a4-8cbc-45c9-a423-c6436bc5cc2f",
+        "gloss_token": "22120",
+        "role": "probe"
+      },
+      {
+        "input": "2",
+        "method": "DIGIT",
+        "matched": "ISL_2_TWO_01",
+        "motion_version_id": "07f2b2a4-8cbc-45c9-a423-c6436bc5cc2f",
+        "gloss_token": "22120",
+        "role": "probe"
+      },
+      {
+        "input": "1",
+        "method": "DIGIT",
+        "matched": "ISL_1_ONE_01",
+        "motion_version_id": "13aa7c82-76e9-44dd-8df4-6439bc899aa8",
+        "gloss_token": "22120",
+        "role": "probe"
+      },
+      {
+        "input": "2",
+        "method": "DIGIT",
+        "matched": "ISL_2_TWO_01",
+        "motion_version_id": "07f2b2a4-8cbc-45c9-a423-c6436bc5cc2f",
+        "gloss_token": "22120",
+        "role": "probe"
+      },
+      {
+        "input": "0",
+        "method": "DIGIT",
+        "matched": "ISL_ZERO_01",
+        "motion_version_id": "1a1d3b63-bb0b-47c9-a210-c4c62b4d7bf4",
+        "gloss_token": "22120",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 5,
+    "missing": [],
+    "selector_ms": 0.0268,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-25",
+    "query": "2",
+    "expected": "2",
+    "kind": "NUMBER",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [
+      "Unavailable number 2 (probe)"
+    ],
+    "selector_ms": 0.0304,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-25",
+    "query": "2",
+    "expected": "2",
+    "kind": "NUMBER",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0072,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-25",
+    "query": "2",
+    "expected": "2",
+    "kind": "NUMBER",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.005,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-25",
+    "query": "2",
+    "expected": "2",
+    "kind": "NUMBER",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "2",
+        "method": "WORD",
+        "matched": "ISL_2_TWO_01",
+        "motion_version_id": "07f2b2a4-8cbc-45c9-a423-c6436bc5cc2f",
+        "gloss_token": "2",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0048,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-26",
+    "query": "10",
+    "expected": "10",
+    "kind": "NUMBER",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [
+      "Unavailable number 1 (probe)"
+    ],
+    "selector_ms": 0.0428,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-26",
+    "query": "10",
+    "expected": "10",
+    "kind": "NUMBER",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0058,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-26",
+    "query": "10",
+    "expected": "10",
+    "kind": "NUMBER",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0047,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-26",
+    "query": "10",
+    "expected": "10",
+    "kind": "NUMBER",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "10",
+        "method": "WORD",
+        "matched": "ISL_10_TEN_01",
+        "motion_version_id": "63226024-5edb-4c3d-9d20-2999bc737632",
+        "gloss_token": "10",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0046,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-27",
+    "query": "30",
+    "expected": "30",
+    "kind": "NUMBER",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [
+      "Unavailable number 3 (probe)"
+    ],
+    "selector_ms": 0.0411,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-27",
+    "query": "30",
+    "expected": "30",
+    "kind": "NUMBER",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0319,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-27",
+    "query": "30",
+    "expected": "30",
+    "kind": "NUMBER",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0309,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-27",
+    "query": "30",
+    "expected": "30",
+    "kind": "NUMBER",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "3",
+        "method": "DIGIT",
+        "matched": "ISL_3_THREE_01",
+        "motion_version_id": "a9ff21a6-3bc7-4a34-962b-eb2a03325568",
+        "gloss_token": "30",
+        "role": "probe"
+      },
+      {
+        "input": "0",
+        "method": "DIGIT",
+        "matched": "ISL_ZERO_01",
+        "motion_version_id": "1a1d3b63-bb0b-47c9-a210-c4c62b4d7bf4",
+        "gloss_token": "30",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 2,
+    "missing": [],
+    "selector_ms": 0.0306,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-28",
+    "query": "xylophonex",
+    "expected": "xylophonex",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1209,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-28",
+    "query": "xylophonex",
+    "expected": "xylophonex",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1249,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-28",
+    "query": "xylophonex",
+    "expected": "xylophonex",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1158,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-28",
+    "query": "xylophonex",
+    "expected": "xylophonex",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "x",
+        "method": "ALPHABET",
+        "matched": "ISL_X_01",
+        "motion_version_id": "7a1cdc40-cd36-427a-b01d-4950ed75a99b",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      },
+      {
+        "input": "y",
+        "method": "ALPHABET",
+        "matched": "ISL_Y_01",
+        "motion_version_id": "bd304b81-7aaa-40c6-b568-178c4f2617d0",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      },
+      {
+        "input": "l",
+        "method": "ALPHABET",
+        "matched": "ISL_L_01",
+        "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      },
+      {
+        "input": "o",
+        "method": "ALPHABET",
+        "matched": "ISL_O_01",
+        "motion_version_id": "0a327df7-be58-4468-bf5b-751d5548ca25",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      },
+      {
+        "input": "p",
+        "method": "ALPHABET",
+        "matched": "ISL_P_01",
+        "motion_version_id": "bad3d672-68d9-46a3-9e38-1d864dd01b05",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      },
+      {
+        "input": "h",
+        "method": "ALPHABET",
+        "matched": "ISL_H_01",
+        "motion_version_id": "5bb99060-081a-408d-8caa-1201fd35b1b5",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      },
+      {
+        "input": "o",
+        "method": "ALPHABET",
+        "matched": "ISL_O_01",
+        "motion_version_id": "0a327df7-be58-4468-bf5b-751d5548ca25",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      },
+      {
+        "input": "n",
+        "method": "ALPHABET",
+        "matched": "ISL_N_01",
+        "motion_version_id": "38161d0b-8387-42d7-8540-2c5f413ecc7f",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      },
+      {
+        "input": "x",
+        "method": "ALPHABET",
+        "matched": "ISL_X_01",
+        "motion_version_id": "7a1cdc40-cd36-427a-b01d-4950ed75a99b",
+        "gloss_token": "XYLOPHONEX",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 10,
+    "missing": [],
+    "selector_ms": 0.1088,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-29",
+    "query": "quizzleville",
+    "expected": "quizzleville",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1029,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-29",
+    "query": "quizzleville",
+    "expected": "quizzleville",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.2178,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-29",
+    "query": "quizzleville",
+    "expected": "quizzleville",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.119,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-29",
+    "query": "quizzleville",
+    "expected": "quizzleville",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "q",
+        "method": "ALPHABET",
+        "matched": "ISL_Q_01",
+        "motion_version_id": "f3e2b393-0cf4-44d8-a078-b012bcb3bfb9",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "u",
+        "method": "ALPHABET",
+        "matched": "ISL_U_01",
+        "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "i",
+        "method": "ALPHABET",
+        "matched": "ISL_I_01",
+        "motion_version_id": "44ef1a05-41f2-407e-b12a-7e6090bc58a8",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "z",
+        "method": "ALPHABET",
+        "matched": "ISL_Z_01",
+        "motion_version_id": "a51c3650-937a-4755-baae-cf095ee18032",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "z",
+        "method": "ALPHABET",
+        "matched": "ISL_Z_01",
+        "motion_version_id": "a51c3650-937a-4755-baae-cf095ee18032",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "l",
+        "method": "ALPHABET",
+        "matched": "ISL_L_01",
+        "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "v",
+        "method": "ALPHABET",
+        "matched": "ISL_V_01",
+        "motion_version_id": "955ec40a-8929-438a-9dbe-83704001bfe8",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "i",
+        "method": "ALPHABET",
+        "matched": "ISL_I_01",
+        "motion_version_id": "44ef1a05-41f2-407e-b12a-7e6090bc58a8",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "l",
+        "method": "ALPHABET",
+        "matched": "ISL_L_01",
+        "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "l",
+        "method": "ALPHABET",
+        "matched": "ISL_L_01",
+        "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "QUIZZLEVILLE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 12,
+    "missing": [],
+    "selector_ms": 0.1149,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-30",
+    "query": "evacuate",
+    "expected": "evacuate",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.2257,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-30",
+    "query": "evacuate",
+    "expected": "evacuate",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.2008,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-30",
+    "query": "evacuate",
+    "expected": "evacuate",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1844,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-30",
+    "query": "evacuate",
+    "expected": "evacuate",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "EVACUATE",
+        "role": "probe"
+      },
+      {
+        "input": "v",
+        "method": "ALPHABET",
+        "matched": "ISL_V_01",
+        "motion_version_id": "955ec40a-8929-438a-9dbe-83704001bfe8",
+        "gloss_token": "EVACUATE",
+        "role": "probe"
+      },
+      {
+        "input": "a",
+        "method": "ALPHABET",
+        "matched": "ISL_A_01",
+        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
+        "gloss_token": "EVACUATE",
+        "role": "probe"
+      },
+      {
+        "input": "c",
+        "method": "ALPHABET",
+        "matched": "ISL_C_01",
+        "motion_version_id": "9f6d2d48-875a-41f8-bba0-b1c74e4faf8d",
+        "gloss_token": "EVACUATE",
+        "role": "probe"
+      },
+      {
+        "input": "u",
+        "method": "ALPHABET",
+        "matched": "ISL_U_01",
+        "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
+        "gloss_token": "EVACUATE",
+        "role": "probe"
+      },
+      {
+        "input": "a",
+        "method": "ALPHABET",
+        "matched": "ISL_A_01",
+        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
+        "gloss_token": "EVACUATE",
+        "role": "probe"
+      },
+      {
+        "input": "t",
+        "method": "ALPHABET",
+        "matched": "ISL_T_01",
+        "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
+        "gloss_token": "EVACUATE",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "EVACUATE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 8,
+    "missing": [],
+    "selector_ms": 0.1779,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-31",
+    "query": "not",
+    "expected": "not",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0534,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-31",
+    "query": "not",
+    "expected": "not",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0622,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-31",
+    "query": "not",
+    "expected": "not",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0572,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-31",
+    "query": "not",
+    "expected": "not",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "n",
+        "method": "ALPHABET",
+        "matched": "ISL_N_01",
+        "motion_version_id": "38161d0b-8387-42d7-8540-2c5f413ecc7f",
+        "gloss_token": "NOT",
+        "role": "probe"
+      },
+      {
+        "input": "o",
+        "method": "ALPHABET",
+        "matched": "ISL_O_01",
+        "motion_version_id": "0a327df7-be58-4468-bf5b-751d5548ca25",
+        "gloss_token": "NOT",
+        "role": "probe"
+      },
+      {
+        "input": "t",
+        "method": "ALPHABET",
+        "matched": "ISL_T_01",
+        "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
+        "gloss_token": "NOT",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 3,
+    "missing": [],
+    "selector_ms": 0.0556,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-32",
+    "query": "future",
+    "expected": "future",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0926,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-32",
+    "query": "future",
+    "expected": "future",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1037,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-32",
+    "query": "future",
+    "expected": "future",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.1015,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-32",
+    "query": "future",
+    "expected": "future",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "f",
+        "method": "ALPHABET",
+        "matched": "ISL_F_01",
+        "motion_version_id": "acec8292-47cf-4a8e-979e-1268a0f88092",
+        "gloss_token": "FUTURE",
+        "role": "probe"
+      },
+      {
+        "input": "u",
+        "method": "ALPHABET",
+        "matched": "ISL_U_01",
+        "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
+        "gloss_token": "FUTURE",
+        "role": "probe"
+      },
+      {
+        "input": "t",
+        "method": "ALPHABET",
+        "matched": "ISL_T_01",
+        "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
+        "gloss_token": "FUTURE",
+        "role": "probe"
+      },
+      {
+        "input": "u",
+        "method": "ALPHABET",
+        "matched": "ISL_U_01",
+        "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
+        "gloss_token": "FUTURE",
+        "role": "probe"
+      },
+      {
+        "input": "r",
+        "method": "ALPHABET",
+        "matched": "ISL_R_01",
+        "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
+        "gloss_token": "FUTURE",
+        "role": "probe"
+      },
+      {
+        "input": "e",
+        "method": "ALPHABET",
+        "matched": "ISL_E_01",
+        "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
+        "gloss_token": "FUTURE",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 6,
+    "missing": [],
+    "selector_ms": 0.0994,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-33",
+    "query": "at",
+    "expected": "at",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0414,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-33",
+    "query": "at",
+    "expected": "at",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0453,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-33",
+    "query": "at",
+    "expected": "at",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0558,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-33",
+    "query": "at",
+    "expected": "at",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "a",
+        "method": "ALPHABET",
+        "matched": "ISL_A_01",
+        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
+        "gloss_token": "AT",
+        "role": "probe"
+      },
+      {
+        "input": "t",
+        "method": "ALPHABET",
+        "matched": "ISL_T_01",
+        "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
+        "gloss_token": "AT",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 2,
+    "missing": [],
+    "selector_ms": 0.0567,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-34",
+    "query": "railway track",
+    "expected": "railway track",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0802,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-34",
+    "query": "railway track",
+    "expected": "railway track",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "railway track",
+        "method": "PHRASE",
+        "matched": "ISL_RAILWAY_TRACK_01",
+        "motion_version_id": "6a99d114-3649-4984-805b-03fe0fc1de91",
+        "gloss_token": "RAILWAY TRACK",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0119,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-34",
+    "query": "railway track",
+    "expected": "railway track",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "railway track",
+        "method": "PHRASE",
+        "matched": "ISL_RAILWAY_TRACK_01",
+        "motion_version_id": "6a99d114-3649-4984-805b-03fe0fc1de91",
+        "gloss_token": "RAILWAY TRACK",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0102,
+    "latency_scope": "original selector before ablation output filtering"
+  },
+  {
+    "id": "probe-34",
+    "query": "railway track",
+    "expected": "railway track",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "railway track",
+        "method": "PHRASE",
+        "matched": "ISL_RAILWAY_TRACK_01",
+        "motion_version_id": "6a99d114-3649-4984-805b-03fe0fc1de91",
+        "gloss_token": "RAILWAY TRACK",
+        "role": "probe"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0094,
+    "latency_scope": "original selector before ablation output filtering"
+  }
+]

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Feedback, Field, JsonDetails, Pager, time, useWorkspace } from './workspace.jsx';
+import Icon, { SectionTitle, StatusBadge } from './Icon.jsx';
 import { numberedStationDefinition, suggestedStationId } from '../services/station-setup.mjs';
 
 export function ImportManager({ token }) {
@@ -16,18 +17,18 @@ export function ImportManager({ token }) {
   const inspect = (id, page = 0) => work.run('Loading import results', async api => {
     setJob(await api(`/api/v1/admin/imports/${id}?offset=${page}`)); setItemOffset(page);
   });
-  return <section className="management-section"><h2>Bulk imports and recovery</h2><Feedback {...work} />
+  return <section className="panel management-section"><SectionTitle icon="upload" title="Bulk imports and recovery" description="Import a configured dataset and follow each request through validation and registration." /><Feedback {...work} />
     <label className="form-field">Configured source<select aria-label="Configured source" value={source} disabled={!!work.busy} onChange={e => { setSource(e.target.value); requestId.current = null; }}><option value="">Select source</option>{sources.map(name => <option key={name}>{name}</option>)}</select></label>
     {!sources.length && <p>No import sources configured on the backend.</p>}
-    <div className="actions"><button disabled={!!work.busy || !source} onClick={() => work.run('Creating resumable import', async api => {
+    <div className="actions"><button className="primary" disabled={!!work.busy || !source} onClick={() => work.run('Creating resumable import', async api => {
       requestId.current ??= crypto.randomUUID();
       const result = await api('/api/v1/admin/imports', { body: { source_alias: source, request_id: requestId.current } });
       setJob(await api(`/api/v1/admin/imports/${result.job_id}`)); setItemOffset(0);
       setJobs((await api('/api/v1/admin/imports')).items); setOffset(0);
-    }, 'Import recorded. The existing backend worker processes queued items.')}>Start / recover import request</button>
+    }, 'Import recorded. The existing backend worker processes queued items.')}><Icon name="upload" />Start / recover import request</button>
       <button disabled={!!work.busy} onClick={() => { requestId.current = null; list(offset); }}>Refresh imports / new request</button></div>
     <p>Registration preserves review states. A queued job needs the configured backend import worker; starting a job does not approve assets.</p>
-    <div className="table-scroll"><table><thead><tr><th>Source</th><th>State</th><th>Updated</th><th>Results</th></tr></thead><tbody>{jobs.map(row => <tr key={row.id}><td>{row.source_alias}</td><td>{row.state}</td><td>{time(row.updated_at)}</td><td><button disabled={!!work.busy} onClick={() => inspect(row.id)}>Inspect import</button></td></tr>)}</tbody></table></div>
+    <div className="table-scroll"><table><thead><tr><th>Source</th><th>State</th><th>Updated</th><th>Results</th></tr></thead><tbody>{!jobs.length && <tr><td colSpan={4}><div className="empty-state"><Icon name="upload" /><strong>No imports to show</strong>Choose a configured source to start an import.</div></td></tr>}{jobs.map(row => <tr key={row.id}><td>{row.source_alias}</td><td><StatusBadge value={row.state} /></td><td>{time(row.updated_at)}</td><td><button disabled={!!work.busy} onClick={() => inspect(row.id)}>Inspect import</button></td></tr>)}</tbody></table></div>
     <Pager offset={offset} count={jobs.length} onChange={list} busy={!!work.busy} />
     {job && <section className="panel management-section"><h3>Import {job.source_alias} · {job.state}</h3><p className="identifier">{job.job_id}</p>
       <dl className="meaning-fields">{Object.entries(job.counts).map(([label, count]) => <div key={label}><dt>{label.replaceAll('_',' ')}</dt><dd>{count}</dd></div>)}</dl>
@@ -50,14 +51,14 @@ export function StationManager({ token }) {
   const [idEdited, setIdEdited] = useState(false), [platformsEdited, setPlatformsEdited] = useState(true), [advanced, setAdvanced] = useState(false);
   const refresh = () => work.run('Loading station configuration', async api => setStations((await api('/api/v1/input/capabilities')).stations));
   useEffect(() => { refresh(); }, []);
-  return <section className="management-section"><h2>Station setup</h2><p>Start by entering the station name and number of platforms. Each station keeps its own configuration and display registrations. Manage the shared motion library through Library and Imports.</p><Feedback {...work} />
-    <div className="actions"><button disabled={!!work.busy} onClick={refresh}>Refresh stations</button>{stations.map(row => <button key={row.id} disabled={!!work.busy} onClick={() => {
+  return <section className="panel management-section"><SectionTitle icon="location" title="Station setup" /><p>Start by entering the station name and number of platforms. Each station keeps its own configuration and display registrations. Manage the shared motion library through Library and Imports.</p><Feedback {...work} />
+    <div className="actions"><button disabled={!!work.busy} onClick={refresh}><Icon name="refresh" />Refresh stations</button>{stations.map(row => <button key={row.id} disabled={!!work.busy} onClick={() => {
       setId(row.id); setIdEdited(true); setRevision(row.revision); setDefinition(JSON.stringify(row.definition,null,2)); setConfirmed(false);
       setName(row.definition.name); setCount(String(row.definition.platforms.length)); setBase(row.definition); setPlatformsEdited(false); setAdvanced(false);
     }}>{row.definition.name}</button>)}<button disabled={!!work.busy} onClick={() => {
       setId(''); setIdEdited(false); setRevision(0); setDefinition(''); setConfirmed(false); setName(''); setCount(''); setBase({}); setPlatformsEdited(true); setAdvanced(false);
     }}>New station</button></div>
-    {!advanced && <><Field label="Station name" value={name} disabled={!!work.busy} onChange={value => {
+    {!advanced && <><Field label="Station name" placeholder="Enter station name" value={name} disabled={!!work.busy} onChange={value => {
       setName(value); if (!idEdited && !revision) setId(suggestedStationId(value)); setConfirmed(false);
     }} maxLength={160} />
     <Field label="Number of platforms" value={count} type="number" min={1} max={256} step={1} disabled={!!work.busy} onChange={value => { setCount(value); setPlatformsEdited(true); setConfirmed(false); }} />
@@ -77,9 +78,9 @@ export function StationManager({ token }) {
       });
     }} />Advanced station configuration</label>
     {advanced && <Field label="Station definition JSON" value={definition} disabled={!!work.busy} onChange={value => { setDefinition(value); setConfirmed(false); }} multiline rows={14} maxLength={30000} />}
-    <Field label="Station change reason" value={reason} disabled={!!work.busy} onChange={value => { setReason(value); setConfirmed(false); }} maxLength={4000} />
+    <Field label="Station change reason" placeholder="Enter the reason for this change" value={reason} disabled={!!work.busy} onChange={value => { setReason(value); setConfirmed(false); }} maxLength={4000} />
     <label className="confirmation"><input type="checkbox" checked={confirmed} disabled={!!work.busy} onChange={e => setConfirmed(e.target.checked)} />I checked the station definition. Updating it withdraws affected live announcements.</label>
-    <button disabled={!!work.busy || !confirmed || !id || !(advanced ? definition.trim() : name.trim() && count) || !reason.trim()} onClick={() => work.run('Saving station revision', async api => {
+    <button className="primary" disabled={!!work.busy || !confirmed || !id || !(advanced ? definition.trim() : name.trim() && count) || !reason.trim()} onClick={() => work.run('Saving station revision', async api => {
       let parsed;
       if (advanced) { try { parsed = JSON.parse(definition); } catch { throw new Error('Station definition must be valid JSON.'); } }
       else parsed = numberedStationDefinition(name, count, base, platformsEdited);
@@ -98,10 +99,10 @@ export function DisplayManager({ token }) {
   const [confirmed, setConfirmed] = useState(false);
   useEffect(() => { work.run('Loading stations', async api => { const data = await api('/api/v1/input/capabilities'); setStations(data.stations); setStation(data.stations[0]?.id || ''); }); }, []);
   const list = (page = 0) => work.run('Refreshing display status', async api => { setDevices((await api(`/api/v1/operations/displays?station_id=${encodeURIComponent(station)}&offset=${page}`)).items); setOffset(page); });
-  return <section className="management-section"><h2>Display monitoring and registration</h2><Feedback {...work} />
+  return <section className="panel management-section"><SectionTitle icon="monitor" title="Display monitoring and registration" description="Connect station displays with registered identities and monitor their delivery status." /><Feedback {...work} />
     <label className="form-field">Monitor station<select aria-label="Monitor station" value={station} disabled={!!work.busy} onChange={e => { setStation(e.target.value); setDevices([]); setDevice(null); setId(''); setConfirmed(false); }}><option value="">Select station</option>{stations.map(row => <option key={row.id} value={row.id}>{row.definition.name}</option>)}</select></label>
-    <button disabled={!!work.busy || !station} onClick={() => list()}>Refresh displays</button><p>Snapshot from the last refresh. Check last-seen, freshness, backlog and completed playback together.</p>
-    <div className="table-scroll"><table><thead><tr><th>Display</th><th>Connection</th><th>Last seen</th><th>Backlog / playback</th><th>Details</th></tr></thead><tbody>{devices.map(row => <tr key={row.id}><td>{row.name}</td><td>{row.lease_current ? 'Fresh lease' : row.enabled ? 'Offline / stale' : 'Disabled'}</td><td>{time(row.last_seen)}</td><td>{row.pending_messages} pending · receive lag {row.receive_lag} · {row.latest_delivery?.state || 'No playback'}</td>
+    <button disabled={!!work.busy || !station} onClick={() => list()}><Icon name="refresh" />Refresh displays</button><p>Snapshot from the last refresh. Check last-seen, freshness, backlog and completed playback together.</p>
+    <div className="table-scroll"><table><thead><tr><th>Display</th><th>Connection</th><th>Last seen</th><th>Backlog / playback</th><th>Details</th></tr></thead><tbody>{!devices.length && <tr><td colSpan={5}><div className="empty-state"><Icon name="monitor" /><strong>No displays loaded</strong>Refresh displays for the selected station, or register a display below.</div></td></tr>}{devices.map(row => <tr key={row.id}><td>{row.name}</td><td>{row.lease_current ? 'Fresh lease' : row.enabled ? 'Offline / stale' : 'Disabled'}</td><td>{time(row.last_seen)}</td><td>{row.pending_messages} pending · receive lag {row.receive_lag} · {row.latest_delivery?.state || 'No playback'}</td>
       <td><button disabled={!!work.busy} onClick={() => work.run('Loading device delivery history', async api => { const data = await api(`/api/v1/admin/displays/${row.id}`); setDevice(data); setId(data.id); setName(data.name); setSubject(data.subject); setEnabled(data.enabled); setConfirmed(false); })}>Inspect display</button></td></tr>)}</tbody></table></div>
     <Pager offset={offset} count={devices.length} onChange={list} busy={!!work.busy} />
     {device && <JsonDetails label="Recorded delivery states and failures" value={device.deliveries} />}
@@ -113,7 +114,7 @@ export function DisplayManager({ token }) {
       <label><input type="checkbox" checked={enabled} disabled={!!work.busy} onChange={e => { setEnabled(e.target.checked); setConfirmed(false); }} />Display enabled</label>
       <p>The subject must match a separately configured, expiring station-scoped display credential. Credentials are not created or exposed here.</p>
       <label className="confirmation"><input type="checkbox" checked={confirmed} disabled={!!work.busy} onChange={e => setConfirmed(e.target.checked)} />I checked the station and device identity. Updating registration ends the existing display session.</label>
-      <button disabled={!!work.busy || !confirmed || !station || !id || !subject.trim() || !name.trim()} onClick={() => work.run('Saving display registration', async api => {
+      <button className="primary" disabled={!!work.busy || !confirmed || !station || !id || !subject.trim() || !name.trim()} onClick={() => work.run('Saving display registration', async api => {
         const result = await api(`/api/v1/admin/displays/${encodeURIComponent(id)}`, { body: { station_id: station, subject, name, enabled, expected_revision: device?.revision ?? 0 } });
         setDevice(result); setConfirmed(false); setDevices((await api(`/api/v1/operations/displays?station_id=${encodeURIComponent(station)}`)).items); setOffset(0);
       }, 'Display registration recorded.')}>Save display registration</button>
@@ -125,7 +126,7 @@ export function AuditManager({ token }) {
   const work = useWorkspace(token), [items, setItems] = useState([]), [offset, setOffset] = useState(0);
   const list = (page = 0) => work.run('Loading audit history', async api => { setItems((await api(`/api/v1/admin/audit?limit=50&offset=${page}`)).items); setOffset(page); });
   useEffect(() => { list(); }, []);
-  return <section className="management-section"><div className="panel-heading"><h2>Audit history</h2><button disabled={!!work.busy} onClick={() => list(offset)}>Refresh audit</button></div><Feedback {...work} />
-    {items.map(row => <article className="audit-entry" key={row.id}><h3>{row.action}</h3><p>{row.actor} · {time(row.created_at)}</p><p className="identifier">Entity: {row.entity_id}</p><JsonDetails label="Recorded change" value={row.details} /></article>)}
+  return <section className="panel management-section audit-panel"><div className="panel-heading"><SectionTitle icon="audit" title="Audit history" description="A chronological record of activity in this workspace." /><button disabled={!!work.busy} onClick={() => list(offset)}><Icon name="refresh" />Refresh audit</button></div><Feedback {...work} />
+    {!items.length && !work.busy && <div className="empty-state"><Icon name="audit" /><strong>No activity to show</strong>Recorded operations will appear here.</div>}{items.map(row => <article className="audit-entry" key={row.id}><h3><StatusBadge value={row.action} /></h3><p>{row.actor} · {time(row.created_at)}</p><p className="identifier">Entity: {row.entity_id}</p><JsonDetails label="Recorded change" value={row.details} /></article>)}
     <Pager offset={offset} count={items.length} onChange={list} busy={!!work.busy} /></section>;
 }

@@ -165,6 +165,10 @@ def workspace_router(sessions, principal):
                 LEFT JOIN display_deliveries dd
                   ON dd.display_id=d.id AND dd.manifest_id=r.manifest_id
                 WHERE a.station_id=d.station_id AND a.state='LIVE' AND r.valid_until>now()
+                AND (EXISTS(SELECT 1 FROM display_routes dr WHERE dr.display_id=d.id
+                   AND dr.manifest_id=r.manifest_id)
+                  OR (NOT r.targeted AND NOT EXISTS(SELECT 1 FROM display_routes dr
+                   WHERE dr.display_id=d.id)))
                 AND coalesce(dd.state,'RECEIVED')<>'COMPLETED') AS pending_messages,
               (SELECT jsonb_build_object('state',dd.state,'error_code',dd.error_code,
                  'manifest_id',dd.manifest_id,'updated_at',dd.updated_at)

@@ -22,7 +22,7 @@ Station publication → connected live display
 
 There are separate `frontend/` and `backend/` applications. The backend uses FastAPI, PostgreSQL and stored GLB assets. The frontend owns the screens, microphone recording, API interactions and Three.js rendering.
 
-**Current development behavior:** when the backend enables development mode, available motions can play without linguistic or construction approval. Grammar failure falls back to lexical retrieval, with typo recovery and available letters. Unknown input does not produce unrelated sample motions. The announcement screen also sends development announcements to the station's connected displays. Strict reviewed behavior remains available when development mode is disabled.
+**Current development behavior:** when the backend enables development mode, available motions can play without linguistic or construction approval. Grammar failure falls back to lexical retrieval, with typo recovery and available letters. Unknown input does not produce unrelated sample motions. The announcement screen sends development announcements to explicitly selected displays, or broadcasts to all enabled displays at the station. With no selected targets, playback stays private. Strict reviewed behavior remains available when development mode is disabled.
 
 Playback success is not proof of correct ISL translation. Keep draft, lexical-recovery and incomplete-output messages visible and accurate during a redesign.
 
@@ -103,9 +103,13 @@ Under Templates & coverage, **Load arrival example from library** builds editabl
 | [src/app/layout.jsx](src/app/layout.jsx) | Root HTML layout, global CSS import and page metadata |
 | `src/app/**/page.jsx` | Small route entry points that render the main console components |
 | [src/components/workspace.jsx](src/components/workspace.jsx) | Shared navigation, form fields, feedback and workspace request helpers |
+| [src/components/Icon.jsx](src/components/Icon.jsx) | Local SVG icons, section headings and status badges; no external icon dependency |
+| [src/components/WorkspaceGuidance.jsx](src/components/WorkspaceGuidance.jsx) | Contextual help for station and display configuration |
+| [public/images/railway-hero.png](public/images/railway-hero.png) | Supplied railway illustration used by the announcement header and live-display empty state |
 | [src/components/LibraryManager.jsx](src/components/LibraryManager.jsx) | Motion/concept/version management UI |
 | [src/components/TemplateManager.jsx](src/components/TemplateManager.jsx) | Construction templates and coverage UI |
 | [src/components/OperationsManager.jsx](src/components/OperationsManager.jsx) | Station, display, dataset import and audit management components |
+| [src/components/ControlRoom.jsx](src/components/ControlRoom.jsx) | Per-display targets, station broadcast, emergency priority, stop commands, platform labels and live status/history |
 | [src/components/PublicationPanel.jsx](src/components/PublicationPanel.jsx) | Reviewed announcement publication controls |
 | [src/components/AvatarViewer.jsx](src/components/AvatarViewer.jsx) | Three.js scene and persistent avatar; exposes playback methods to the consoles |
 | [src/services/api.mjs](src/services/api.mjs) | Authenticated requests, errors, timeouts and manifest revalidation |

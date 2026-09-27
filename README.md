@@ -54,6 +54,22 @@ The railway operator workspace. It provides:
 
 In the local development configuration, a ready announcement can be played automatically and sent to the connected live display. Production mode keeps preview and publication as separate confirmed actions.
 
+### Central control room
+
+The Announcements page now lists the selected station's registered displays, their platform labels, assigned captions, connection freshness and acknowledged playback status. The table refreshes every second; displays receive committed assignments over the existing authenticated WebSockets.
+
+1. Register a distinct display identity and credential for every screen in Library & operations → Displays. Open `/display` on each screen with its own ID/token.
+2. In Announcements, select one or more display checkboxes, enter text or record voice, and select **Play announcement**. In development this sends the available sequence; production still requires the reviewed preview/publication workflow. With no selected targets, development playback stays private.
+3. Select another screen and send different text to give it an independent assignment. Sending replaces only the selected displays' assignments.
+4. Choose **Broadcast to all displays** to replace every enabled display's assignment at this station. **Emergency priority** records priority 0. Offline screens receive only their latest unexpired assignment when they reconnect. Previous assignments do not automatically resume after a broadcast.
+5. Use **Stop selected displays** to clear the selected assignments. Use each row's platform selector to change its physical platform label; this does not rewrite announcement content or move it to another screen. To move content, send it to the new target and stop the old target.
+
+Text updates on the next WebSocket reconciliation (normally about one second). Signing must load its assets and switches at the existing safe animation boundary, so exact simultaneous frames or zero-latency emergency signing are not promised. A completed assignment plays once; it does not loop indefinitely. Correct emergency signing still depends on available/approved content under the configured retrieval mode.
+
+Routing is persisted in `display_routes`, with optimistic route revisions and append-only `display_route_history`. Publication, route changes and station events commit together. Stop commands are idempotent; conflicts require refreshed targets. The operator history shows the latest 100 assignment actions; all actions remain in PostgreSQL. Migration `0009_display_routing` preserves old station-wide delivery for displays not yet individually controlled. Rollback after routing has been used requires a paired pre-upgrade backup or forward repair.
+
+The local-PC launcher remains loopback-only. Separate physical display computers need a reachable same-origin frontend/reverse proxy and explicitly allowed WebSocket origins; `127.0.0.1` on a remote screen refers to that screen itself. No firewall or external listener is opened automatically.
+
 ### Library and Operations - `/admin`
 
 The administrator and content-management workspace contains these sections:
