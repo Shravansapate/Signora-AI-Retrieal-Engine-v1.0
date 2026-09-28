@@ -3778,5 +3778,260 @@
       "STATION",
       "CLEAN"
     ]
+  },
+  {
+    "id": "additional-0",
+    "category": "Arrival",
+    "variant": 0,
+    "family": "additional-0",
+    "text": "Train 00981 has already arrived on platform 1.",
+    "entities": {
+      "train_number": "00981",
+      "platform": "1"
+    },
+    "required_units": [
+      "TRAIN",
+      "00981",
+      "PLATFORM",
+      "1",
+      "ALREADY",
+      "ARRIVE"
+    ]
+  },
+  {
+    "id": "additional-1",
+    "category": "Arrival",
+    "variant": 0,
+    "family": "additional-1",
+    "text": "Train 13007 will not arrive at platform 8.",
+    "entities": {
+      "train_number": "13007",
+      "platform": "8"
+    },
+    "required_units": [
+      "TRAIN",
+      "13007",
+      "PLATFORM",
+      "8",
+      "FUTURE",
+      "NOT",
+      "ARRIVE"
+    ]
+  },
+  {
+    "id": "additional-2",
+    "category": "Departure",
+    "variant": 0,
+    "family": "additional-2",
+    "text": "Train 00810 has already departed from platform 6.",
+    "entities": {
+      "train_number": "00810",
+      "platform": "6"
+    },
+    "required_units": [
+      "TRAIN",
+      "00810",
+      "PLATFORM",
+      "6",
+      "ALREADY",
+      "DEPART"
+    ]
+  },
+  {
+    "id": "additional-3",
+    "category": "Departure",
+    "variant": 0,
+    "family": "additional-3",
+    "text": "Train 00456 will not depart from platform 7.",
+    "entities": {
+      "train_number": "00456",
+      "platform": "7"
+    },
+    "required_units": [
+      "TRAIN",
+      "00456",
+      "PLATFORM",
+      "7",
+      "FUTURE",
+      "NOT",
+      "DEPART"
+    ]
+  },
+  {
+    "id": "additional-4",
+    "category": "Delay",
+    "variant": 0,
+    "family": "additional-4",
+    "text": "Train 19653 is delayed by 2 hours.",
+    "entities": {
+      "train_number": "19653",
+      "delay_duration": "2 hours"
+    },
+    "required_units": [
+      "TRAIN",
+      "19653",
+      "DELAY",
+      "2",
+      "HOUR"
+    ]
+  },
+  {
+    "id": "additional-5",
+    "category": "Delay",
+    "variant": 0,
+    "family": "additional-5",
+    "text": "Train 18309 is delayed by 75 minutes.",
+    "entities": {
+      "train_number": "18309",
+      "delay_duration": "75 minutes"
+    },
+    "required_units": [
+      "TRAIN",
+      "18309",
+      "DELAY",
+      "75",
+      "MINUTE"
+    ]
+  },
+  {
+    "id": "additional-6",
+    "category": "Cancellation",
+    "variant": 0,
+    "family": "additional-6",
+    "text": "Train 13917 has not been cancelled.",
+    "entities": {
+      "train_number": "13917"
+    },
+    "required_units": [
+      "TRAIN",
+      "13917",
+      "NOT",
+      "CANCEL"
+    ]
+  },
+  {
+    "id": "additional-7",
+    "category": "Cancellation",
+    "variant": 0,
+    "family": "additional-7",
+    "text": "Train 18234 is not cancelled.",
+    "entities": {
+      "train_number": "18234"
+    },
+    "required_units": [
+      "TRAIN",
+      "18234",
+      "NOT",
+      "CANCEL"
+    ]
+  },
+  {
+    "id": "additional-8",
+    "category": "Platform change",
+    "variant": 0,
+    "family": "additional-8",
+    "text": "Platform for train 12005 has changed from 1 to 8.",
+    "entities": {
+      "train_number": "12005",
+      "old_platform": "1",
+      "new_platform": "8"
+    },
+    "required_units": [
+      "TRAIN",
+      "12005",
+      "FROM",
+      "PLATFORM",
+      "1",
+      "TO",
+      "PLATFORM",
+      "8",
+      "CHANGE"
+    ]
+  },
+  {
+    "id": "additional-9",
+    "category": "Platform change",
+    "variant": 0,
+    "family": "additional-9",
+    "text": "Train 19711 will leave from platform 6 instead of platform 4.",
+    "entities": {
+      "train_number": "19711",
+      "old_platform": "4",
+      "new_platform": "6"
+    },
+    "required_units": [
+      "TRAIN",
+      "19711",
+      "FROM",
+      "PLATFORM",
+      "4",
+      "TO",
+      "PLATFORM",
+      "6",
+      "CHANGE"
+    ]
+  },
+  {
+    "id": "additional-10",
+    "category": "Emergency",
+    "variant": 0,
+    "family": "additional-10",
+    "text": "Fire reported in the waiting room. Leave through the exit.",
+    "entities": {},
+    "required_units": [
+      "FIRE",
+      "WAITING ROOM",
+      "LEAVE",
+      "EXIT"
+    ]
+  },
+  {
+    "id": "additional-11",
+    "category": "Emergency",
+    "variant": 0,
+    "family": "additional-11",
+    "text": "Emergency help is required at platform 8.",
+    "entities": {
+      "platform": "8"
+    },
+    "required_units": [
+      "EMERGENCY",
+      "HELP",
+      "PLATFORM",
+      "8"
+    ]
+  },
+  {
+    "id": "additional-12",
+    "category": "Other",
+    "variant": 0,
+    "family": "additional-12",
+    "text": "Tickets for the Superfast Express are available at the counter.",
+    "entities": {
+      "train_name": "superfast express"
+    },
+    "required_units": [
+      "TICKET",
+      "SUPERFAST EXPRESS",
+      "AVAILABLE",
+      "COUNTER"
+    ]
+  },
+  {
+    "id": "additional-13",
+    "category": "Other",
+    "variant": 0,
+    "family": "additional-13",
+    "text": "Passengers travelling to Chennai may collect tickets at the counter.",
+    "entities": {
+      "destination": "chennai"
+    },
+    "required_units": [
+      "PASSENGER",
+      "TO",
+      "CHENNAI",
+      "TICKET",
+      "COUNTER"
+    ]
   }
 ]

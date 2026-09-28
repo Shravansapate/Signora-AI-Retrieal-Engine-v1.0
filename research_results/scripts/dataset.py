@@ -50,22 +50,47 @@ def make_dataset():
             if 'to Pune' in text: entities['destination']='pune'
             if 'Xylophonex' in text: entities.update(source='xylophonex',destination='quizzleville')
             add('Other',text,entities,units)
+    # Additional distinct families ensure >=200 distinct texts (not only 210 cases
+    # containing repeated general notices). These labels do not use predictions.
+    extra=[
+        ('Arrival','Train 00981 has already arrived on platform 1.',{'train_number':'00981','platform':'1'},['TRAIN','00981','PLATFORM','1','ALREADY','ARRIVE']),
+        ('Arrival','Train 13007 will not arrive at platform 8.',{'train_number':'13007','platform':'8'},['TRAIN','13007','PLATFORM','8','FUTURE','NOT','ARRIVE']),
+        ('Departure','Train 00810 has already departed from platform 6.',{'train_number':'00810','platform':'6'},['TRAIN','00810','PLATFORM','6','ALREADY','DEPART']),
+        ('Departure','Train 00456 will not depart from platform 7.',{'train_number':'00456','platform':'7'},['TRAIN','00456','PLATFORM','7','FUTURE','NOT','DEPART']),
+        ('Delay','Train 19653 is delayed by 2 hours.',{'train_number':'19653','delay_duration':'2 hours'},['TRAIN','19653','DELAY','2','HOUR']),
+        ('Delay','Train 18309 is delayed by 75 minutes.',{'train_number':'18309','delay_duration':'75 minutes'},['TRAIN','18309','DELAY','75','MINUTE']),
+        ('Cancellation','Train 13917 has not been cancelled.',{'train_number':'13917'},['TRAIN','13917','NOT','CANCEL']),
+        ('Cancellation','Train 18234 is not cancelled.',{'train_number':'18234'},['TRAIN','18234','NOT','CANCEL']),
+        ('Platform change','Platform for train 12005 has changed from 1 to 8.',{'train_number':'12005','old_platform':'1','new_platform':'8'},['TRAIN','12005','FROM','PLATFORM','1','TO','PLATFORM','8','CHANGE']),
+        ('Platform change','Train 19711 will leave from platform 6 instead of platform 4.',{'train_number':'19711','old_platform':'4','new_platform':'6'},['TRAIN','19711','FROM','PLATFORM','4','TO','PLATFORM','6','CHANGE']),
+        ('Emergency','Fire reported in the waiting room. Leave through the exit.',{},['FIRE','WAITING ROOM','LEAVE','EXIT']),
+        ('Emergency','Emergency help is required at platform 8.',{'platform':'8'},['EMERGENCY','HELP','PLATFORM','8']),
+        ('Other','Tickets for the Superfast Express are available at the counter.',{'train_name':'superfast express'},['TICKET','SUPERFAST EXPRESS','AVAILABLE','COUNTER']),
+        ('Other','Passengers travelling to Chennai may collect tickets at the counter.',{'destination':'chennai'},['PASSENGER','TO','CHENNAI','TICKET','COUNTER']),
+    ]
+    for i,(category,text,entities,required) in enumerate(extra):
+        rows.append(dict(id=f'additional-{i}',category=category,variant=0,family=f'additional-{i}',text=text,entities=entities,required_units=required))
     return rows
 
 def main():
     data = make_dataset()
-    assert len(data)==210 and len({r['id'] for r in data})==210
+    assert len(data)==224 and len({r['id'] for r in data})==224 and len({r['text'] for r in data})>=200
     save(ROOT/'tests/research_evaluation/announcements.json',data)
     conflicts=[]
     for i in range(10):
         n,p = str(1201+i), str(1+i%7)
         base=f'Train {n} from Nagpur to Mumbai will arrive at platform {p} at 5:30 PM'
         for kind, wrong in [('train_number',base.replace(n,str(9901+i))),('platform',base.replace('platform '+p,'platform '+str(int(p)+1))),('destination',base.replace('Mumbai','Pune')),('time',base.replace('5:30','6:30')),('cancellation_status',f'Train {n} from Nagpur to Mumbai is cancelled')]:
-            conflicts.append(dict(id=f'{kind}-{i}',kind=kind,announcement=base,trusted_statement=wrong,expected_conflict=True))
+            # Isolate cancellation polarity; do not let missing time/platform
+            # accidentally make a cancellation test pass through numeric mismatch.
+            announcement=base
+            if kind=='cancellation_status':announcement=f'Train {n} is cancelled';wrong=f'Train {n} is not cancelled'
+            conflicts.append(dict(id=f'{kind}-{i}',kind=kind,announcement=announcement,trusted_statement=wrong,expected_conflict=True))
+        conflicts.append(dict(id=f'destination-to-only-{i}',kind='destination_to_only',announcement=f'Train {n} to Mumbai will arrive at platform {p}',trusted_statement=f'Train {n} to Pune will arrive at platform {p}',expected_conflict=True))
         conflicts.append(dict(id=f'no-conflict-{i}',kind='negative_control',announcement=base,trusted_statement=base,expected_conflict=False))
     save(ROOT/'tests/research_evaluation/safety_conflicts.json',conflicts)
     robustness=[('empty',''),('whitespace','   '),('numbers','1201'),('unknown_station','Train 1201 arrives from Xylophonex'),('misspelled_station','Train 1201 arrives at Nagpoor'),('mixed_case','tRaIn 1201 ArRiVeS aT pLaTfOrM 2'),('spaces','  Train   1201 arrives  at platform 2  '),('punctuation','Train 1201, arrives at platform 2!!!'),('too_long','Train '*500),('invalid_train','Train ABC arrives at platform 2'),('invalid_platform','Train 1201 arrives at platform 999'),('unsupported_grammar','Platform 2 train 1201 Mumbai departure'),('hindi','ट्रेन 1201 प्लेटफॉर्म 2 पर आ रही है'),('marathi','गाडी 1201 फलाट 2 वर येत आहे'),('mandatory','Train 1201 arrives at platform 2')]
     save(ROOT/'tests/research_evaluation/robustness.json',[dict(id=i,text=t) for i,t in robustness])
-    print('Created 210 labelled announcements, 50 conflicts + 10 controls, 15 robustness cases.')
+    print('Created 224 labelled announcements (202 distinct), 60 conflicts + 10 controls, 15 robustness cases.')
 
 if __name__=='__main__': main()

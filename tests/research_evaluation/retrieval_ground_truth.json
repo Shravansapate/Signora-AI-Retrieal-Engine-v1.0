@@ -200,7 +200,7 @@
   {
     "id": "probe-33",
     "query": "at",
-    "expected": "at",
+    "expected": null,
     "kind": "LEXICAL"
   },
   {

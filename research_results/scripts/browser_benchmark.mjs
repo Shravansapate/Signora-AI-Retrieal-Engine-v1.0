@@ -11,7 +11,8 @@ await mkdir(out,{recursive:true});
 const diverse=process.env.SIGNORA_EVAL_DIVERSE==='1';
 const file=resolve(out,diverse?'browser_diverse.jsonl':'browser_trials.jsonl');
 const previous=await readFile(file,'utf8').catch(()=> '');
-const done=new Set(previous.trim().split('\n').filter(Boolean).map(x=>JSON.parse(x).id));
+const priorRows=previous.trim().split('\n').filter(Boolean).map(x=>JSON.parse(x));
+const done=new Set(priorRows.filter(x=>x.success).map(x=>x.id));
 const browser=await chromium.launch({headless:true,args:['--enable-unsafe-swiftshader']});
 const context=await browser.newContext({viewport:{width:1280,height:900}});
 const page=await context.newPage();
@@ -22,9 +23,10 @@ await page.goto('http://127.0.0.1:3000/announcements');
 await page.locator('#announcement-token').fill(token);
 await page.getByRole('button',{name:'Connect',exact:true}).click();
 await page.getByRole('button',{name:'Disconnect',exact:true}).waitFor();
+const gpu=await page.locator('canvas').evaluate(canvas=>{const gl=canvas.getContext('webgl2');const ext=gl?.getExtension('WEBGL_debug_renderer_info');return {renderer:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):null,vendor:ext?gl.getParameter(ext.UNMASKED_VENDOR_WEBGL):null};});
 const cdp=await context.newCDPSession(page);
 await cdp.send('Performance.enable');
-await writeFile(resolve(out,diverse?'browser_diverse_environment.json':'browser_environment.json'),JSON.stringify({version:browser.version(),headless:true,args:['--enable-unsafe-swiftshader'],viewport:{width:1280,height:900},measurement:'requestAnimationFrame diagnostics; bone pose hash sampled by app every 250ms; warm persistent-avatar session; no playback-rate changes',timing_workload:diverse?'Distinct existing words, 20 trials per length; new assets cold on first occurrence, animation cache warm thereafter':'Repeated TRAIN clips: controlled sequence length, one unique motion; does not estimate diverse-asset cold loading'},null,2));
+await writeFile(resolve(out,diverse?'browser_diverse_environment.json':'browser_environment.json'),JSON.stringify({version:browser.version(),gpu,headless:true,args:['--enable-unsafe-swiftshader'],viewport:{width:1280,height:900},measurement:'requestAnimationFrame diagnostics; bone pose hash sampled by app every 250ms; warm persistent-avatar session; no playback-rate changes',timing_workload:diverse?'Distinct existing words, 20 trials per length; new assets cold on first occurrence, animation cache warm thereafter':'Repeated TRAIN clips: controlled sequence length, one unique motion; does not estimate diverse-asset cold loading'},null,2));
 const cases=[];
 const words='train accident platform fire exit ticket water emergency station stop help delay arrive food police clock time minute hour today tomorrow yesterday refund reservation counter window bag luggage cash card'.split(' ');
 for(const n of [1,5,10,13,20,30])for(let trial=0;trial<20;trial++)cases.push({id:`${diverse?'diverse':'length'}-${n}-${trial}`,kind:'latency',workload:diverse?'distinct words':'repeated TRAIN',n,trial,text:(diverse?words.slice(0,n):Array(n).fill('train')).join(' ')});
@@ -34,7 +36,7 @@ try{
 for(const item of cases){
  if(done.has(item.id))continue;
  const errorStart=errors.length;
- const row={...item,browser_session_started:new Date().toISOString()};
+ const row={...item,attempt:1+priorRows.filter(x=>x.id===item.id).length,browser_session_started:new Date().toISOString()};
  try{
  await page.locator('#announcement-text').fill(item.text);
  await page.evaluate(()=>{
@@ -81,7 +83,10 @@ for(const item of cases){
  row.cdp_metrics=(await cdp.send('Performance.getMetrics')).metrics;
  row.success=row.movement_verified&&row.persistent_avatar&&(item.kind!=='consecutive'||row.completed);
  if(item.id==='length-13-0'||item.id==='consecutive-49')await page.screenshot({path:resolve(out,`${item.id}.png`),fullPage:true});
- if(item.kind!=='consecutive')await page.getByRole('button',{name:'Stop',exact:true}).click();
+ if(item.kind!=='consecutive' && await page.getByRole('button',{name:'Stop',exact:true}).isEnabled()){
+   try{await page.getByRole('button',{name:'Stop',exact:true}).click({timeout:1500});}
+   catch(e){if(await page.locator('canvas').getAttribute('data-playback-state')!=='COMPLETE')throw e;}
+ }
  }catch(e){row.success=false;row.error=e.message;await page.screenshot({path:resolve(out,`${item.id}-failure.png`)}).catch(()=>{});}
  row.errors=errors.slice(errorStart);
  await appendFile(file,JSON.stringify(row)+'\n');

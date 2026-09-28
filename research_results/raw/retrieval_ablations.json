@@ -12,13 +12,13 @@
         "matched": "ISL_TRAIN_01",
         "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
         "gloss_token": "TRAIN",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0603,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0816,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-0",
@@ -33,13 +33,13 @@
         "matched": "ISL_TRAIN_01",
         "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
         "gloss_token": "TRAIN",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.017,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.079,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-0",
@@ -54,13 +54,13 @@
         "matched": "ISL_TRAIN_01",
         "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
         "gloss_token": "TRAIN",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0122,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.037,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-0",
@@ -75,13 +75,13 @@
         "matched": "ISL_TRAIN_01",
         "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
         "gloss_token": "TRAIN",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0116,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0348,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-1",
@@ -96,13 +96,13 @@
         "matched": "ISL_ARRIVE_01",
         "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
         "gloss_token": "ARRIVE",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0528,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0201,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-1",
@@ -117,13 +117,13 @@
         "matched": "ISL_ARRIVE_01",
         "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
         "gloss_token": "ARRIVE",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0118,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0173,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-1",
@@ -138,13 +138,13 @@
         "matched": "ISL_ARRIVE_01",
         "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
         "gloss_token": "ARRIVE",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0071,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0139,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-1",
@@ -159,13 +159,13 @@
         "matched": "ISL_ARRIVE_01",
         "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
         "gloss_token": "ARRIVE",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.006,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0158,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-2",
@@ -176,8 +176,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1564,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2677,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-2",
@@ -188,8 +188,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1492,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.266,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-2",
@@ -200,8 +200,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1386,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.24,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-2",
@@ -216,7 +216,7 @@
         "matched": "ISL_A_01",
         "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
         "gloss_token": "ARRIVAL",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "r",
@@ -224,7 +224,7 @@
         "matched": "ISL_R_01",
         "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
         "gloss_token": "ARRIVAL",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "r",
@@ -232,7 +232,7 @@
         "matched": "ISL_R_01",
         "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
         "gloss_token": "ARRIVAL",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "i",
@@ -240,7 +240,7 @@
         "matched": "ISL_I_01",
         "motion_version_id": "44ef1a05-41f2-407e-b12a-7e6090bc58a8",
         "gloss_token": "ARRIVAL",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "v",
@@ -248,7 +248,7 @@
         "matched": "ISL_V_01",
         "motion_version_id": "955ec40a-8929-438a-9dbe-83704001bfe8",
         "gloss_token": "ARRIVAL",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "a",
@@ -256,7 +256,7 @@
         "matched": "ISL_A_01",
         "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
         "gloss_token": "ARRIVAL",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "l",
@@ -264,13 +264,13 @@
         "matched": "ISL_L_01",
         "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
         "gloss_token": "ARRIVAL",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 7,
     "missing": [],
-    "selector_ms": 0.1334,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.3167,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-3",
@@ -285,13 +285,13 @@
         "matched": "ISL_ARRIVE_01",
         "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
         "gloss_token": "ARRIVING",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.018,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0421,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-3",
@@ -306,13 +306,13 @@
         "matched": "ISL_ARRIVE_01",
         "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
         "gloss_token": "ARRIVING",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0152,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0332,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-3",
@@ -327,13 +327,13 @@
         "matched": "ISL_ARRIVE_01",
         "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
         "gloss_token": "ARRIVING",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0131,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0303,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-3",
@@ -348,13 +348,13 @@
         "matched": "ISL_ARRIVE_01",
         "motion_version_id": "6ff47feb-8692-458f-972d-7aefbbee94fa",
         "gloss_token": "ARRIVING",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0121,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0313,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-4",
@@ -365,8 +365,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0973,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1299,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-4",
@@ -377,8 +377,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1098,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1449,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-4",
@@ -389,8 +389,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1028,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1308,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-4",
@@ -405,7 +405,7 @@
         "matched": "ISL_D_01",
         "motion_version_id": "7556430b-0aef-4ef0-b57f-7d849f8db709",
         "gloss_token": "DEPARTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -413,7 +413,7 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "DEPARTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "p",
@@ -421,7 +421,7 @@
         "matched": "ISL_P_01",
         "motion_version_id": "bad3d672-68d9-46a3-9e38-1d864dd01b05",
         "gloss_token": "DEPARTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "a",
@@ -429,7 +429,7 @@
         "matched": "ISL_A_01",
         "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
         "gloss_token": "DEPARTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "r",
@@ -437,7 +437,7 @@
         "matched": "ISL_R_01",
         "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
         "gloss_token": "DEPARTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "t",
@@ -445,7 +445,7 @@
         "matched": "ISL_T_01",
         "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
         "gloss_token": "DEPARTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "u",
@@ -453,7 +453,7 @@
         "matched": "ISL_U_01",
         "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
         "gloss_token": "DEPARTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "r",
@@ -461,7 +461,7 @@
         "matched": "ISL_R_01",
         "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
         "gloss_token": "DEPARTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -469,13 +469,13 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "DEPARTURE",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 9,
     "missing": [],
-    "selector_ms": 0.0991,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2288,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-5",
@@ -490,13 +490,13 @@
         "matched": "ISL_DELAY_01",
         "motion_version_id": "7d59d45e-5139-43d8-af0c-a339a499bbf4",
         "gloss_token": "DELAYED",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0196,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1009,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-5",
@@ -511,13 +511,13 @@
         "matched": "ISL_DELAY_01",
         "motion_version_id": "7d59d45e-5139-43d8-af0c-a339a499bbf4",
         "gloss_token": "DELAYED",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.019,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2266,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-5",
@@ -532,13 +532,13 @@
         "matched": "ISL_DELAY_01",
         "motion_version_id": "7d59d45e-5139-43d8-af0c-a339a499bbf4",
         "gloss_token": "DELAYED",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.018,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0528,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-5",
@@ -553,13 +553,13 @@
         "matched": "ISL_DELAY_01",
         "motion_version_id": "7d59d45e-5139-43d8-af0c-a339a499bbf4",
         "gloss_token": "DELAYED",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0175,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0522,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-6",
@@ -570,8 +570,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0881,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1767,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-6",
@@ -582,8 +582,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1005,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1669,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-6",
@@ -594,8 +594,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1529,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-6",
@@ -610,7 +610,7 @@
         "matched": "ISL_C_01",
         "motion_version_id": "9f6d2d48-875a-41f8-bba0-b1c74e4faf8d",
         "gloss_token": "CANCELLED",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "a",
@@ -618,7 +618,7 @@
         "matched": "ISL_A_01",
         "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
         "gloss_token": "CANCELLED",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "n",
@@ -626,7 +626,7 @@
         "matched": "ISL_N_01",
         "motion_version_id": "38161d0b-8387-42d7-8540-2c5f413ecc7f",
         "gloss_token": "CANCELLED",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "c",
@@ -634,7 +634,7 @@
         "matched": "ISL_C_01",
         "motion_version_id": "9f6d2d48-875a-41f8-bba0-b1c74e4faf8d",
         "gloss_token": "CANCELLED",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -642,7 +642,7 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "CANCELLED",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "l",
@@ -650,7 +650,7 @@
         "matched": "ISL_L_01",
         "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
         "gloss_token": "CANCELLED",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "l",
@@ -658,7 +658,7 @@
         "matched": "ISL_L_01",
         "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
         "gloss_token": "CANCELLED",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -666,7 +666,7 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "CANCELLED",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "d",
@@ -674,13 +674,13 @@
         "matched": "ISL_D_01",
         "motion_version_id": "7556430b-0aef-4ef0-b57f-7d849f8db709",
         "gloss_token": "CANCELLED",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 9,
     "missing": [],
-    "selector_ms": 0.1122,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2442,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-7",
@@ -695,13 +695,13 @@
         "matched": "ISL_PLATFORM_01",
         "motion_version_id": "0b491654-7763-4654-b7be-09ee24b44be5",
         "gloss_token": "PLATFORM",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0102,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0263,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-7",
@@ -716,13 +716,13 @@
         "matched": "ISL_PLATFORM_01",
         "motion_version_id": "0b491654-7763-4654-b7be-09ee24b44be5",
         "gloss_token": "PLATFORM",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.009,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0233,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-7",
@@ -737,13 +737,13 @@
         "matched": "ISL_PLATFORM_01",
         "motion_version_id": "0b491654-7763-4654-b7be-09ee24b44be5",
         "gloss_token": "PLATFORM",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0085,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0201,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-7",
@@ -758,13 +758,13 @@
         "matched": "ISL_PLATFORM_01",
         "motion_version_id": "0b491654-7763-4654-b7be-09ee24b44be5",
         "gloss_token": "PLATFORM",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0083,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0218,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-8",
@@ -779,13 +779,13 @@
         "matched": "ISL_TICKET_01",
         "motion_version_id": "6fc1c1fb-ff51-4e2a-b491-abf2d686e477",
         "gloss_token": "TICKET",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0089,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.021,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-8",
@@ -800,13 +800,13 @@
         "matched": "ISL_TICKET_01",
         "motion_version_id": "6fc1c1fb-ff51-4e2a-b491-abf2d686e477",
         "gloss_token": "TICKET",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0093,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.021,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-8",
@@ -821,13 +821,13 @@
         "matched": "ISL_TICKET_01",
         "motion_version_id": "6fc1c1fb-ff51-4e2a-b491-abf2d686e477",
         "gloss_token": "TICKET",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0094,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0213,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-8",
@@ -842,13 +842,13 @@
         "matched": "ISL_TICKET_01",
         "motion_version_id": "6fc1c1fb-ff51-4e2a-b491-abf2d686e477",
         "gloss_token": "TICKET",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0087,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.022,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-9",
@@ -859,8 +859,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.117,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2519,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-9",
@@ -871,8 +871,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1243,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2937,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-9",
@@ -883,8 +883,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1208,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2309,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-9",
@@ -899,7 +899,7 @@
         "matched": "ISL_B_01",
         "motion_version_id": "ba2e0257-9b39-4eee-80ef-3bd45cff37d6",
         "gloss_token": "BAGGAGE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "a",
@@ -907,7 +907,7 @@
         "matched": "ISL_A_01",
         "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
         "gloss_token": "BAGGAGE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "g",
@@ -915,7 +915,7 @@
         "matched": "ISL_G_01",
         "motion_version_id": "291a0095-14d3-41bb-8a8f-b7f2ec92af38",
         "gloss_token": "BAGGAGE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "g",
@@ -923,7 +923,7 @@
         "matched": "ISL_G_01",
         "motion_version_id": "291a0095-14d3-41bb-8a8f-b7f2ec92af38",
         "gloss_token": "BAGGAGE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "a",
@@ -931,7 +931,7 @@
         "matched": "ISL_A_01",
         "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
         "gloss_token": "BAGGAGE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "g",
@@ -939,7 +939,7 @@
         "matched": "ISL_G_01",
         "motion_version_id": "291a0095-14d3-41bb-8a8f-b7f2ec92af38",
         "gloss_token": "BAGGAGE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -947,13 +947,13 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "BAGGAGE",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 7,
     "missing": [],
-    "selector_ms": 0.1178,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2861,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-10",
@@ -968,13 +968,13 @@
         "matched": "ISL_EXIT_01",
         "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
         "gloss_token": "EXIT",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0084,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0206,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-10",
@@ -989,829 +989,882 @@
         "matched": "ISL_EXIT_01",
         "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
         "gloss_token": "EXIT",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.007,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-10",
-    "query": "exit",
-    "expected": "exit",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "exit",
-        "method": "WORD",
-        "matched": "ISL_EXIT_01",
-        "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
-        "gloss_token": "EXIT",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0064,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-10",
-    "query": "exit",
-    "expected": "exit",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "exit",
-        "method": "WORD",
-        "matched": "ISL_EXIT_01",
-        "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
-        "gloss_token": "EXIT",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0061,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-11",
-    "query": "emergency",
-    "expected": "emergency",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [
-      {
-        "input": "emergency",
-        "method": "WORD",
-        "matched": "ISL_EMERGENCY_01",
-        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
-        "gloss_token": "EMERGENCY",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0068,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-11",
-    "query": "emergency",
-    "expected": "emergency",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "emergency",
-        "method": "WORD",
-        "matched": "ISL_EMERGENCY_01",
-        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
-        "gloss_token": "EMERGENCY",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0072,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-11",
-    "query": "emergency",
-    "expected": "emergency",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "emergency",
-        "method": "WORD",
-        "matched": "ISL_EMERGENCY_01",
-        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
-        "gloss_token": "EMERGENCY",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0068,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-11",
-    "query": "emergency",
-    "expected": "emergency",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "emergency",
-        "method": "WORD",
-        "matched": "ISL_EMERGENCY_01",
-        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
-        "gloss_token": "EMERGENCY",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0069,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-12",
-    "query": "fire",
-    "expected": "fire",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [
-      {
-        "input": "fire",
-        "method": "WORD",
-        "matched": "ISL_FIRE_01",
-        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
-        "gloss_token": "FIRE",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0066,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-12",
-    "query": "fire",
-    "expected": "fire",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "fire",
-        "method": "WORD",
-        "matched": "ISL_FIRE_01",
-        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
-        "gloss_token": "FIRE",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0069,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-12",
-    "query": "fire",
-    "expected": "fire",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "fire",
-        "method": "WORD",
-        "matched": "ISL_FIRE_01",
-        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
-        "gloss_token": "FIRE",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0068,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-12",
-    "query": "fire",
-    "expected": "fire",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "fire",
-        "method": "WORD",
-        "matched": "ISL_FIRE_01",
-        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
-        "gloss_token": "FIRE",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0072,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-13",
-    "query": "help",
-    "expected": "help",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [
-      {
-        "input": "help",
-        "method": "WORD",
-        "matched": "ISL_HELP_01",
-        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
-        "gloss_token": "HELP",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0068,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-13",
-    "query": "help",
-    "expected": "help",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "help",
-        "method": "WORD",
-        "matched": "ISL_HELP_01",
-        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
-        "gloss_token": "HELP",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.007,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-13",
-    "query": "help",
-    "expected": "help",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "help",
-        "method": "WORD",
-        "matched": "ISL_HELP_01",
-        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
-        "gloss_token": "HELP",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.007,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-13",
-    "query": "help",
-    "expected": "help",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "help",
-        "method": "WORD",
-        "matched": "ISL_HELP_01",
-        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
-        "gloss_token": "HELP",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0073,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-14",
-    "query": "station",
-    "expected": "station",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [
-      {
-        "input": "station",
-        "method": "WORD",
-        "matched": "ISL_STATION_01",
-        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
-        "gloss_token": "STATION",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0083,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-14",
-    "query": "station",
-    "expected": "station",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "station",
-        "method": "WORD",
-        "matched": "ISL_STATION_01",
-        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
-        "gloss_token": "STATION",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0094,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-14",
-    "query": "station",
-    "expected": "station",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "station",
-        "method": "WORD",
-        "matched": "ISL_STATION_01",
-        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
-        "gloss_token": "STATION",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0089,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-14",
-    "query": "station",
-    "expected": "station",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "station",
-        "method": "WORD",
-        "matched": "ISL_STATION_01",
-        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
-        "gloss_token": "STATION",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0092,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-15",
-    "query": "water",
-    "expected": "water",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [
-      {
-        "input": "water",
-        "method": "WORD",
-        "matched": "ISL_WATER_01",
-        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
-        "gloss_token": "WATER",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0106,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-15",
-    "query": "water",
-    "expected": "water",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "water",
-        "method": "WORD",
-        "matched": "ISL_WATER_01",
-        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
-        "gloss_token": "WATER",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0116,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-15",
-    "query": "water",
-    "expected": "water",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "water",
-        "method": "WORD",
-        "matched": "ISL_WATER_01",
-        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
-        "gloss_token": "WATER",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0097,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-15",
-    "query": "water",
-    "expected": "water",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "water",
-        "method": "WORD",
-        "matched": "ISL_WATER_01",
-        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
-        "gloss_token": "WATER",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0094,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-16",
-    "query": "local train",
-    "expected": "local train",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [],
-    "clip_count": 0,
-    "missing": [],
-    "selector_ms": 0.0743,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-16",
-    "query": "local train",
-    "expected": "local train",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "local train",
-        "method": "PHRASE",
-        "matched": "ISL_LOCAL_TRAIN_01",
-        "motion_version_id": "c3638d59-b618-43e0-a2e8-31251370c59e",
-        "gloss_token": "LOCAL TRAIN",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0101,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-16",
-    "query": "local train",
-    "expected": "local train",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "local train",
-        "method": "PHRASE",
-        "matched": "ISL_LOCAL_TRAIN_01",
-        "motion_version_id": "c3638d59-b618-43e0-a2e8-31251370c59e",
-        "gloss_token": "LOCAL TRAIN",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0087,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-16",
-    "query": "local train",
-    "expected": "local train",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "local train",
-        "method": "PHRASE",
-        "matched": "ISL_LOCAL_TRAIN_01",
-        "motion_version_id": "c3638d59-b618-43e0-a2e8-31251370c59e",
-        "gloss_token": "LOCAL TRAIN",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0079,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-17",
-    "query": "express train",
-    "expected": "express train",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [],
-    "clip_count": 0,
-    "missing": [],
-    "selector_ms": 0.0837,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-17",
-    "query": "express train",
-    "expected": "express train",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "express train",
-        "method": "PHRASE",
-        "matched": "ISL_EXPRESS_TRAIN_01",
-        "motion_version_id": "9030c4ca-9c77-40fc-b30d-b1d73dfb2e89",
-        "gloss_token": "EXPRESS TRAIN",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0095,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-17",
-    "query": "express train",
-    "expected": "express train",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "express train",
-        "method": "PHRASE",
-        "matched": "ISL_EXPRESS_TRAIN_01",
-        "motion_version_id": "9030c4ca-9c77-40fc-b30d-b1d73dfb2e89",
-        "gloss_token": "EXPRESS TRAIN",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0079,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-17",
-    "query": "express train",
-    "expected": "express train",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "express train",
-        "method": "PHRASE",
-        "matched": "ISL_EXPRESS_TRAIN_01",
-        "motion_version_id": "9030c4ca-9c77-40fc-b30d-b1d73dfb2e89",
-        "gloss_token": "EXPRESS TRAIN",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0074,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-18",
-    "query": "waiting room",
-    "expected": "waiting room",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [],
-    "clip_count": 0,
-    "missing": [],
-    "selector_ms": 0.0743,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-18",
-    "query": "waiting room",
-    "expected": "waiting room",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "waiting room",
-        "method": "PHRASE",
-        "matched": "ISL_WAITING_ROOM_01",
-        "motion_version_id": "34c5b623-b3e5-4ab9-9e0b-7b1c437089ba",
-        "gloss_token": "WAITING ROOM",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0108,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-18",
-    "query": "waiting room",
-    "expected": "waiting room",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "waiting room",
-        "method": "PHRASE",
-        "matched": "ISL_WAITING_ROOM_01",
-        "motion_version_id": "34c5b623-b3e5-4ab9-9e0b-7b1c437089ba",
-        "gloss_token": "WAITING ROOM",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0102,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-18",
-    "query": "waiting room",
-    "expected": "waiting room",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "waiting room",
-        "method": "PHRASE",
-        "matched": "ISL_WAITING_ROOM_01",
-        "motion_version_id": "34c5b623-b3e5-4ab9-9e0b-7b1c437089ba",
-        "gloss_token": "WAITING ROOM",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0101,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-19",
-    "query": "new delhi",
-    "expected": "new delhi",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [],
-    "clip_count": 0,
-    "missing": [],
-    "selector_ms": 0.0601,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-19",
-    "query": "new delhi",
-    "expected": "new delhi",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "new delhi",
-        "method": "PHRASE",
-        "matched": "ISL_NEW_DELHI_01",
-        "motion_version_id": "6a4f36f4-f41d-4b50-ab7d-a43ecf01e3c0",
-        "gloss_token": "NEW DELHI",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0093,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-19",
-    "query": "new delhi",
-    "expected": "new delhi",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "new delhi",
-        "method": "PHRASE",
-        "matched": "ISL_NEW_DELHI_01",
-        "motion_version_id": "6a4f36f4-f41d-4b50-ab7d-a43ecf01e3c0",
-        "gloss_token": "NEW DELHI",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0086,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-19",
-    "query": "new delhi",
-    "expected": "new delhi",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "new delhi",
-        "method": "PHRASE",
-        "matched": "ISL_NEW_DELHI_01",
-        "motion_version_id": "6a4f36f4-f41d-4b50-ab7d-a43ecf01e3c0",
-        "gloss_token": "NEW DELHI",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0084,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-20",
-    "query": "identity card",
-    "expected": "identity card",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [],
-    "clip_count": 0,
-    "missing": [],
-    "selector_ms": 0.0813,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-20",
-    "query": "identity card",
-    "expected": "identity card",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [
-      {
-        "input": "identity card",
-        "method": "PHRASE",
-        "matched": "ISL_IDENTITY_CARD_01",
-        "motion_version_id": "abcb0670-8dbc-43ff-a660-8e2219fa0ed1",
-        "gloss_token": "IDENTITY CARD",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 1,
-    "missing": [],
-    "selector_ms": 0.0098,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-20",
-    "query": "identity card",
-    "expected": "identity card",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [
-      {
-        "input": "identity card",
-        "method": "PHRASE",
-        "matched": "ISL_IDENTITY_CARD_01",
-        "motion_version_id": "abcb0670-8dbc-43ff-a660-8e2219fa0ed1",
-        "gloss_token": "IDENTITY CARD",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
     "selector_ms": 0.0174,
-    "latency_scope": "original selector before ablation output filtering"
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-10",
+    "query": "exit",
+    "expected": "exit",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "exit",
+        "method": "WORD",
+        "matched": "ISL_EXIT_01",
+        "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
+        "gloss_token": "EXIT",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0151,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-10",
+    "query": "exit",
+    "expected": "exit",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "exit",
+        "method": "WORD",
+        "matched": "ISL_EXIT_01",
+        "motion_version_id": "b9f73306-5899-48da-9a24-885fc9d5387a",
+        "gloss_token": "EXIT",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0163,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-11",
+    "query": "emergency",
+    "expected": "emergency",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "emergency",
+        "method": "WORD",
+        "matched": "ISL_EMERGENCY_01",
+        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
+        "gloss_token": "EMERGENCY",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0174,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-11",
+    "query": "emergency",
+    "expected": "emergency",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "emergency",
+        "method": "WORD",
+        "matched": "ISL_EMERGENCY_01",
+        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
+        "gloss_token": "EMERGENCY",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0167,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-11",
+    "query": "emergency",
+    "expected": "emergency",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "emergency",
+        "method": "WORD",
+        "matched": "ISL_EMERGENCY_01",
+        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
+        "gloss_token": "EMERGENCY",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0154,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-11",
+    "query": "emergency",
+    "expected": "emergency",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "emergency",
+        "method": "WORD",
+        "matched": "ISL_EMERGENCY_01",
+        "motion_version_id": "2fda8971-9157-4563-99aa-8dc3a1f2e314",
+        "gloss_token": "EMERGENCY",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.017,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-12",
+    "query": "fire",
+    "expected": "fire",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "fire",
+        "method": "WORD",
+        "matched": "ISL_FIRE_01",
+        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
+        "gloss_token": "FIRE",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0158,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-12",
+    "query": "fire",
+    "expected": "fire",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "fire",
+        "method": "WORD",
+        "matched": "ISL_FIRE_01",
+        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
+        "gloss_token": "FIRE",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0158,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-12",
+    "query": "fire",
+    "expected": "fire",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "fire",
+        "method": "WORD",
+        "matched": "ISL_FIRE_01",
+        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
+        "gloss_token": "FIRE",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0169,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-12",
+    "query": "fire",
+    "expected": "fire",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "fire",
+        "method": "WORD",
+        "matched": "ISL_FIRE_01",
+        "motion_version_id": "f16dbcab-d7af-488f-a7ee-6b6dda2f6232",
+        "gloss_token": "FIRE",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0161,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-13",
+    "query": "help",
+    "expected": "help",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "help",
+        "method": "WORD",
+        "matched": "ISL_HELP_01",
+        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
+        "gloss_token": "HELP",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.015,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-13",
+    "query": "help",
+    "expected": "help",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "help",
+        "method": "WORD",
+        "matched": "ISL_HELP_01",
+        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
+        "gloss_token": "HELP",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0153,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-13",
+    "query": "help",
+    "expected": "help",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "help",
+        "method": "WORD",
+        "matched": "ISL_HELP_01",
+        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
+        "gloss_token": "HELP",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0149,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-13",
+    "query": "help",
+    "expected": "help",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "help",
+        "method": "WORD",
+        "matched": "ISL_HELP_01",
+        "motion_version_id": "4673aae8-232d-4e51-bfc9-000128a510db",
+        "gloss_token": "HELP",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0153,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-14",
+    "query": "station",
+    "expected": "station",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "station",
+        "method": "WORD",
+        "matched": "ISL_STATION_01",
+        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
+        "gloss_token": "STATION",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0188,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-14",
+    "query": "station",
+    "expected": "station",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "station",
+        "method": "WORD",
+        "matched": "ISL_STATION_01",
+        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
+        "gloss_token": "STATION",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0203,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-14",
+    "query": "station",
+    "expected": "station",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "station",
+        "method": "WORD",
+        "matched": "ISL_STATION_01",
+        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
+        "gloss_token": "STATION",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0197,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-14",
+    "query": "station",
+    "expected": "station",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "station",
+        "method": "WORD",
+        "matched": "ISL_STATION_01",
+        "motion_version_id": "c5da1a7e-ac12-4b49-8d39-fe1f17cc48de",
+        "gloss_token": "STATION",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0198,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-15",
+    "query": "water",
+    "expected": "water",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "water",
+        "method": "WORD",
+        "matched": "ISL_WATER_01",
+        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
+        "gloss_token": "WATER",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0344,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-15",
+    "query": "water",
+    "expected": "water",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "water",
+        "method": "WORD",
+        "matched": "ISL_WATER_01",
+        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
+        "gloss_token": "WATER",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0227,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-15",
+    "query": "water",
+    "expected": "water",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "water",
+        "method": "WORD",
+        "matched": "ISL_WATER_01",
+        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
+        "gloss_token": "WATER",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0201,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-15",
+    "query": "water",
+    "expected": "water",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "water",
+        "method": "WORD",
+        "matched": "ISL_WATER_01",
+        "motion_version_id": "3d38ff23-cfdb-469b-8f7d-7df54fac9fad",
+        "gloss_token": "WATER",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0212,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-16",
+    "query": "local train",
+    "expected": "local train",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "train",
+        "method": "WORD",
+        "matched": "ISL_TRAIN_01",
+        "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
+        "gloss_token": "TRAIN",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.3004,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-16",
+    "query": "local train",
+    "expected": "local train",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "local train",
+        "method": "PHRASE",
+        "matched": "ISL_LOCAL_TRAIN_01",
+        "motion_version_id": "c3638d59-b618-43e0-a2e8-31251370c59e",
+        "gloss_token": "LOCAL",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0376,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-16",
+    "query": "local train",
+    "expected": "local train",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "local train",
+        "method": "PHRASE",
+        "matched": "ISL_LOCAL_TRAIN_01",
+        "motion_version_id": "c3638d59-b618-43e0-a2e8-31251370c59e",
+        "gloss_token": "LOCAL",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0301,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-16",
+    "query": "local train",
+    "expected": "local train",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "local train",
+        "method": "PHRASE",
+        "matched": "ISL_LOCAL_TRAIN_01",
+        "motion_version_id": "c3638d59-b618-43e0-a2e8-31251370c59e",
+        "gloss_token": "LOCAL",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0287,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-17",
+    "query": "express train",
+    "expected": "express train",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "train",
+        "method": "WORD",
+        "matched": "ISL_TRAIN_01",
+        "motion_version_id": "67fd9c51-03f7-4e18-80d3-67ce47fc9d52",
+        "gloss_token": "TRAIN",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.3075,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-17",
+    "query": "express train",
+    "expected": "express train",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "express train",
+        "method": "PHRASE",
+        "matched": "ISL_EXPRESS_TRAIN_01",
+        "motion_version_id": "9030c4ca-9c77-40fc-b30d-b1d73dfb2e89",
+        "gloss_token": "EXPRESS",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0279,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-17",
+    "query": "express train",
+    "expected": "express train",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "express train",
+        "method": "PHRASE",
+        "matched": "ISL_EXPRESS_TRAIN_01",
+        "motion_version_id": "9030c4ca-9c77-40fc-b30d-b1d73dfb2e89",
+        "gloss_token": "EXPRESS",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.024,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-17",
+    "query": "express train",
+    "expected": "express train",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "express train",
+        "method": "PHRASE",
+        "matched": "ISL_EXPRESS_TRAIN_01",
+        "motion_version_id": "9030c4ca-9c77-40fc-b30d-b1d73dfb2e89",
+        "gloss_token": "EXPRESS",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0231,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-18",
+    "query": "waiting room",
+    "expected": "waiting room",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "waiting",
+        "method": "WORD_FORM",
+        "matched": "ISL_WAIT_01",
+        "motion_version_id": "0a6cfdc4-efce-404f-97fd-dc4826a49d24",
+        "gloss_token": "WAITING",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.2441,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-18",
+    "query": "waiting room",
+    "expected": "waiting room",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "waiting room",
+        "method": "PHRASE",
+        "matched": "ISL_WAITING_ROOM_01",
+        "motion_version_id": "34c5b623-b3e5-4ab9-9e0b-7b1c437089ba",
+        "gloss_token": "WAITING",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0325,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-18",
+    "query": "waiting room",
+    "expected": "waiting room",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "waiting room",
+        "method": "PHRASE",
+        "matched": "ISL_WAITING_ROOM_01",
+        "motion_version_id": "34c5b623-b3e5-4ab9-9e0b-7b1c437089ba",
+        "gloss_token": "WAITING",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0277,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-18",
+    "query": "waiting room",
+    "expected": "waiting room",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "waiting room",
+        "method": "PHRASE",
+        "matched": "ISL_WAITING_ROOM_01",
+        "motion_version_id": "34c5b623-b3e5-4ab9-9e0b-7b1c437089ba",
+        "gloss_token": "WAITING",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0292,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-19",
+    "query": "new delhi",
+    "expected": "new delhi",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "delhi",
+        "method": "WORD",
+        "matched": "ISL_DELHI_01",
+        "motion_version_id": "57e0f35f-954a-4c03-9732-9479948f09a6",
+        "gloss_token": "DELHI",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.1391,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-19",
+    "query": "new delhi",
+    "expected": "new delhi",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "new delhi",
+        "method": "PHRASE",
+        "matched": "ISL_NEW_DELHI_01",
+        "motion_version_id": "6a4f36f4-f41d-4b50-ab7d-a43ecf01e3c0",
+        "gloss_token": "NEW",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0238,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-19",
+    "query": "new delhi",
+    "expected": "new delhi",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "new delhi",
+        "method": "PHRASE",
+        "matched": "ISL_NEW_DELHI_01",
+        "motion_version_id": "6a4f36f4-f41d-4b50-ab7d-a43ecf01e3c0",
+        "gloss_token": "NEW",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0223,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-19",
+    "query": "new delhi",
+    "expected": "new delhi",
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "new delhi",
+        "method": "PHRASE",
+        "matched": "ISL_NEW_DELHI_01",
+        "motion_version_id": "6a4f36f4-f41d-4b50-ab7d-a43ecf01e3c0",
+        "gloss_token": "NEW",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0223,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-20",
+    "query": "identity card",
+    "expected": "identity card",
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "identity",
+        "method": "WORD",
+        "matched": "ISL_IDENTITY_01",
+        "motion_version_id": "d702ded8-6a94-49ab-a534-4fa20921820c",
+        "gloss_token": "IDENTITY",
+        "role": "lexical"
+      },
+      {
+        "input": "card",
+        "method": "WORD",
+        "matched": "ISL_CARD_01",
+        "motion_version_id": "0b8b99c3-cda4-46da-8ab1-f81e2cbe5c10",
+        "gloss_token": "CARD",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 2,
+    "missing": [],
+    "selector_ms": 0.105,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-20",
+    "query": "identity card",
+    "expected": "identity card",
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "identity card",
+        "method": "PHRASE",
+        "matched": "ISL_IDENTITY_CARD_01",
+        "motion_version_id": "abcb0670-8dbc-43ff-a660-8e2219fa0ed1",
+        "gloss_token": "IDENTITY",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0251,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-20",
+    "query": "identity card",
+    "expected": "identity card",
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "identity card",
+        "method": "PHRASE",
+        "matched": "ISL_IDENTITY_CARD_01",
+        "motion_version_id": "abcb0670-8dbc-43ff-a660-8e2219fa0ed1",
+        "gloss_token": "IDENTITY",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
+    "missing": [],
+    "selector_ms": 0.0221,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-20",
@@ -1825,14 +1878,14 @@
         "method": "PHRASE",
         "matched": "ISL_IDENTITY_CARD_01",
         "motion_version_id": "abcb0670-8dbc-43ff-a660-8e2219fa0ed1",
-        "gloss_token": "IDENTITY CARD",
-        "role": "probe"
+        "gloss_token": "IDENTITY",
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0098,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0226,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-21",
@@ -1840,11 +1893,20 @@
     "expected": "time table",
     "kind": "LEXICAL",
     "mode": "Word only",
-    "matches": [],
-    "clip_count": 0,
+    "matches": [
+      {
+        "input": "time",
+        "method": "WORD",
+        "matched": "ISL_TIME_01",
+        "motion_version_id": "dd132df4-0119-49f5-86c0-a56992e90c27",
+        "gloss_token": "TIME",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0676,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.8181,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-21",
@@ -1858,14 +1920,14 @@
         "method": "PHRASE",
         "matched": "ISL_TIME_TABLE_01",
         "motion_version_id": "e38e313c-651b-42e5-867b-4daa57c42c4e",
-        "gloss_token": "TIME TABLE",
-        "role": "probe"
+        "gloss_token": "TIME",
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0106,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0593,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-21",
@@ -1879,14 +1941,14 @@
         "method": "PHRASE",
         "matched": "ISL_TIME_TABLE_01",
         "motion_version_id": "e38e313c-651b-42e5-867b-4daa57c42c4e",
-        "gloss_token": "TIME TABLE",
-        "role": "probe"
+        "gloss_token": "TIME",
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0098,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0295,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-21",
@@ -1900,14 +1962,14 @@
         "method": "PHRASE",
         "matched": "ISL_TIME_TABLE_01",
         "motion_version_id": "e38e313c-651b-42e5-867b-4daa57c42c4e",
-        "gloss_token": "TIME TABLE",
-        "role": "probe"
+        "gloss_token": "TIME",
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0093,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0278,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-22",
@@ -1917,13 +1979,9 @@
     "mode": "Word only",
     "matches": [],
     "clip_count": 0,
-    "missing": [
-      "Unavailable identifier 1 (probe)",
-      "Unavailable identifier 2 (probe)",
-      "Unavailable identifier 1 (probe)"
-    ],
-    "selector_ms": 0.0783,
-    "latency_scope": "original selector before ablation output filtering"
+    "missing": [],
+    "selector_ms": 0.0042,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-22",
@@ -1934,8 +1992,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0293,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0024,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-22",
@@ -1946,8 +2004,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0254,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.002,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-22",
@@ -1991,8 +2049,8 @@
     ],
     "clip_count": 4,
     "missing": [],
-    "selector_ms": 0.0258,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0654,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-23",
@@ -2002,12 +2060,9 @@
     "mode": "Word only",
     "matches": [],
     "clip_count": 0,
-    "missing": [
-      "Unavailable identifier 1 (probe)",
-      "Unavailable identifier 2 (probe)"
-    ],
-    "selector_ms": 0.1145,
-    "latency_scope": "original selector before ablation output filtering"
+    "missing": [],
+    "selector_ms": 0.0046,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-23",
@@ -2018,8 +2073,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0618,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0025,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-23",
@@ -2030,8 +2085,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0563,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0023,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-23",
@@ -2083,8 +2138,8 @@
     ],
     "clip_count": 5,
     "missing": [],
-    "selector_ms": 0.0551,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1174,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-24",
@@ -2094,14 +2149,9 @@
     "mode": "Word only",
     "matches": [],
     "clip_count": 0,
-    "missing": [
-      "Unavailable identifier 2 (probe)",
-      "Unavailable identifier 2 (probe)",
-      "Unavailable identifier 1 (probe)",
-      "Unavailable identifier 2 (probe)"
-    ],
-    "selector_ms": 0.0822,
-    "latency_scope": "original selector before ablation output filtering"
+    "missing": [],
+    "selector_ms": 0.0029,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-24",
@@ -2112,8 +2162,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0285,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0024,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-24",
@@ -2124,8 +2174,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0272,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0025,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-24",
@@ -2177,8 +2227,8 @@
     ],
     "clip_count": 5,
     "missing": [],
-    "selector_ms": 0.0268,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1475,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-25",
@@ -2188,11 +2238,9 @@
     "mode": "Word only",
     "matches": [],
     "clip_count": 0,
-    "missing": [
-      "Unavailable number 2 (probe)"
-    ],
-    "selector_ms": 0.0304,
-    "latency_scope": "original selector before ablation output filtering"
+    "missing": [],
+    "selector_ms": 0.0032,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-25",
@@ -2203,8 +2251,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0072,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0023,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-25",
@@ -2215,8 +2263,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.005,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0023,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-25",
@@ -2236,8 +2284,8 @@
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0048,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0152,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-26",
@@ -2247,11 +2295,9 @@
     "mode": "Word only",
     "matches": [],
     "clip_count": 0,
-    "missing": [
-      "Unavailable number 1 (probe)"
-    ],
-    "selector_ms": 0.0428,
-    "latency_scope": "original selector before ablation output filtering"
+    "missing": [],
+    "selector_ms": 0.0026,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-26",
@@ -2262,8 +2308,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0058,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.002,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-26",
@@ -2274,8 +2320,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0047,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0023,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-26",
@@ -2295,8 +2341,8 @@
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0046,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0126,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-27",
@@ -2306,11 +2352,9 @@
     "mode": "Word only",
     "matches": [],
     "clip_count": 0,
-    "missing": [
-      "Unavailable number 3 (probe)"
-    ],
-    "selector_ms": 0.0411,
-    "latency_scope": "original selector before ablation output filtering"
+    "missing": [],
+    "selector_ms": 0.0025,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-27",
@@ -2321,8 +2365,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0319,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0024,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-27",
@@ -2333,8 +2377,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0309,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0023,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-27",
@@ -2362,8 +2406,8 @@
     ],
     "clip_count": 2,
     "missing": [],
-    "selector_ms": 0.0306,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0664,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-28",
@@ -2374,8 +2418,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1209,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1246,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-28",
@@ -2386,8 +2430,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1249,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.145,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-28",
@@ -2398,8 +2442,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1158,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1261,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-28",
@@ -2414,7 +2458,7 @@
         "matched": "ISL_X_01",
         "motion_version_id": "7a1cdc40-cd36-427a-b01d-4950ed75a99b",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "y",
@@ -2422,7 +2466,7 @@
         "matched": "ISL_Y_01",
         "motion_version_id": "bd304b81-7aaa-40c6-b568-178c4f2617d0",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "l",
@@ -2430,7 +2474,7 @@
         "matched": "ISL_L_01",
         "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "o",
@@ -2438,7 +2482,7 @@
         "matched": "ISL_O_01",
         "motion_version_id": "0a327df7-be58-4468-bf5b-751d5548ca25",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "p",
@@ -2446,7 +2490,7 @@
         "matched": "ISL_P_01",
         "motion_version_id": "bad3d672-68d9-46a3-9e38-1d864dd01b05",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "h",
@@ -2454,7 +2498,7 @@
         "matched": "ISL_H_01",
         "motion_version_id": "5bb99060-081a-408d-8caa-1201fd35b1b5",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "o",
@@ -2462,7 +2506,7 @@
         "matched": "ISL_O_01",
         "motion_version_id": "0a327df7-be58-4468-bf5b-751d5548ca25",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "n",
@@ -2470,7 +2514,7 @@
         "matched": "ISL_N_01",
         "motion_version_id": "38161d0b-8387-42d7-8540-2c5f413ecc7f",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -2478,7 +2522,7 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "x",
@@ -2486,13 +2530,13 @@
         "matched": "ISL_X_01",
         "motion_version_id": "7a1cdc40-cd36-427a-b01d-4950ed75a99b",
         "gloss_token": "XYLOPHONEX",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 10,
     "missing": [],
-    "selector_ms": 0.1088,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2317,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-29",
@@ -2503,8 +2547,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1029,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1137,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-29",
@@ -2515,8 +2559,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.2178,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.126,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-29",
@@ -2527,8 +2571,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.119,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1184,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-29",
@@ -2543,7 +2587,7 @@
         "matched": "ISL_Q_01",
         "motion_version_id": "f3e2b393-0cf4-44d8-a078-b012bcb3bfb9",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "u",
@@ -2551,7 +2595,7 @@
         "matched": "ISL_U_01",
         "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "i",
@@ -2559,7 +2603,7 @@
         "matched": "ISL_I_01",
         "motion_version_id": "44ef1a05-41f2-407e-b12a-7e6090bc58a8",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "z",
@@ -2567,7 +2611,7 @@
         "matched": "ISL_Z_01",
         "motion_version_id": "a51c3650-937a-4755-baae-cf095ee18032",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "z",
@@ -2575,7 +2619,7 @@
         "matched": "ISL_Z_01",
         "motion_version_id": "a51c3650-937a-4755-baae-cf095ee18032",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "l",
@@ -2583,7 +2627,7 @@
         "matched": "ISL_L_01",
         "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -2591,7 +2635,7 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "v",
@@ -2599,7 +2643,7 @@
         "matched": "ISL_V_01",
         "motion_version_id": "955ec40a-8929-438a-9dbe-83704001bfe8",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "i",
@@ -2607,7 +2651,7 @@
         "matched": "ISL_I_01",
         "motion_version_id": "44ef1a05-41f2-407e-b12a-7e6090bc58a8",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "l",
@@ -2615,7 +2659,7 @@
         "matched": "ISL_L_01",
         "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "l",
@@ -2623,7 +2667,7 @@
         "matched": "ISL_L_01",
         "motion_version_id": "64b293a6-6686-4bf8-8bb3-cef41dff8936",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -2631,13 +2675,13 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "QUIZZLEVILLE",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 12,
     "missing": [],
-    "selector_ms": 0.1149,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2486,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-30",
@@ -2648,8 +2692,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.2257,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.3132,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-30",
@@ -2660,8 +2704,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.2008,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.3287,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-30",
@@ -2672,8 +2716,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1844,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2919,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-30",
@@ -2688,7 +2732,7 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "EVACUATE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "v",
@@ -2696,7 +2740,7 @@
         "matched": "ISL_V_01",
         "motion_version_id": "955ec40a-8929-438a-9dbe-83704001bfe8",
         "gloss_token": "EVACUATE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "a",
@@ -2704,7 +2748,7 @@
         "matched": "ISL_A_01",
         "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
         "gloss_token": "EVACUATE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "c",
@@ -2712,7 +2756,7 @@
         "matched": "ISL_C_01",
         "motion_version_id": "9f6d2d48-875a-41f8-bba0-b1c74e4faf8d",
         "gloss_token": "EVACUATE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "u",
@@ -2720,7 +2764,7 @@
         "matched": "ISL_U_01",
         "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
         "gloss_token": "EVACUATE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "a",
@@ -2728,7 +2772,7 @@
         "matched": "ISL_A_01",
         "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
         "gloss_token": "EVACUATE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "t",
@@ -2736,7 +2780,7 @@
         "matched": "ISL_T_01",
         "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
         "gloss_token": "EVACUATE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -2744,13 +2788,13 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "EVACUATE",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 8,
     "missing": [],
-    "selector_ms": 0.1779,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.3654,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-31",
@@ -2761,8 +2805,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0534,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0773,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-31",
@@ -2773,8 +2817,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0622,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0824,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-31",
@@ -2785,8 +2829,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0572,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0784,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-31",
@@ -2801,7 +2845,7 @@
         "matched": "ISL_N_01",
         "motion_version_id": "38161d0b-8387-42d7-8540-2c5f413ecc7f",
         "gloss_token": "NOT",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "o",
@@ -2809,7 +2853,7 @@
         "matched": "ISL_O_01",
         "motion_version_id": "0a327df7-be58-4468-bf5b-751d5548ca25",
         "gloss_token": "NOT",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "t",
@@ -2817,13 +2861,13 @@
         "matched": "ISL_T_01",
         "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
         "gloss_token": "NOT",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 3,
     "missing": [],
-    "selector_ms": 0.0556,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1169,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-32",
@@ -2834,8 +2878,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0926,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1349,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-32",
@@ -2846,8 +2890,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1037,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1489,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-32",
@@ -2858,8 +2902,8 @@
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.1015,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1408,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-32",
@@ -2874,7 +2918,7 @@
         "matched": "ISL_F_01",
         "motion_version_id": "acec8292-47cf-4a8e-979e-1268a0f88092",
         "gloss_token": "FUTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "u",
@@ -2882,7 +2926,7 @@
         "matched": "ISL_U_01",
         "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
         "gloss_token": "FUTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "t",
@@ -2890,7 +2934,7 @@
         "matched": "ISL_T_01",
         "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
         "gloss_token": "FUTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "u",
@@ -2898,7 +2942,7 @@
         "matched": "ISL_U_01",
         "motion_version_id": "035c8c5f-bf75-4770-a6e1-293487879634",
         "gloss_token": "FUTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "r",
@@ -2906,7 +2950,7 @@
         "matched": "ISL_R_01",
         "motion_version_id": "610aeaad-6af9-47c3-bfd5-e431f94b8ee4",
         "gloss_token": "FUTURE",
-        "role": "probe"
+        "role": "lexical"
       },
       {
         "input": "e",
@@ -2914,90 +2958,101 @@
         "matched": "ISL_E_01",
         "motion_version_id": "8fd11c06-e140-4561-a45f-36107c55ed40",
         "gloss_token": "FUTURE",
-        "role": "probe"
+        "role": "lexical"
       }
     ],
     "clip_count": 6,
     "missing": [],
-    "selector_ms": 0.0994,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.2384,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-33",
     "query": "at",
-    "expected": "at",
+    "expected": null,
+    "kind": "LEXICAL",
+    "mode": "Word only",
+    "matches": [
+      {
+        "input": "at",
+        "method": "SKIPPED_GRAMMAR",
+        "gloss_token": "AT",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.013,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-33",
+    "query": "at",
+    "expected": null,
+    "kind": "LEXICAL",
+    "mode": "Phrase + Word",
+    "matches": [
+      {
+        "input": "at",
+        "method": "SKIPPED_GRAMMAR",
+        "gloss_token": "AT",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0095,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-33",
+    "query": "at",
+    "expected": null,
+    "kind": "LEXICAL",
+    "mode": "Sentence + Phrase + Word",
+    "matches": [
+      {
+        "input": "at",
+        "method": "SKIPPED_GRAMMAR",
+        "gloss_token": "AT",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0066,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-33",
+    "query": "at",
+    "expected": null,
+    "kind": "LEXICAL",
+    "mode": "Full hierarchy",
+    "matches": [
+      {
+        "input": "at",
+        "method": "SKIPPED_GRAMMAR",
+        "gloss_token": "AT",
+        "role": "lexical"
+      }
+    ],
+    "clip_count": 0,
+    "missing": [],
+    "selector_ms": 0.0075,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
+  },
+  {
+    "id": "probe-34",
+    "query": "railway track",
+    "expected": "railway track",
     "kind": "LEXICAL",
     "mode": "Word only",
     "matches": [],
     "clip_count": 0,
     "missing": [],
-    "selector_ms": 0.0414,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-33",
-    "query": "at",
-    "expected": "at",
-    "kind": "LEXICAL",
-    "mode": "Phrase + Word",
-    "matches": [],
-    "clip_count": 0,
-    "missing": [],
-    "selector_ms": 0.0453,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-33",
-    "query": "at",
-    "expected": "at",
-    "kind": "LEXICAL",
-    "mode": "Sentence + Phrase + Word",
-    "matches": [],
-    "clip_count": 0,
-    "missing": [],
-    "selector_ms": 0.0558,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-33",
-    "query": "at",
-    "expected": "at",
-    "kind": "LEXICAL",
-    "mode": "Full hierarchy",
-    "matches": [
-      {
-        "input": "a",
-        "method": "ALPHABET",
-        "matched": "ISL_A_01",
-        "motion_version_id": "29781d60-4383-4dc8-8c83-0e145353ab7b",
-        "gloss_token": "AT",
-        "role": "probe"
-      },
-      {
-        "input": "t",
-        "method": "ALPHABET",
-        "matched": "ISL_T_01",
-        "motion_version_id": "0ac098ac-caf2-4254-80d7-97431bab1448",
-        "gloss_token": "AT",
-        "role": "probe"
-      }
-    ],
-    "clip_count": 2,
-    "missing": [],
-    "selector_ms": 0.0567,
-    "latency_scope": "original selector before ablation output filtering"
-  },
-  {
-    "id": "probe-34",
-    "query": "railway track",
-    "expected": "railway track",
-    "kind": "LEXICAL",
-    "mode": "Word only",
-    "matches": [],
-    "clip_count": 0,
-    "missing": [],
-    "selector_ms": 0.0802,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.773,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-34",
@@ -3011,14 +3066,14 @@
         "method": "PHRASE",
         "matched": "ISL_RAILWAY_TRACK_01",
         "motion_version_id": "6a99d114-3649-4984-805b-03fe0fc1de91",
-        "gloss_token": "RAILWAY TRACK",
-        "role": "probe"
+        "gloss_token": "RAILWAY",
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0119,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0707,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-34",
@@ -3032,14 +3087,14 @@
         "method": "PHRASE",
         "matched": "ISL_RAILWAY_TRACK_01",
         "motion_version_id": "6a99d114-3649-4984-805b-03fe0fc1de91",
-        "gloss_token": "RAILWAY TRACK",
-        "role": "probe"
+        "gloss_token": "RAILWAY",
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0102,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.1553,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   },
   {
     "id": "probe-34",
@@ -3053,13 +3108,13 @@
         "method": "PHRASE",
         "matched": "ISL_RAILWAY_TRACK_01",
         "motion_version_id": "6a99d114-3649-4984-805b-03fe0fc1de91",
-        "gloss_token": "RAILWAY TRACK",
-        "role": "probe"
+        "gloss_token": "RAILWAY",
+        "role": "lexical"
       }
     ],
     "clip_count": 1,
     "missing": [],
-    "selector_ms": 0.0094,
-    "latency_scope": "original selector before ablation output filtering"
+    "selector_ms": 0.0389,
+    "latency_scope": "evaluation-only spelling-disabled selector and candidate restriction; production function unchanged"
   }
 ]

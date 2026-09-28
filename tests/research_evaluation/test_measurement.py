@@ -8,9 +8,10 @@ from dataset import make_dataset
 
 def test_dataset_balance_and_ids():
     data=make_dataset()
-    assert len(data)==210
-    assert len({r['id'] for r in data})==210
-    assert all(sum(r['category']==category for r in data)==30 for category in {r['category'] for r in data})
+    assert len(data)==224
+    assert len({r['id'] for r in data})==224
+    assert len({r['text'] for r in data})>=200
+    assert all(sum(r['category']==category for r in data)==32 for category in {r['category'] for r in data})
 
 def test_missing_statistics_are_not_zero():
     assert stats([]) is None

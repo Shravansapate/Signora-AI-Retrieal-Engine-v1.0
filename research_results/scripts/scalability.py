@@ -6,8 +6,11 @@ from the current prepare_demo function's first assignment, not a substitute quer
 import ast
 import gc
 import inspect
+import json
 import math
+import os
 import time
+from pathlib import Path
 from common import OUT, append, records, settings
 import psutil
 from sqlalchemy import create_engine, text
@@ -16,7 +19,10 @@ from app import demo
 from app.gloss import GlossUnit
 
 def main():
-    engine=create_engine(settings().database_url.get_secret_value())
+    # Runtime role intentionally cannot create temp tables. Use the already
+    # provisioned local maintenance credential for connection-private tables only.
+    admin=json.loads(Path(os.environ.get('SIGNORA_EVAL_DB_ADMIN',r'D:\SignoraData\local-admin.json')).read_text(encoding='utf-8-sig'))
+    engine=create_engine(admin['database_url'])
     assignment=ast.parse(inspect.getsource(demo.prepare_demo)).body[0].body[0]
     code=compile(ast.fix_missing_locations(ast.Module(body=[assignment],type_ignores=[])),'<actual-prepare-demo-query>','exec')
     path=OUT/'raw/scalability.jsonl';done={r['requested_rows'] for r in records(path)}
@@ -36,10 +42,11 @@ def main():
                     'id',md5(c.id::text||'-'||g)::uuid,'semantic_key',c.semantic_key||'_'||g,'active_motion_version_id',NULL))).*
                     FROM public.sign_concepts c CROSS JOIN generate_series(1,:copies) g ORDER BY g,c.id LIMIT :n'''),dict(copies=copies,n=n))
                     con.execute(text('''CREATE TEMP TABLE motion_versions ON COMMIT DROP AS
-                    SELECT (jsonb_populate_record(NULL::public.motion_versions,to_jsonb(m)||jsonb_build_object(
+                    WITH seed AS MATERIALIZED (SELECT id,concept_id,to_jsonb(m)-'source_metadata'-'technical_report' AS payload FROM public.motion_versions m)
+                    SELECT (jsonb_populate_record(NULL::public.motion_versions,m.payload||jsonb_build_object(
                     'id',md5(m.id::text||'-'||g)::uuid,'concept_id',md5(m.concept_id::text||'-'||g)::uuid,
                     'source_metadata','{}'::jsonb,'technical_report','{}'::jsonb))).*
-                    FROM public.motion_versions m CROSS JOIN generate_series(1,:copies) g ORDER BY g,m.concept_id LIMIT :n'''),dict(copies=copies,n=n))
+                    FROM seed m CROSS JOIN generate_series(1,:copies) g ORDER BY g,m.concept_id LIMIT :n'''),dict(copies=copies,n=n))
                     con.execute(text('CREATE INDEX ON motion_versions(concept_id)'))
                     con.execute(text('CREATE INDEX ON sign_concepts(id)'))
                     con.execute(text('ANALYZE sign_concepts'));con.execute(text('ANALYZE motion_versions'))

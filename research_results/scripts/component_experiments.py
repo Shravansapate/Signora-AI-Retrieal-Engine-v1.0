@@ -7,7 +7,7 @@ from datetime import date
 from collections import defaultdict
 from types import SimpleNamespace
 from uuid import UUID
-from common import ROOT, OUT, save
+from common import ROOT, OUT, save, settings
 from app import meaning
 from app.announcement_schema import StationDefinition
 from app.demo import Candidate, _select, _terms
@@ -17,11 +17,23 @@ from app.retrieval.search import compatible_text
 
 def catalog_candidates():
     rows=json.loads((OUT/'raw/catalog.json').read_text(encoding='utf-8'))
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import Session
+    expression=ast.parse(inspect.getsource(demo.prepare_demo)).body[0].body[0]
+    with Session(create_engine(settings().database_url.get_secret_value())) as session:
+        local={'session':session}
+        exec(compile(ast.fix_missing_locations(ast.Module(body=[expression],type_ignores=[])),'<actual-catalog-selection>','exec'),demo.__dict__,local)
+        available=local['rows']
+        profiles=defaultdict(list)
+        for motion,concept,profile in available:profiles[str(profile.id)].append(str(motion.id))
+        profile,ids=sorted(profiles.items(),key=lambda x:(-len(x[1]),x[0]))[0]
+        available_ids=set(ids)
+    save(OUT/'raw/component_catalog_scope.json',dict(avatar_profile_id=profile,motion_ids=ids,selection='Actual prepare_demo catalog query, largest compatible avatar group'))
     aliases=defaultdict(set)
     for a in json.loads((OUT/'raw/aliases.json').read_text(encoding='utf-8')):aliases[a['concept_id']].add(a['alias'].lower())
     seen=set();candidates=[]
     for row in rows:
-        if row['concept_id'] in seen or row['technical_qc_status']!='PASSED' or row['deleted_at'] or row['revoked_at'] or row['lifecycle_status'] not in {'STAGING','ACTIVE'}:continue
+        if row['concept_id'] in seen or row['motion_version_id'] not in available_ids:continue
         seen.add(row['concept_id'])
         candidates.append(Candidate(UUID(row['motion_version_id']),UUID(row['concept_id']),row['semantic_key'],_terms(SimpleNamespace(**row)),frozenset(aliases[row['concept_id']]),row['duration_seconds']))
     return candidates

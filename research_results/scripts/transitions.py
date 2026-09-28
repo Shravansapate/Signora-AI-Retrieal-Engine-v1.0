@@ -20,6 +20,7 @@ def clip_endpoints(path):
             width={'SCALAR':1,'VEC3':3,'VEC4':4}[a['type']];stride=v.get('byteStride',4*width)
             f.seek(binary_start+v.get('byteOffset',0)+a.get('byteOffset',0));raw=f.read((a['count']-1)*stride+4*width)
             return np.ndarray((a['count'],width),dtype='<f4',buffer=raw,strides=(stride,4)).copy()
+        if any('matrix' in n for n in doc['nodes']):raise ValueError('Matrix-node transforms need a separate endpoint evaluator')
         curves=[]
         for channel in doc['animations'][0]['channels']:
             sampler=doc['animations'][0]['samplers'][channel['sampler']]
@@ -33,9 +34,13 @@ def clip_endpoints(path):
         for node,path,times,outputs,interpolation in curves:
             j=max(0,min(len(times)-2,int(np.searchsorted(times,t,side='right'))-1));ratio=0 if interpolation=='STEP' else min(1,max(0,(t-float(times[j]))/max(1e-9,float(times[j+1]-times[j]))))
             a,b=outputs[j],outputs[j+1]
-            if path=='rotation' and np.dot(a,b)<0:b=-b
-            value=a*(1-ratio)+b*ratio
-            if path=='rotation':value/=np.linalg.norm(value)
+            if path=='rotation':
+                a=a/np.linalg.norm(a);b=b/np.linalg.norm(b);dot=float(np.dot(a,b))
+                if dot<0:b=-b;dot=-dot
+                theta=math.acos(min(1,dot))
+                value=a*(1-ratio)+b*ratio if dot>.9995 else (a*math.sin((1-ratio)*theta)+b*math.sin(ratio*theta))/math.sin(theta)
+                value/=np.linalg.norm(value)
+            else:value=a*(1-ratio)+b*ratio
             values[node][path]=value
         world={}
         def transform(i):
@@ -72,7 +77,7 @@ def main():
                 va=(p['world']-left['before'][name]['world'])/left['dt'];vb=(right['after'][name]['world']-q['world'])/right['dt']
                 velocity.append(float(np.linalg.norm(va-vb)))
         results.append(dict(previous=a,next=b,occurrences=frequency,joints=len(names),mean_joint_angle_degrees=float(np.mean(angles)),mean_joint_displacement_model_units=float(np.mean(distances)),mean_hand_displacement_model_units=float(np.mean(hands)) if hands else None,mean_hand_velocity_jump_model_units_per_second=float(np.mean(velocity)) if velocity else None))
-    save(OUT/'raw/transition_endpoints.json',dict(scope='Full-clip endpoint cuts in source GLBs. Joint rotations local; positions world/model units; quaternions normalized-linear interpolation for 40ms endpoint velocity estimate. Not an optimized comparison, not perceptual naturalness.',pairs=results,errors=errors,optimized=None))
+    save(OUT/'raw/transition_endpoints.json',dict(scope='Full-clip endpoint cuts in source GLBs. Joint rotations local; positions world/model units; quaternion spherical interpolation for 40ms endpoint velocity estimate. Not an optimized comparison, not perceptual naturalness.',pairs=results,errors=errors,optimized=None))
     print('Measured',len(results),'unique transition pairs; errors',len(errors))
 
 if __name__=='__main__':main()
