@@ -242,8 +242,8 @@ Any formal copyright filing should accurately reflect the legal ownership positi
 **Project:** Signora AI – Safety-Aware Hierarchical ISL Motion Retrieval and Playback Engine  
 **Version:** 1.0  
 **Repository:** `Signora_AI_Retrieval_Engine-v1.0`  
-**Git Tag:** `copyright-v1.0`  
-**Git Commit:** `14a25dc95130be41cba31a304ec660c0044c4874`  
+**Git Tag:** `copyright-v1.0-finsl`  
+**Git Commit:** `46236f85423290ba92a2703bc4158081b044d8c5`  
 **Date Frozen:** `Tue Sep 29 13:50:03 2026 +0530`
 
 All authors should review this document before the final copyright-registration version is frozen.
