@@ -251,10 +251,10 @@ Signora AI – Safety-Aware Hierarchical ISL Motion Retrieval and Playback Engin
 `copyright-v1.0`
 
 **Git Commit Hash:**  
-`[INSERT FINAL COMMIT HASH]`
+`14a25dc95130be41cba31a304ec660c0044c4874`
 
 **Release Date:**  
-`[INSERT DATE]`
+`Tue Sep 29 13:50:03 2026 +0530`
 
 ---
 

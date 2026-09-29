@@ -243,7 +243,7 @@ Any formal copyright filing should accurately reflect the legal ownership positi
 **Version:** 1.0  
 **Repository:** `Signora_AI_Retrieval_Engine-v1.0`  
 **Git Tag:** `copyright-v1.0`  
-**Git Commit:** `[INSERT FINAL COMMIT HASH]`  
-**Date Frozen:** `[INSERT DATE]`
+**Git Commit:** `14a25dc95130be41cba31a304ec660c0044c4874`  
+**Date Frozen:** `Tue Sep 29 13:50:03 2026 +0530`
 
 All authors should review this document before the final copyright-registration version is frozen.
