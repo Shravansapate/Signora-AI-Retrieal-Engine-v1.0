@@ -287,10 +287,10 @@ Version:
 1.0
 
 Git Tag:
-copyright-v1.0
+copyright-v1.0-final
 
 Git Commit:
-14a25dc95130be41cba31a304ec660c0044c4874
+46236f85423290ba92a2703bc4158081b044d8c5
 
 Commit Date:
 Tue Sep 29 13:50:03 2026 +0530
